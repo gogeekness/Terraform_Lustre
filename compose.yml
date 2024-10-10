@@ -1,0 +1,8 @@
+services:
+  terraform:
+    hostname: container-for-tf
+    volumes:
+    - ./Terraform_Lustre/
+    build:
+      context: .
+      dockerfile: dockerfile
