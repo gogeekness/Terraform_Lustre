@@ -19,19 +19,15 @@
 #             of our ssh-keys already there. hence 
 #             we use `ssh-add -L` command ot get the public part 
 
-variable "ssh_key" {
-  type = string
-  default = "value"
-}
+
 resource "aws_key_pair" "our_public_ssh_key" {
 
   # the name for the resource
-  key_name  = 
+  key_name  = "aws_ssh_key"
 
   # this part we fill in here:
   
   #public_key = "ssh-rsa AAAAB.............(fill in here the result of `ssh-add -L`"
-  #public_key = "ssh-rsa AAAAB3NzaC1yc27ZoOEw3ZUqs7j0W8ofzOIz6hvSx+Gz3DcYdHwcLRyls58y7IJi1WyWfz7Q/rqkRf//NuHcdjctT4YIIpMDTBqnR8GMShKCHoGmlP9Ss8EjJKukHqWKmIqm/bhks2PgNY0D3ywMmlb7mxIaronlhur816KzE01pWRzG23YPTXXtaLTi522wqIGwKrOgE97C1GqU40t5iFXLJtkn42zGGmcGCS6xFpgvBHT3ksVDLlnTE64DoerJoojTy1cqsU8+KaRjOaNhRJm7yVsLjye3SjBkYZNDSjE8ilC4eK13d7vA5069TjD+ByWGZnZE92nyYXky5Gs4HCKDRnUgHJEwTPA0VsmWZ0DUQxcSj9LDh52iFCYh6YqNLbANoO7mOb5kGmiKbVeKWFTnjbjYnIq5LsY7ZoU5FmKePcW5hFpa6mIP4jObw8S6pD3+8dPP2+gjU7Hi1SY4DbtST4P3RY97GY+odml2XI/yvmGYkxURkDSxag6SvDAAs8ZRwe6FIbcJNkns/lkueNz1rlD07bGsowuRVNY5eLLmnEfGOR4zqDtTaSqQaIcIYKhSOkfCvvTDDvWbki7yLrPEZw== reseke@reseke-NH5x-7xDCx-DDx"
   public_key = var.aws_ssh_key
 
 }
@@ -71,7 +67,7 @@ resource "aws_security_group" "our_security_group" {
 
 # RESOURCE 3) the "aws_instance" this is what sets up 1xinstance 
 #             
-resource "aws_instance" "ubuntu-on-t4g-nano" {
+resource "aws_instance" "Alma8_community" {
   
   # First thing to select it the "image" (amazon machine image)
   # that we want to use with our instance. (via `aws ec2 decribe-images` you will 
@@ -81,14 +77,14 @@ resource "aws_instance" "ubuntu-on-t4g-nano" {
   # because ubuntu is good for testing + arm64 is the architecture of "t4g.nano" instance_type
   
   # AMI is Alma8 plain region eu-center-1 (from Vars file)
-  ami = var.ami
+  ami = var.ami_image
 
 
   # We select the type of instance we want
   # t4g.nano is cheapest hourly rate at 0.0048 USD per hour or 3.45 USD per month
   # on demand pricing 
 
-  instance_type = "t3.small"
+  instance_type = var.instance_type
 
   # clearly we want to be able to access it via ssh, hence our key is reverenced
   # the one we created as "RESOURCE 1)
@@ -110,5 +106,5 @@ resource "aws_instance" "ubuntu-on-t4g-nano" {
 # info (in our case the ipv4 of the machine (needed for ssh)
 output "instance_ip" {
   description = "The public ip for ssh access"
-  value       = aws_instance.ubuntu-on-t4g-nano.public_ip
+  value       = aws_instance.Alma8_community.public_ip
 }

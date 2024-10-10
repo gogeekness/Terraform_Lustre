@@ -33,3 +33,15 @@ variable "region" {
     sensitive = false
     default = "eu-central-1"
 }
+
+variable "ami_image" {
+  type = string
+  description = "AMI image for Alma 8"
+  sensitive = false 
+}
+
+variable "instance_type" {
+  type = string
+  description = "Instance Size"
+  sensitive = false
+}

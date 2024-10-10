@@ -22,4 +22,4 @@ alias terra='tofu'
 BASHRC
 EOF
 ENTRYPOINT ["/bin/bash"]
-WORKDIR /terraformdata
+WORKDIR /Terraform_Lustre
