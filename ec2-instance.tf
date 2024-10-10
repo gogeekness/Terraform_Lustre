@@ -18,10 +18,15 @@
 #             or more likely even we have an ssh-agent already setup that has several 
 #             of our ssh-keys already there. hence 
 #             we use `ssh-add -L` command ot get the public part 
+
+variable "ssh_key" {
+  type = string
+  default = "value"
+}
 resource "aws_key_pair" "our_public_ssh_key" {
 
   # the name for the resource
-  key_name   = "our_public_ssh_key"
+  key_name  = 
 
   # this part we fill in here:
   
