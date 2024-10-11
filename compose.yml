@@ -2,7 +2,7 @@ services:
   terraform:
     hostname: Container-for-Lustre
     volumes:
-      - ~/docker/Terraform_Lustre:/Terraform_Lustre
+      - ./:/Terraform_Lustre
     working_dir: /Terraform_Lustre
     build:
       context: .
