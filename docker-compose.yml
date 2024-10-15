@@ -1,0 +1,10 @@
+name: Lustre_builder
+services:
+  terraform:
+    hostname: container-for-lustre
+    volumes:
+      - ./:/terraform_lustre
+    working_dir: /terraform_lustre
+    build:
+      context: .
+      dockerfile: dockerfile
