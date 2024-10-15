@@ -77,8 +77,8 @@ resource "aws_instance" "Alma8_community" {
   # because ubuntu is good for testing + arm64 is the architecture of "t4g.nano" instance_type
   
   # AMI is Alma8 plain region eu-center-1 (from Vars file)
-  ami = var.ami_image
-
+  # ami = var.ami_image
+  ami = var.ami_lustre_snapshot
 
   # We select the type of instance we want
   # t4g.nano is cheapest hourly rate at 0.0048 USD per hour or 3.45 USD per month
