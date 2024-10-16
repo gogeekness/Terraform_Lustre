@@ -1,9 +1,0 @@
-services:
-  terraform:
-    hostname: Container-for-Lustre
-    volumes:
-      - ./:/terraform_lustre
-    working_dir: /terraform_lustre
-    build:
-      context: .
-      dockerfile: dockerfile
