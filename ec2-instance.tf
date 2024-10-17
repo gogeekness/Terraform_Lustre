@@ -19,17 +19,15 @@
 #             of our ssh-keys already there. hence 
 #             we use `ssh-add -L` command ot get the public part 
 
+output "Snapshot_ID_Out" {
+  value = var.lustre_snapshot
+}
+
 
 resource "aws_key_pair" "our_public_ssh_key" {
-
   # the name for the resource
   key_name  = "aws_ssh_key"
-
-  # this part we fill in here:
-  
-  #public_key = "ssh-rsa AAAAB.............(fill in here the result of `ssh-add -L`"
-  public_key = var.aws_ssh_key
-
+  public_key = var.aws_ssh_key  #defined in screts
 }
 
 
@@ -64,40 +62,37 @@ resource "aws_security_group" "our_security_group" {
 }
 
 
+resource "aws_ebs_volume" "primary_disk" {
+  availability_zone = "eu-central-1"  # Make sure this matches your instance's AZ
+
+  snapshot_id       = var.lustre_snapshot
+  size              = 100  # Specify the size in GB. Adjust as needed, but it must be >= snapshot size
+
+  tags = {
+    Name = "Primary disk from snapshot"
+  }
+}
+
 
 # RESOURCE 3) the "aws_instance" this is what sets up 1xinstance 
 #             
 resource "aws_instance" "Alma8_community" {
   
-  # First thing to select it the "image" (amazon machine image)
-  # that we want to use with our instance. (via `aws ec2 decribe-images` you will 
-  # get a large JSON back with all images existing)
-  # the image we use is 
-  # "ami-07034695835d8f3bd" is arm64 amazon ubuntu 22.04 minimal
-  # because ubuntu is good for testing + arm64 is the architecture of "t4g.nano" instance_type
-  
-  # AMI is Alma8 plain region eu-center-1 (from Vars file)
-  # ami = var.ami_image
-  ami = var.ami_lustre_snapshot
-
-  # We select the type of instance we want
-  # t4g.nano is cheapest hourly rate at 0.0048 USD per hour or 3.45 USD per month
-  # on demand pricing 
-
   instance_type = var.instance_type
-
   # clearly we want to be able to access it via ssh, hence our key is reverenced
   # the one we created as "RESOURCE 1)
   key_name = "our_public_ssh_key"
-
   # Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
+  ami = var.ami_image
+
   # Lustre needs 8 GB to install correctly
     root_block_device {
     volume_size = 8
   }  
 }
+#Alma8_community
 
 
 # OUTPUT 
@@ -108,3 +103,17 @@ output "instance_ip" {
   description = "The public ip for ssh access"
   value       = aws_instance.Alma8_community.public_ip
 }
+
+  # First thing to select it the "image" (amazon machine image)
+  # that we want to use with our instance. (via `aws ec2 decribe-images` you will 
+  # get a large JSON back with all images existing)
+  # the image we use is 
+  # "ami-07034695835d8f3bd" is arm64 amazon ubuntu 22.04 minimal
+  # because ubuntu is good for testing + arm64 is the architecture of "t4g.nano" instance_type
+  
+  # AMI is Alma8 plain region eu-center-1 (from Vars file)
+  # ami = var.ami_imag
+
+  # We select the type of instance we want
+  # t4g.nano is cheapest hourly rate at 0.0048 USD per hour or 3.45 USD per month
+  # on demand pricing 

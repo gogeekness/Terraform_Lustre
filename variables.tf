@@ -45,3 +45,11 @@ variable "instance_type" {
   description = "Instance Size"
   sensitive = false
 }
+
+# marks the last snapshot of the Lustre install
+variable "lustre_snapshot" {
+  type = string
+  description = "The Lusture slice OS image"
+  sensitive = false
+}
+#lustre_snapshot
