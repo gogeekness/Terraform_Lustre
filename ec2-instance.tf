@@ -61,35 +61,28 @@ resource "aws_security_group" "our_security_group" {
 
 }
 
-
-resource "aws_ebs_volume" "primary_disk" {
-  availability_zone = "eu-central-1"  # Make sure this matches your instance's AZ
-
-  snapshot_id       = var.lustre_snapshot
-  size              = 100  # Specify the size in GB. Adjust as needed, but it must be >= snapshot size
-
-  tags = {
-    Name = "Primary disk from snapshot"
-  }
-}
-
-
 # RESOURCE 3) the "aws_instance" this is what sets up 1xinstance 
 #             
 resource "aws_instance" "Alma8_community" {
-  
+
+  availability_zone = "eu-central-1"
+
+  ami           = var.base_ami
   instance_type = var.instance_type
+
   # clearly we want to be able to access it via ssh, hence our key is reverenced
   # the one we created as "RESOURCE 1)
   key_name = "our_public_ssh_key"
   # Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
-  ami = var.ami_image
-
   # Lustre needs 8 GB to install correctly
     root_block_device {
     volume_size = 8
+    volume_type = "gp2"
+    delete_on_termination = true
+    snapshot_id = var.lustre_snapshot
+    
   }  
 }
 #Alma8_community
