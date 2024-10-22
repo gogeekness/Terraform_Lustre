@@ -23,6 +23,14 @@ output "Snapshot_ID_Out" {
   value = var.lustre_snapshot
 }
 
+variable "lustre_snapshot" {
+  default = "snap-05443946df91a3b0f"
+}
+
+variable "base_ami" {
+  default = "ami-0eef48bf23b6479b3"
+}
+
 
 resource "aws_key_pair" "our_public_ssh_key" {
   # the name for the resource
@@ -64,7 +72,8 @@ resource "aws_security_group" "our_security_group" {
 
 resource "aws_ebs_volume" "primary_disk" {
   availability_zone = "eu-central-1"  # Make sure this matches your instance's AZ
-
+  
+  ami               = var.base_id
   snapshot_id       = var.lustre_snapshot
   size              = 100  # Specify the size in GB. Adjust as needed, but it must be >= snapshot size
 
@@ -85,7 +94,7 @@ resource "aws_instance" "Alma8_community" {
   # Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
-  ami = var.ami_image
+
 
   # Lustre needs 8 GB to install correctly
     root_block_device {
