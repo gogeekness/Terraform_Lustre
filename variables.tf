@@ -50,6 +50,7 @@ variable "instance_type" {
 variable "lustre_snapshot" {
   type = string
   description = "The Lusture slice OS image"
+  default = "snap-05443946df91a3b0f"
   sensitive = false
 }
 #lustre_snapshot
