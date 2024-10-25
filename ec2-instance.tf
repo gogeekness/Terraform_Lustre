@@ -20,7 +20,7 @@
 #             we use `ssh-add -L` command ot get the public part 
 
 output "Snapshot_ID_Out" {
-  value = var.lustre_snapshot
+  value = var.ami_my_image
 }
 
 
@@ -67,8 +67,9 @@ resource "aws_instance" "Alma8_community" {
 
   availability_zone = "eu-central-1"
 
-  ami           = var.base_ami
+  # ami           = var.base_ami
   instance_type = var.instance_type
+  ami             = var.ami_my_image
 
   # clearly we want to be able to access it via ssh, hence our key is reverenced
   # the one we created as "RESOURCE 1)
@@ -81,7 +82,7 @@ resource "aws_instance" "Alma8_community" {
     volume_size = 8
     volume_type = "gp2"
     delete_on_termination = true
-    snapshot_id = var.lustre_snapshot
+
     
   }  
 }

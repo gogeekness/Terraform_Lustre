@@ -34,7 +34,7 @@ variable "region" {
     default = "eu-central-1"
 }
 
-variable "base_ami" {
+variable "ami_image" {
   type = string
   description = "AMI image for Alma 8"
   sensitive = false 
@@ -54,3 +54,11 @@ variable "lustre_snapshot" {
   sensitive = false
 }
 #lustre_snapshot
+
+variable "ami_my_image" {
+  type = string
+  description = "The ami for the Lustre"
+  default = "ami-08bacc8479e361271"
+  sensitive = false
+}
+
