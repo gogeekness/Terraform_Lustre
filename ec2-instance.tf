@@ -63,8 +63,7 @@ resource "aws_security_group" "our_security_group" {
 #             
 resource "aws_instance" "Alma8_community" {
 
-  availability_zone = "eu-central-1"
-
+  availability_zone = var.region
   # ami           = var.base_ami
   instance_type   = var.instance_type
   ami             = var.ami_my_image
