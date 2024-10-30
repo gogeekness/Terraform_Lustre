@@ -24,6 +24,7 @@ output "Snapshot_ID_Out" {
 }
 
 
+<<<<<<< HEAD
 
   
 # resource "aws_key_pair" "our_public_ssh_key" {
@@ -31,6 +32,13 @@ output "Snapshot_ID_Out" {
 #   key_name  = var.aws_ssh_key
 #  = var.aws_ssh_key  #defined in screts
 # }
+=======
+resource "aws_key_pair" "our_public_ssh_key" {
+  # the name for the resource
+  key_name  = "aws_ssh_key"
+  public_key = var.aws_ssh_key  #defined in screts
+}
+>>>>>>> e74ab779c6d8a1fccd006605c8924a1d9aaee02a
 
 # RESOURCE 2) an "aws_security_group" is like the rules what network connections are 
 #             allowed for the "aws_instance" we use this resource with
@@ -69,12 +77,19 @@ resource "aws_instance" "Alma8_community" {
   # ami           = var.base_ami
   instance_type   = var.instance_type
   ami             = var.ami_my_image
+<<<<<<< HEAD
   key_name        = var.TF_VAR_aws_ssh_key
   
 
   # clearly we want to be able to access it via ssh, hence our key is reverenced
   # the one we created as "RESOURCE 1)
 
+=======
+
+  # clearly we want to be able to access it via ssh, hence our key is reverenced
+  # the one we created as "RESOURCE 1)
+  key_name = "our_public_ssh_key"
+>>>>>>> e74ab779c6d8a1fccd006605c8924a1d9aaee02a
   # Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
