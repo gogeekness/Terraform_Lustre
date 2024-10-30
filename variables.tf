@@ -4,7 +4,6 @@
 #   description = "our_public_ssh_key"
 
 #   #public_key = "ssh-rsa AAAAB.............(fill in here the result of `ssh-add -L`"
-#   default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC93vzI067Idm12vh03OgE0CC/vWFmy4WCLU56s1Ldyd2H4B7NtQVA8CWwYbcvhyTUmwYYZcZ7XDwLYA2/z5aTSrUgKqC8JJ27ZoOEw3ZUqs7j0W8ofzOIz6hvSx+Gz3DcYdHwcLRyls58y7IJi1WyWfz7Q/rqkRf//NuHcdjctT4YIIpMDTBqnR8GMShKCHoGmlP9Ss8EjJKukHqWKmIqm/bhks2PgNY0D3ywMmlb7mxIaronlhur816KzE01pWRzG23YPTXXtaLTi522wqIGwKrOgE97C1GqU40t5iFXLJtkn42zGGmcGCS6xFpgvBHT3ksVDLlnTE64DoerJoojTy1cqsU8+KaRjOaNhRJm7yVsLjye3SjBkYZNDSjE8ilC4eK13d7vA5069TjD+ByWGZnZE92nyYXky5Gs4HCKDRnUgHJEwTPA0VsmWZ0DUQxcSj9LDh52iFCYh6YqNLbANoO7mOb5kGmiKbVeKWFTnjbjYnIq5LsY7ZoU5FmKePcW5hFpa6mIP4jObw8S6pD3+8dPP2+gjU7Hi1SY4DbtST4P3RY97GY+odml2XI/yvmGYkxURkDSxag6SvDAAs8ZRwe6FIbcJNkns/lkueNz1rlD07bGsowuRVNY5eLLmnEfGOR4zqDtTaSqQaIcIYKhSOkfCvvTDDvWbki7yLrPEZw== reseke@reseke-NH5x-7xDCx-DDx"
 
 #   sensitive = true
 # }
