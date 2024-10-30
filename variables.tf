@@ -9,22 +9,10 @@
 #   sensitive = true
 # }
 
-variable "aws_ssh_key"{
+variable "TF_VAR_aws_ssh_key"{
     type = string
     description = "Main SSH Key"
     sensitive = true
-}
-
-variable "Access_Key_ID" {
-  type = string
-  description = "User / Account ID"
-  sensitive = true
-}
-
-variable "Sercret_Access_Key" {
-  type = string
-  description = "User / Accound Key"
-  sensitive = true    
 }
 
 variable "region" {
@@ -34,10 +22,16 @@ variable "region" {
     default = "eu-central-1"
 }
 
-variable "ami_image" {
+variable "TF_VAR_Access_Key_ID" {
   type = string
-  description = "AMI image for Alma 8"
-  sensitive = false 
+  description = "Access ID to gain access to AWS CLI"
+  sensitive = true 
+}
+
+variable "TF_VAR_Sercret_Access_Key" {
+  type = string
+  description = "Access Secret to gain access to AWS CLI"
+  sensitive = true
 }
 
 variable "instance_type" {
