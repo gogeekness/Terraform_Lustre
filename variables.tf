@@ -8,7 +8,7 @@
 #   sensitive = true
 # }
 
-variable "TF_VAR_aws_ssh_key"{
+variable "aws_ssh_key"{
     type = string
     description = "Main SSH Key"
     sensitive = true
@@ -21,7 +21,7 @@ variable "region" {
     default = "eu-central-1"
 }
 
-variable "TF_VAR_Access_Key_ID" {
+variable "Access_Key_ID" {
   type = string
   description = "Access ID to gain access to AWS CLI"
   sensitive = true 

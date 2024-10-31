@@ -24,12 +24,6 @@ terraform {
 
 provider "aws" {
   region  = var.region
-<<<<<<< HEAD
-  access_key = var.TF_VAR_Access_Key_ID
-  secret_key = var.TF_VAR_Sercret_Access_Key
-}
-=======
   access_key = var.Access_Key_ID
   secret_key = var.Sercret_Access_Key
 }
->>>>>>> e74ab779c6d8a1fccd006605c8924a1d9aaee02a
