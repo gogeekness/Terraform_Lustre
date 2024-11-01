@@ -24,11 +24,11 @@ output "Snapshot_ID_Out" {
 }
 
 
-resource "aws_key_pair" "our_public_ssh_key" {
-  # the name for the resource
-  key_name  = "aws_ssh_key"
-  public_key = var.aws_ssh_key  #defined in screts
-}
+# resource "aws_key_pair" "our_public_ssh_key" {
+#   # the name for the resource
+#   key_name  = "aws_ssh_key"
+#   public_key = var.aws_ssh_key  #defined in screts
+# }
 
 # RESOURCE 2) an "aws_security_group" is like the rules what network connections are 
 #             allowed for the "aws_instance" we use this resource with
