@@ -27,7 +27,7 @@ variable "Access_Key_ID" {
   sensitive = true 
 }
 
-variable "TF_VAR_Sercret_Access_Key" {
+variable "Sercret_Access_Key" {
   type = string
   description = "Access Secret to gain access to AWS CLI"
   sensitive = true
