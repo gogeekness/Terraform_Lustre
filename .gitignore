@@ -1,4 +1,4 @@
-secrets.auto.tfvars
+secrets*
 *.hcl
 .terraform/
 terraform.tfstate*
