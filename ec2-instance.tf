@@ -24,11 +24,11 @@ output "Snapshot_ID_Out" {
 }
 
 
-# resource "aws_key_pair" "our_public_ssh_key" {
-#   # the name for the resource
-#   key_name  = "aws_ssh_key"
-#   public_key = var.aws_ssh_key  #defined in screts
-# }
+resource "aws_key_pair" "Lustre_Key" {
+  # the name for the resource
+  key_name  = "Lustre_Key"
+  public_key = var.aws_key_pair #defined in screts
+}
 
 # RESOURCE 2) an "aws_security_group" is like the rules what network connections are 
 #             allowed for the "aws_instance" we use this resource with
@@ -66,7 +66,7 @@ resource "aws_instance" "Lustre" {
   # ami           = var.base_ami
   instance_type   = var.instance_type
   ami             = var.ami_my_image
-  key_name        = var.aws_ssh_key
+  key_name        = Lustre_Key
 
   # clearly we want to be able to access it via ssh, hence our key is reverenced
   # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
