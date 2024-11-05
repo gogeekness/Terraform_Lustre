@@ -56,38 +56,28 @@ resource "aws_security_group" "our_security_group" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-
 }
 
 # RESOURCE 3) the "aws_instance" this is what sets up 1xinstance 
 #             
-resource "aws_instance" "Alma8_community" {
+resource "aws_instance" "Lustre" {
 
-  availability_zone = var.region
+  # availability_zone = var.region
   # ami           = var.base_ami
   instance_type   = var.instance_type
   ami             = var.ami_my_image
   key_name        = var.aws_ssh_key
-  
 
   # clearly we want to be able to access it via ssh, hence our key is reverenced
-  # the one we created as "RESOURCE 1)
-
-
-  # clearly we want to be able to access it via ssh, hence our key is reverenced
-  # the one we created as "RESOURCE 1)
-
-  # Also we now use the "aws_security_group" of RESOURCE 2) above
+  # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
   # Lustre needs 8 GB to install correctly
-    root_block_device {
-    volume_size = 8
-    volume_type = "gp2"
-    delete_on_termination = true
-
-    
-  }  
+    # root_block_device {
+    # volume_size = 8
+    # volume_type = "gp2"
+    # delete_on_termination = true
+  #}  
 }
 #Alma8_community
 
@@ -98,5 +88,5 @@ resource "aws_instance" "Alma8_community" {
 # info (in our case the ipv4 of the machine (needed for ssh)
 output "instance_ip" {
   description = "The public ip for ssh access"
-  value       = aws_instance.Alma8_community.public_ip
+  value       = aws_instance.Lustre.public_ip
 }
