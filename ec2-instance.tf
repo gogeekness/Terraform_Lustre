@@ -23,11 +23,10 @@ output "Snapshot_ID_Out" {
   value = var.ami_my_image
 }
 
-
 resource "aws_key_pair" "Lustre_Key" {
   # the name for the resource
   key_name  = "Lustre_Key"
-  public_key = var.aws_key_pair #defined in screts
+  public_key = var.aws_key_pub   #defined in screts
 }
 
 # RESOURCE 2) an "aws_security_group" is like the rules what network connections are 
@@ -66,8 +65,8 @@ resource "aws_instance" "Lustre" {
   # ami           = var.base_ami
   instance_type   = var.instance_type
   ami             = var.ami_my_image
-  key_name        = Lustre_Key
-
+  key_name        = aws_key_pair.Lustre_Key.key_name
+  
   # clearly we want to be able to access it via ssh, hence our key is reverenced
   # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
