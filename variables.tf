@@ -8,11 +8,10 @@
 #   sensitive = true
 # }
 
-variable "aws_key_pair"{
+variable "aws_key_pub"{
     type = string
     description = "Main SSH Key"
     sensitive = true
-    default = "Lustre_Key"
 }
 
 variable "region" {
