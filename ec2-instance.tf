@@ -19,8 +19,9 @@
 #             of our ssh-keys already there. hence 
 #             we use `ssh-add -L` command ot get the public part 
 
-output "Snapshot_ID_Out" {
-  value = var.ami_my_image
+output "SSH_Key_Out" {
+  value = var.aws_key_pub
+  sensitive = true
 }
 
 resource "aws_key_pair" "Lustre_Key" {
