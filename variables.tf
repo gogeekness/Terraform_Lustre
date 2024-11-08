@@ -11,6 +11,7 @@
 variable "aws_key_pub"{
     type = string
     description = "Main SSH Key"
+    default = "Non-usable-keypair"
     sensitive = true
 }
 

@@ -4,6 +4,7 @@ services:
     hostname: container-for-lustre
     volumes:
       - ./:/terraform_lustre
+      - ~/.ssh/:/ssh
     working_dir: /terraform_lustre
     build:
       context: .
