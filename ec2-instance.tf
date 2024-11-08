@@ -27,7 +27,7 @@ output "SSH_Key_Out" {
 resource "aws_key_pair" "Lustre_Key" {
   # the name for the resource
   key_name  = "Lustre_Key"
-  public_key = var.aws_key_pub   #defined in screts
+  public_key = file("./ssh/id_rsa.pub")  #defined in screts
 }
 
 # RESOURCE 2) an "aws_security_group" is like the rules what network connections are 
