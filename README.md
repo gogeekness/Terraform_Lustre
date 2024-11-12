@@ -11,3 +11,11 @@ Requirements
 * Python 3.10 or later
 * ToFu will be installed online into the container
 
+There is a secrets file that is used by `variables.tf`.
+### secrets.auto.tfvar 
+This file contains keys to access AWS and use SSH
+* aws_key_pub (A RSA the public key, please chnage you your perfered key type.)
+* Access_Key_ID (AWS API/CLI access ID)
+* Sercret_Access_Key (AWS API/CLI sercet key)
+
+Fill these variable with your specific credentails, 
