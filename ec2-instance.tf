@@ -61,23 +61,23 @@ resource "aws_subnet" "lustre_subnet" {
     cidr_block = var.subnet_cidr
   tags = {
     Tier = "Private"
-    name = "Lustre_subunet"
+    name = "Lustre_subnet"
   }
 }
 
 
-# EBS volumes for data drives
-resource "aws_ebs_volume" "data_drives" {
-  for_each = toset(["lustre_mgt", "lustre_oss"])
+# # EBS volumes for data drives
+# resource "aws_ebs_volume" "data_drives" {
+#   for_each = toset(["lustre_mgt", "lustre_oss"])
 
-  availability_zone = var.region
-  size             = 1024  # 1TB
-  type             = "gp3"
+#   availability_zone = var.region
+#   size             = 1024  # 1TB
+#   type             = "gp3"
 
-  tags = {
-    Name = "data-drive-${each.key}"
-  }
-}
+#   tags = {
+#     Name = "data-drive-${each.key}"
+#   }
+# }
 
 
 resource "aws_key_pair" "Lustre_Key" {
@@ -125,7 +125,8 @@ resource "aws_security_group" "our_security_group" {
 resource "aws_ebs_volume" "shared_data_volume" {
   availability_zone = aws_subnet.lustre_subnet.availability_zone
   size             = 1000  # Size in GB
-  type             = "gp3"
+  type             = "io1"
+  iops              = 20000
   multi_attach_enabled = true  # Enable multi-attach feature
   tags = {
     Name = "shared-lustre-data-volume"
@@ -135,16 +136,16 @@ resource "aws_ebs_volume" "shared_data_volume" {
 resource "aws_instance" "Lustre_servers" {
   for_each        = toset(var.servers)
 
-  instance_type   = var.instance_type[each.key]
+  instance_type   = var.instance_types[each.key]
   ami             = var.ami_my_image
-  subnet_id       = aws_subnet.lustre_subnet
+  subnet_id       = aws_subnet.lustre_subnet.id
   private_ip      = var.server_ips[each.key]
   key_name        = aws_key_pair.Lustre_Key.key_name
   # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
 }
-output "instance_ip" {
-  description = "The public ip for ssh access"
-  value       = aws_instance.Lustre.public_ip
-}
+# output "instance_ip" {
+#   description = "The public ip for ssh access"
+#   value       = [for ip in aws_instance.Lustre_servers.private_ip: aws_instance.Lustre_servers.aws_instance.Lustre_servers. ]
+# }
