@@ -19,10 +19,66 @@
 #             of our ssh-keys already there. hence 
 #             we use `ssh-add -L` command ot get the public part 
 
-output "SSH_Key_Out" {
-  value = var.aws_key_pub
-  sensitive = true
+## These will be moved off the file soon
+variable "servers" {
+  type = list(string)
+  default = ["lustre_mgt", "lustre_oss", "lustre_client"]
 }
+
+# for each node of this small cluster
+variable "instance_types" {
+  type = map(string)
+  default = {
+    lustre_mgt    = "t3.small"
+    lustre_oss    = "t3.medium"
+    lustre_client = "t4.nano"
+  }
+}
+
+variable "server_ips" {
+  type = map(string)
+  default = {
+    lustre_mgt    = "10.0.1.10"
+    lustre_oss    = "10.0.1.11"
+    lustre_client = "10.0.1.12"
+  }
+}
+
+variable "subnet_cidr" {
+  type    = string
+  default = "10.0.1.0/24"
+}
+
+resource "aws_vpc" "lustre_vpc" {
+  cidr_block = "10.0.0.0/16"
+  
+  tags = {
+    Name = "lustre-vpc"
+  }
+}
+resource "aws_subnet" "lustre_subnet" {
+    vpc_id = "Lustre_subnet"
+    cidr_block = var.subnet_cidr
+  tags = {
+    Tier = "Private"
+    name = "Lustre_subunet"
+  }
+}
+
+
+# EBS volumes for data drives
+resource "aws_ebs_volume" "data_drives" {
+  for_each = toset(["lustre_mgt", "lustre_oss"])
+
+  availability_zone = var.region
+  size             = 1024  # 1TB
+  type             = "gp3"
+
+  tags = {
+    Name = "data-drive-${each.key}"
+  }
+}
+
 
 resource "aws_key_pair" "Lustre_Key" {
   # the name for the resource
@@ -32,23 +88,18 @@ resource "aws_key_pair" "Lustre_Key" {
 }
 
 # RESOURCE 2) an "aws_security_group" is like the rules what network connections are 
-#             allowed for the "aws_instance" we use this resource with
+#             allowed for the "aws_instance" we use this resource 
 resource "aws_security_group" "our_security_group" {
-
   # rules about incoming network connections to the instance
+  name = "Lustre_SG"
   ingress {
-    # allowed port(s) starting form this port number
+    # allowed port(s) starting form this port number to and from port
     from_port   = 22
-    # allowed ports(s) up to this port number (here is is only SSH port 22)
     to_port     = 22
-    # the allowed protocol (i.e we allow TCP, hence prob. we are unable to ICMP ping the box)
     protocol    = "tcp"
     # the allowed ip origins this rule applies to (0.0.0.0/0) is all ipv4 addresses "everyone"
     cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  # same can be done for limiting outgoing connections that come from 
-  # the associated instanc
+    }
   egress {
     # same as above, just for outgoing
     from_port        = 0
@@ -59,34 +110,40 @@ resource "aws_security_group" "our_security_group" {
   }
 }
 
-# RESOURCE 3) the "aws_instance" this is what sets up 1xinstance 
-#             
-resource "aws_instance" "Lustre" {
 
-  # availability_zone = var.region
-  # ami           = var.base_ami
-  instance_type   = var.instance_type
+# resource "aws_network_interface" "name" {
+#   subnet_id       = aws_subnet.public_a.id
+#   private_ips     = ["10.0.0.50"]
+#   security_groups = [aws_security_group.web.id]
+
+#   attachment {
+#     instance     = aws_instance.test.id
+#     device_index = 1
+#   }
+# }
+
+resource "aws_ebs_volume" "shared_data_volume" {
+  availability_zone = aws_subnet.lustre_subnet.availability_zone
+  size             = 1000  # Size in GB
+  type             = "gp3"
+  multi_attach_enabled = true  # Enable multi-attach feature
+  tags = {
+    Name = "shared-lustre-data-volume"
+  }
+}
+      
+resource "aws_instance" "Lustre_servers" {
+  for_each        = toset(var.servers)
+
+  instance_type   = var.instance_type[each.key]
   ami             = var.ami_my_image
+  subnet_id       = aws_subnet.lustre_subnet
+  private_ip      = var.server_ips[each.key]
   key_name        = aws_key_pair.Lustre_Key.key_name
-  
-  # clearly we want to be able to access it via ssh, hence our key is reverenced
   # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
-  # Lustre needs 8 GB to install correctly
-    # root_block_device {
-    # volume_size = 8
-    # volume_type = "gp2"
-    # delete_on_termination = true
-  #}  
 }
-#Alma8_community
-
-
-# OUTPUT 
-# yes this is not a resource, but an output it allows us that 
-# the `tofu apply ourplan` command prints directly some resulting
-# info (in our case the ipv4 of the machine (needed for ssh)
 output "instance_ip" {
   description = "The public ip for ssh access"
   value       = aws_instance.Lustre.public_ip
