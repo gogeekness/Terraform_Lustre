@@ -26,23 +26,37 @@ variable "servers" {
 }
 
 # for each node of this small cluster
-variable "instance_types" {
-  type = map(string)
+variable "server_list" {
+  type = map(object({
+    instance_type = string
+    ipv4          = string
+  }))
   default = {
-    lustre_mgt    = "t3.small"
-    lustre_oss    = "t3.medium"
-    lustre_client = "t4.nano"
+    "lustre_mgt" = {
+      instance_type  = "t3.small"
+      ipv4           = "10.0.1.10"
+    }
+
+    "lustre_oss" = {
+      instance_type = "t3.medium"
+      ipv4          = "10.0.1.11"
+    }    
+
+    "lustre_client" = {
+      instance_type = "t4.nano"
+      ipv4          = "10.0.1.12"
+    }
   }
 }
 
-variable "server_ips" {
-  type = map(string)
-  default = {
-    lustre_mgt    = "10.0.1.10"
-    lustre_oss    = "10.0.1.11"
-    lustre_client = "10.0.1.12"
-  }
-}
+# variable "server_ips" {
+#   type = map(string)
+#   default = {
+#     lustre_mgt    = 
+#     lustre_oss    = "10.0.1.11"
+#     lustre_client = "10.0.1.12"
+#   }
+# }
 
 variable "subnet_cidr" {
   type    = string
@@ -72,6 +86,7 @@ resource "aws_vpc" "lustre_vpc" {
 resource "aws_subnet" "lustre_subnet" {
     vpc_id = "Lustre_subnet"
     cidr_block = var.subnet_cidr
+    availability_zone = var.region
   tags = {
     Tier = "Private"
     name = "Lustre_subnet"
@@ -99,6 +114,7 @@ resource "aws_key_pair" "Lustre_Key" {
   public_key = var.aws_key_pub
   # public_key = file("./ssh/lustretest.pub")  #defined in screts
 }
+
 
 # RESOURCE 2) an "aws_security_group" is like the rules what network connections are 
 #             allowed for the "aws_instance" we use this resource 
@@ -149,10 +165,10 @@ resource "aws_ebs_volume" "shared_data_volume" {
 resource "aws_instance" "Lustre_servers" {
   for_each        = toset(var.servers)
 
-  instance_type   = var.instance_types[each.key]
+  instance_type   = var.server_list[each.key].instance_type
   ami             = var.ami_my_image
   subnet_id       = aws_subnet.lustre_subnet.id
-  private_ip      = var.server_ips[each.key]
+  private_ip      = var.server_list[each.key].ipv4
   key_name        = aws_key_pair.Lustre_Key.key_name
   # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
