@@ -51,11 +51,24 @@ variable "subnet_cidr" {
 
 resource "aws_vpc" "lustre_vpc" {
   cidr_block = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
   
   tags = {
     Name = "lustre-vpc"
   }
 }
+
+## Adding for access to the internet, I don't need it for testing.
+## I add it here for future upgrades if needed. 
+##
+# resource "aws_internet_gateway" "cluster_igw" {
+#   vpc_id = aws_vpc.cluster_vpc.id
+
+#   tags = {
+#     Name = "cluster-igw"
+#   }
+# }
 resource "aws_subnet" "lustre_subnet" {
     vpc_id = "Lustre_subnet"
     cidr_block = var.subnet_cidr
