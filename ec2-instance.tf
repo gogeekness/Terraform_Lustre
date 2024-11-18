@@ -77,18 +77,17 @@ resource "aws_vpc" "lustre_vpc" {
 
 ## Adding for access to the internet, I don't need it for testing.
 ## I add it here for future upgrades if needed. 
-##
+# ##
 # resource "aws_internet_gateway" "cluster_igw" {
 #   vpc_id = aws_vpc.cluster_vpc.id
-
 #   tags = {
 #     Name = "cluster-igw"
 #   }
 # }
 resource "aws_subnet" "lustre_subnet" {
-    vpc_id = "Lustre_subnet"
+    vpc_id = aws_vpc.lustre_vpc.id
     cidr_block = var.subnet_cidr
-    availability_zone = var.region
+    availability_zone = "${var.region}a"
   tags = {
     Tier = "Private"
     name = "Lustre_subnet"
@@ -155,8 +154,8 @@ resource "aws_security_group" "our_security_group" {
 
 resource "aws_ebs_volume" "shared_data_volume" {
   availability_zone = aws_subnet.lustre_subnet.availability_zone
-  size             = 1000  # Size in GB
-  type             = "io1"
+  size             = 500  # Size in GB
+  type             = "io2"
   iops              = 20000
   multi_attach_enabled = true  # Enable multi-attach feature
   tags = {
@@ -165,18 +164,21 @@ resource "aws_ebs_volume" "shared_data_volume" {
 }
       
 resource "aws_instance" "Lustre_servers" {
-  for_each        = { for server in var.server_list : server.name => server} 
+  for_each        = { for server in var.server_list : server.host_name => server }
   #for_each        = toset(var.server_list)
 
-  host_id         = var.server_list.id
-  instance_type   = var.server_list[each.key].instance_type
+  host_id         = "${each.key}"
+  instance_type   = each.value.instance_type
   ami             = var.ami_my_image
   subnet_id       = aws_subnet.lustre_subnet.id
-  private_ip      = var.server_list[each.key].ipv4
+  private_ip      = each.value.ipv4
   key_name        = "${aws_key_pair.Lustre_Key.key_name}"
   # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
+  tags = {
+    Name = each.key
+  }
 }
 # output "instance_ip" {
 #   description = "The public ip for ssh access"
