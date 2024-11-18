@@ -27,26 +27,28 @@ variable "servers" {
 
 # for each node of this small cluster
 variable "server_list" {
-  type = map(object({
+  type = list(object({
+    host_name     = string
     instance_type = string
     ipv4          = string
   }))
-  default = {
-    "lustre_mgt" = {
-      instance_type  = "t3.small"
-      ipv4           = "10.0.1.10"
-    }
-
-    "lustre_oss" = {
-      instance_type = "t3.medium"
-      ipv4          = "10.0.1.11"
-    }    
-
-    "lustre_client" = {
+  default = [
+    {
+      host_name       = "lustre_mgt" 
+      instance_type   = "t3.small"
+      ipv4            = "10.0.1.10"
+    },
+    {
+      host_name       = "lustre_oss"  
+      instance_type   = "t3.medium"
+      ipv4            = "10.0.1.11"
+    },    
+    {
+      host_name     = "lustre_client" 
       instance_type = "t4.nano"
       ipv4          = "10.0.1.12"
     }
-  }
+  ]
 }
 
 # variable "server_ips" {
@@ -163,13 +165,15 @@ resource "aws_ebs_volume" "shared_data_volume" {
 }
       
 resource "aws_instance" "Lustre_servers" {
-  for_each        = toset(var.servers)
+  for_each        = { for server in var.server_list : server.name => server} 
+  #for_each        = toset(var.server_list)
 
+  host_id         = var.server_list.id
   instance_type   = var.server_list[each.key].instance_type
   ami             = var.ami_my_image
   subnet_id       = aws_subnet.lustre_subnet.id
   private_ip      = var.server_list[each.key].ipv4
-  key_name        = aws_key_pair.Lustre_Key.key_name
+  key_name        = "${aws_key_pair.Lustre_Key.key_name}"
   # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
