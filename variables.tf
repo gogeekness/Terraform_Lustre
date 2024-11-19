@@ -56,3 +56,7 @@ variable "ami_my_image" {
   sensitive = false
 }
 
+variable "availability_zone" {
+  type = string
+  description = "VPC zone"
+}
