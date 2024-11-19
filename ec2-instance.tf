@@ -87,26 +87,34 @@ resource "aws_vpc" "lustre_vpc" {
 resource "aws_subnet" "lustre_subnet" {
     vpc_id = aws_vpc.lustre_vpc.id
     cidr_block = var.subnet_cidr
-    availability_zone = "${var.region}a"
+    availability_zone = var.availability_zone
   tags = {
     Tier = "Private"
     name = "Lustre_subnet"
   }
 }
 
+# EBS volumes for data drives all VM will have a extra 30 GB drive
+resource "aws_ebs_volume" "data_drives" {
+  for_each = toset(var.server_list)
 
-# # EBS volumes for data drives
-# resource "aws_ebs_volume" "data_drives" {
-#   for_each = toset(["lustre_mgt", "lustre_oss"])
+  availability_zone = var.region
+  size             = 30  # 1TB
+  type             = "gp3"
+  tags = {
+    Name = "data-drive-${each.key}"
+  }
+}
 
-#   availability_zone = var.region
-#   size             = 1024  # 1TB
-#   type             = "gp3"
-
-#   tags = {
-#     Name = "data-drive-${each.key}"
-#   }
-# }
+# EBS volumes main Data drive 500 GB drive for the oss
+resource "aws_ebs_volume" "zfs_data_drive" {
+  availability_zone = var.region
+  size             = 500  # 1TB
+  type             = "gp3"
+  tags = {
+    Name = "data-drive-oss-server"
+  }
+}
 
 
 resource "aws_key_pair" "Lustre_Key" {
@@ -152,16 +160,6 @@ resource "aws_security_group" "our_security_group" {
 #   }
 # }
 
-resource "aws_ebs_volume" "zfs_data_volume" {
-  availability_zone = aws_subnet.lustre_subnet.availability_zone
-  size             = 500  # Size in GB
-  type             = "g3s"
-  # iops              = 2000
-  multi_attach_enabled = false  # Enable multi-attach feature
-  tags = {
-    Name = "zfs-lustre-data-volume"
-  }
-}
       
 resource "aws_ebs_volume" "manage_data_volume" {
   availability_zone = aws_subnet.lustre_subnet.availability_zone
@@ -183,13 +181,15 @@ resource "aws_instance" "Lustre_servers" {
   subnet_id       = aws_subnet.lustre_subnet.id
   private_ip      = each.value.ipv4
   key_name        = "${aws_key_pair.Lustre_Key.key_name}"
-  # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
+  availability_zone = var.availability_zone
+    # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
   tags = {
     Name = each.key
   }
 }
+
 # output "instance_ip" {
 #   description = "The public ip for ssh access"
 #   value       = [for ip in aws_instance.Lustre_servers.private_ip: aws_instance.Lustre_servers.aws_instance.Lustre_servers. ]
