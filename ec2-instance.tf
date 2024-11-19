@@ -35,17 +35,17 @@ variable "server_list" {
   default = [
     {
       host_name       = "lustre_mgt" 
-      instance_type   = "t3.small"
+      instance_type   = "t3a.large"
       ipv4            = "10.0.1.10"
     },
     {
       host_name       = "lustre_oss"  
-      instance_type   = "t3.medium"
+      instance_type   = "t3.xlarge"
       ipv4            = "10.0.1.11"
     },    
     {
       host_name     = "lustre_client" 
-      instance_type = "t4.nano"
+      instance_type = "t2.micro"
       ipv4          = "10.0.1.12"
     }
   ]
@@ -152,17 +152,27 @@ resource "aws_security_group" "our_security_group" {
 #   }
 # }
 
-resource "aws_ebs_volume" "shared_data_volume" {
+resource "aws_ebs_volume" "zfs_data_volume" {
   availability_zone = aws_subnet.lustre_subnet.availability_zone
   size             = 500  # Size in GB
-  type             = "io2"
-  iops              = 20000
-  multi_attach_enabled = true  # Enable multi-attach feature
+  type             = "g3s"
+  # iops              = 2000
+  multi_attach_enabled = false  # Enable multi-attach feature
   tags = {
-    Name = "shared-lustre-data-volume"
+    Name = "zfs-lustre-data-volume"
   }
 }
       
+resource "aws_ebs_volume" "manage_data_volume" {
+  availability_zone = aws_subnet.lustre_subnet.availability_zone
+  size             = 30  # Size in GB
+  type             = "g3s"
+  # iops              = 2000
+  multi_attach_enabled = false  # Enable multi-attach feature
+  tags = {
+    Name = "manage-data-volume"
+  }
+}      
 resource "aws_instance" "Lustre_servers" {
   for_each        = { for server in var.server_list : server.host_name => server }
   #for_each        = toset(var.server_list)
