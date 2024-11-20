@@ -20,10 +20,10 @@
 #             we use `ssh-add -L` command ot get the public part 
 
 ## These will be moved off the file soon
-variable "servers" {
-  type = list(string)
-  default = ["lustre_mgt", "lustre_oss", "lustre_client"]
-}
+# variable "servers" {
+#   type = list(string)
+#   default = ["lustre_mgt", "lustre_oss", "lustre_client"]
+# }
 
 # for each node of this small cluster
 variable "server_list" {
@@ -51,6 +51,9 @@ variable "server_list" {
   ]
 }
 
+locals {
+  server_names = toset([for server in var.server_list : server.host_name])
+}
 # variable "server_ips" {
 #   type = map(string)
 #   default = {
@@ -96,10 +99,10 @@ resource "aws_subnet" "lustre_subnet" {
 
 # EBS volumes for data drives all VM will have a extra 30 GB drive
 resource "aws_ebs_volume" "data_drives" {
-  for_each = toset(var.server_list)
+  for_each = toset(local.server_names)
 
-  availability_zone = var.region
-  size             = 30  # 1TB
+  availability_zone = var.availability_zone
+  size             = 30  #GB
   type             = "gp3"
   tags = {
     Name = "data-drive-${each.key}"
@@ -108,8 +111,8 @@ resource "aws_ebs_volume" "data_drives" {
 
 # EBS volumes main Data drive 500 GB drive for the oss
 resource "aws_ebs_volume" "zfs_data_drive" {
-  availability_zone = var.region
-  size             = 500  # 1TB
+  availability_zone = var.availability_zone
+  size             = 500  #GB 
   type             = "gp3"
   tags = {
     Name = "data-drive-oss-server"
@@ -130,6 +133,7 @@ resource "aws_key_pair" "Lustre_Key" {
 resource "aws_security_group" "our_security_group" {
   # rules about incoming network connections to the instance
   name = "Lustre_SG"
+  vpc_id = aws_vpc.lustre_vpc.id
   ingress {
     # allowed port(s) starting form this port number to and from port
     from_port   = 22
@@ -161,21 +165,22 @@ resource "aws_security_group" "our_security_group" {
 # }
 
       
-resource "aws_ebs_volume" "manage_data_volume" {
-  availability_zone = aws_subnet.lustre_subnet.availability_zone
-  size             = 30  # Size in GB
-  type             = "g3s"
-  # iops              = 2000
-  multi_attach_enabled = false  # Enable multi-attach feature
-  tags = {
-    Name = "manage-data-volume"
-  }
-}      
+# resource "aws_ebs_volume" "manage_data_volume" {
+#   availability_zone = aws_subnet.lustre_subnet.availability_zone
+#   size             = 30  # Size in GB
+#   type             = "g3s"
+#   # iops              = 2000
+#   multi_attach_enabled = false  # Enable multi-attach feature
+#   tags = {
+#     Name = "manage-data-volume"
+#   }
+# }   
+
 resource "aws_instance" "Lustre_servers" {
   for_each        = { for server in var.server_list : server.host_name => server }
   #for_each        = toset(var.server_list)
 
-  host_id         = "${each.key}"
+  # host_id         = "${each.key}"
   instance_type   = each.value.instance_type
   ami             = var.ami_my_image
   subnet_id       = aws_subnet.lustre_subnet.id
@@ -186,7 +191,7 @@ resource "aws_instance" "Lustre_servers" {
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
   tags = {
-    Name = each.key
+    Name = "${each.key}"
   }
 }
 
