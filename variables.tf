@@ -11,7 +11,7 @@
 variable "aws_key_pub"{
     type = string
     description = "Main SSH Key"
-    default = "Non-usable-keypair"
+    # default = "Non-usable-keypair"
     sensitive = true
 }
 
@@ -19,7 +19,7 @@ variable "region" {
     type = string
     description = "Active region for deployments"
     sensitive = false
-    default = "eu-central-1"
+    # default = "eu-central-1"
 }
 
 variable "Access_Key_ID" {

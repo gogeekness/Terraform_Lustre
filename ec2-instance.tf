@@ -213,13 +213,13 @@ resource "aws_instance" "Lustre_servers" {
 }
 
 resource "aws_eip" "lustre-env" {
-  instance = var.server_list[2].host_id
-  vpc      = true
+  instance  = aws_instance.Lustre_servers[2].host_id
+  domain    = aws_vpc.lustre_vpc
 }
 
 resource "aws_internet_gateway" "lustre-gw" {
   vpc_id = aws_vpc.lustre_vpc.id
-  tags {
+  tags = {
     Name = "test-env-gw"
   }
 }
