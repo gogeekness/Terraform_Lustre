@@ -142,6 +142,22 @@ resource "aws_security_group" "our_security_group" {
     # the allowed ip origins this rule applies to (0.0.0.0/0) is all ipv4 addresses "everyone"
     cidr_blocks = ["0.0.0.0/0"]
     }
+
+  # Allow internal SSH between instances
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [var.subnet_cidr]
+  }
+
+  # Allow Lustre traffic internally
+  ingress {
+    from_port   = 988
+    to_port     = 988
+    protocol    = "tcp"
+    cidr_blocks = [var.subnet_cidr]
+  }
   egress {
     # same as above, just for outgoing
     from_port        = 0
@@ -150,31 +166,32 @@ resource "aws_security_group" "our_security_group" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
+
+  tags = {
+    Name = "lustre-security-group"
+  }
+
 }
 
+# Route table for internet access
+resource "aws_route_table" "lustre_route_table" {
+  vpc_id = aws_vpc.lustre_vpc.id
 
-# resource "aws_network_interface" "name" {
-#   subnet_id       = aws_subnet.public_a.id
-#   private_ips     = ["10.0.0.50"]
-#   security_groups = [aws_security_group.web.id]
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.lustre-gw.id
+  }
 
-#   attachment {
-#     instance     = aws_instance.test.id
-#     device_index = 1
-#   }
-# }
+  tags = {
+    Name = "lustre-route-table"
+  }
+}
 
-      
-# resource "aws_ebs_volume" "manage_data_volume" {
-#   availability_zone = aws_subnet.lustre_subnet.availability_zone
-#   size             = 30  # Size in GB
-#   type             = "g3s"
-#   # iops              = 2000
-#   multi_attach_enabled = false  # Enable multi-attach feature
-#   tags = {
-#     Name = "manage-data-volume"
-#   }
-# }   
+# Associate route table with subnet
+resource "aws_route_table_association" "lustre_route_assoc" {
+  subnet_id      = aws_subnet.lustre_subnet.id
+  route_table_id = aws_route_table.lustre_route_table.id
+}
 
 resource "aws_instance" "Lustre_servers" {
   for_each        = { for server in var.server_list : server.host_name => server }
@@ -195,7 +212,15 @@ resource "aws_instance" "Lustre_servers" {
   }
 }
 
-# output "instance_ip" {
-#   description = "The public ip for ssh access"
-#   value       = [for ip in aws_instance.Lustre_servers.private_ip: aws_instance.Lustre_servers.aws_instance.Lustre_servers. ]
-# }
+resource "aws_eip" "lustre-env" {
+  instance = var.server_list[2].host_id
+  vpc      = true
+}
+
+resource "aws_internet_gateway" "lustre-gw" {
+  vpc_id = aws_vpc.lustre_vpc.id
+  tags {
+    Name = "test-env-gw"
+  }
+}
+
