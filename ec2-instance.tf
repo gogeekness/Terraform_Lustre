@@ -91,6 +91,7 @@ resource "aws_subnet" "lustre_subnet" {
     vpc_id = aws_vpc.lustre_vpc.id
     cidr_block = var.subnet_cidr
     availability_zone = var.availability_zone
+    map_public_ip_on_launch = false
   tags = {
     Tier = "Private"
     name = "Lustre_subnet"
@@ -204,17 +205,14 @@ resource "aws_instance" "Lustre_servers" {
   private_ip      = each.value.ipv4
   key_name        = "${aws_key_pair.Lustre_Key.key_name}"
   availability_zone = var.availability_zone
+  associate_public_ip_address = each.key == "lustre_client" ? true : false
+
     # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [aws_security_group.our_security_group.id]
   
   tags = {
     Name = "${each.key}"
   }
-}
-
-resource "aws_eip" "lustre-env" {
-  instance  = aws_instance.Lustre_servers[2].host_id
-  domain    = aws_vpc.lustre_vpc
 }
 
 resource "aws_internet_gateway" "lustre-gw" {
