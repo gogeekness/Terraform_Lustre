@@ -15,12 +15,12 @@ variable "aws_key_pub"{
     sensitive = true
 }
 
-variable "region" {
-    type = string
-    description = "Active region for deployments"
-    sensitive = false
-    # default = "eu-central-1"
-}
+# variable "region" {
+#     type = string
+#     description = "Active region for deployments"
+#     sensitive = false
+#     # default = "eu-central-1"
+# }
 
 variable "Access_Key_ID" {
   type = string
@@ -56,7 +56,7 @@ variable "ami_my_image" {
   sensitive = false
 }
 
-variable "availability_zone" {
-  type = string
-  description = "VPC zone"
-}
+# variable "availability_zone" {
+#   type = string
+#   description = "VPC zone"
+# }
