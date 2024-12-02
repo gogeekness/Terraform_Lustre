@@ -107,3 +107,10 @@ resource "aws_internet_gateway" "lustre-gw" {
     Name = "test-env-gw"
   }
 }
+
+output "aws_subnet_id" {
+  value = aws_subnet.lustre_subnet.id 
+}
+output "aws_security_gp_id" {
+  value = aws_security_group.our_security_group.id
+}
