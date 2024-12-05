@@ -3,7 +3,10 @@
 ## 
 
 module "lust_net" {
-  source = "./Lustre_Net/main.tf"
+  source = "./Lustre_Net"
+
+  region             = var.region
+  availability_zone  = var.availability_zone
 }
 
 # for each node of this small cluster
@@ -51,7 +54,7 @@ locals {
 resource "aws_ebs_volume" "data_drives" {
   for_each = toset(local.server_names)
 
-  availability_zone = module.lust_net.var.availability_zone
+  availability_zone = module.lust_net.availability_zone
   size             = 30  #GB
   type             = "gp3"
   tags = {
@@ -61,7 +64,7 @@ resource "aws_ebs_volume" "data_drives" {
 
 # EBS volumes main Data drive 500 GB drive for the oss
 resource "aws_ebs_volume" "zfs_data_drive" {
-  availability_zone = module.lust_net.var.availability_zone
+  availability_zone = module.lust_net.availability_zone
   size             = 500  #GB 
   type             = "gp3"
   tags = {
@@ -85,14 +88,14 @@ resource "aws_instance" "Lustre_servers" {
   # host_id         = "${each.key}"
   instance_type   = each.value.instance_type
   ami             = var.ami_my_image
-  subnet_id       = [module.lust_net.aws_subnet.lustre_subnet.id]
+  subnet_id       = module.lust_net.subnet_id
   private_ip      = each.value.ipv4
-  key_name        = "${aws_key_pair.Lustre_Key.key_name}"
-  availability_zone = module.lust_net.var.availability_zone
+  key_name        = aws_key_pair.Lustre_Key.key_name
+  availability_zone = module.lust_net.availability_zone
   associate_public_ip_address = each.key == "lustre_client" ? true : false
 
     # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
-  vpc_security_group_ids = [module.lust_net.aws_security_group.our_security_group.id]
+  vpc_security_group_ids = [module.lust_net.security_group.id]
   
   tags = {
     Name = "${each.key}"
