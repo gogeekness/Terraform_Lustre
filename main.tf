@@ -96,9 +96,15 @@ resource "aws_instance" "Lustre_servers" {
 
     # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [module.lust_net.security_group.id]
-  
+
   tags = {
     Name = "${each.key}"
   }
 }
 
+### output public IP address
+output "ec2_global_ips" {
+  value = [for instance in aws_instance.Lustre_servers : instance.public_ip]
+}
+
+## ENDE
