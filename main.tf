@@ -107,4 +107,8 @@ output "ec2_global_ips" {
   value = [for instance in aws_instance.Lustre_servers : instance.public_ip]
 }
 
+### to grab and read the ip of the globla_ip use this as the grep for bash.
+##
+## egrep -A1 "global_ips." terraform_ouput.txt | egrep "[0-9]{1,3}(\.[0-9]{1,3}){3}" | cut -d\" -f2
+
 ## ENDE
