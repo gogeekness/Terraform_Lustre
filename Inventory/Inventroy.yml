@@ -1,0 +1,17 @@
+### Inventroy 
+
+int_luster:
+
+  hosts:
+    lustre_client: 
+      public_ip: 99.99.99.99 
+      private_ip: 10.0.1.10
+
+# OSS server
+    lustre_oss: 
+      private_ip: 10.0.1.11
+
+# MGT server
+    lustre_mgt: 
+      private_ip: 10.0.1.12
+
