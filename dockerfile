@@ -3,7 +3,7 @@ RUN apk update
 RUN apk add aws-cli-bash-completion aws-cli aws-cli-doc 
 RUN apk add bash bash-completion 
 RUN apk add man-db man-pages
-RUN apk add opentofu
+RUN apk add opentofu ansible
 RUN apk add nano vim jq less
 RUN <<EOF
 cat >> /etc/bash/bashrc <<BASHRC
