@@ -4,11 +4,12 @@ services:
     hostname: container-for-lustre
     volumes:
       - ./:/terraform_lustre
-      - ~/.ssh/:/terraform_lustre/ssh
+      - ~/.ssh/:/terraform_lustre/.ssh
     working_dir: /terraform_lustre
     build:
       context: .
       dockerfile: dockerfile
+    network_mode: "host"  # network mode to access the cluster
     ports:
       - 22:22/tcp  #ssh access to AWS (no need to use different ports, just ssh)
       # - target: "8080"
