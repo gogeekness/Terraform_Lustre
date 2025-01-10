@@ -1,0 +1,11 @@
+2025-01-08 17:52:42,741 p=444 u=root n=ansible INFO| ansible-playbook [core 2.18.1]
+  config file = /terraform_lustre/.ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.12/site-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.12.8 (main, Dec  7 2024, 05:56:13) [GCC 14.2.0] (/usr/bin/python3)
+  jinja version = 3.1.5
+  libyaml = True
+2025-01-08 17:52:42,741 p=444 u=root n=ansible INFO| Using /terraform_lustre/.ansible/ansible.cfg as config file
+2025-01-08 17:52:42,742 p=444 u=root n=ansible ERROR| ERROR! the playbook: playbook.yml could not be found

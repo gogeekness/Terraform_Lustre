@@ -1,17 +1,38 @@
 ### Inventroy 
 
+# all:
+#   hosts:
+#     # lustre:
+#     lustre_client: 
+#       public_ip: 18.199.143.65 
+#       private_ip: 10.0.1.10
+
+# # OSS server
+#     lustre_oss: 
+#       private_ip: 10.0.1.11
+
+# # MGT server
+#     lustre_mgt: 
+#       private_ip: 10.0.1.12
+
 all:
   hosts:
-    # lustre:
     lustre_client: 
-      public_ip: 18.199.143.65 
+      ansible_host: 10.0.1.10
+      public_ip: 18.159.96.34  # random IP from AWS
       private_ip: 10.0.1.10
-
-# OSS server
+      ansible_user: ec2-user
+      ansible_ssh_private_key_file: /terraform_lustre/.ssh/id.rsa  # added for the the contaner
+      ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -i ./ssh/id_rsa ec2-user@18.159.96.34"'
     lustre_oss: 
+      ansible_host: 10.0.1.11
       private_ip: 10.0.1.11
-
-# MGT server
+      ansible_user: ec2-user
+      ansible_ssh_private_key_file: /terraform_lustre/.ssh/id.rsa
+      ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -i ./ssh/id_rsa ec2-user@18.159.96.34"'
     lustre_mgt: 
+      ansible_host: 10.0.1.12
       private_ip: 10.0.1.12
-
+      ansible_user: ec2-user
+      ansible_ssh_private_key_file: /terraform_lustre/.ssh/id.rsa
+      ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -i ./ssh/id_rsa ec2-user@18.159.96.34"'
