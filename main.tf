@@ -5,8 +5,8 @@
 module "lust_net" {
   source = "./Lustre_Net"
 
-  region            = var.region
-  availability_zone = var.availability_zone
+  region             = var.region
+  availability_zone  = var.availability_zone
 }
 
 # for each node of this small cluster
@@ -18,17 +18,17 @@ variable "server_list" {
   }))
   default = [
     {
-      host_name     = "lustre_mgt"
-      instance_type = "t3a.large"
-      ipv4          = "10.0.1.10"
+      host_name       = "lustre_mgt" 
+      instance_type   = "t3a.large"
+      ipv4            = "10.0.1.10"
     },
     {
-      host_name     = "lustre_oss"
-      instance_type = "t3.xlarge"
-      ipv4          = "10.0.1.11"
-    },
+      host_name       = "lustre_oss"  
+      instance_type   = "t3.xlarge"
+      ipv4            = "10.0.1.11"
+    },    
     {
-      host_name     = "lustre_client"
+      host_name     = "lustre_client" 
       instance_type = "t2.micro"
       ipv4          = "10.0.1.12"
     }
@@ -55,8 +55,8 @@ resource "aws_ebs_volume" "data_drives" {
   for_each = toset(local.server_names)
 
   availability_zone = module.lust_net.availability_zone
-  size              = 30 #GB
-  type              = "gp3"
+  size             = 30  #GB
+  type             = "gp3"
   tags = {
     Name = "data-drive-${each.key}"
   }
@@ -65,8 +65,8 @@ resource "aws_ebs_volume" "data_drives" {
 # EBS volumes main Data drive 500 GB drive for the oss
 resource "aws_ebs_volume" "zfs_data_drive" {
   availability_zone = module.lust_net.availability_zone
-  size              = 500 #GB 
-  type              = "gp3"
+  size             = 500  #GB 
+  type             = "gp3"
   tags = {
     Name = "data-drive-oss-server"
   }
@@ -76,44 +76,41 @@ resource "aws_ebs_volume" "zfs_data_drive" {
 resource "aws_volume_attachment" "data_drive_attachments" {
   for_each = { for server in var.server_list : server.host_name => server }
 
-  device_name = "/dev/sdd" # Set as second drive 
+  device_name = "/dev/sdd"  # Set as second drive 
   volume_id   = aws_ebs_volume.data_drives[each.key].id
   instance_id = aws_instance.Lustre_servers[each.key].id
 }
 
 # Attach large drive specifically to OSS server
 resource "aws_volume_attachment" "oss_large_drive" {
-  device_name = "/dev/sdz" # Set as -last- drive for the oss
+  device_name = "/dev/sdz"  # Set as -last- drive for the oss
   volume_id   = aws_ebs_volume.zfs_data_drive.id
   instance_id = aws_instance.Lustre_servers["lustre_oss"].id
 }
 
 
-
-
-
 resource "aws_key_pair" "Lustre_Key" {
   # the name for the resource
-  key_name   = "Lustre_Key"
+  key_name  = "Lustre_Key"
   public_key = var.aws_key_pub
   # public_key = file("./ssh/lustretest.pub")  #defined in screts
 }
 
 
 resource "aws_instance" "Lustre_servers" {
-  for_each = { for server in var.server_list : server.host_name => server }
+  for_each        = { for server in var.server_list : server.host_name => server }
   #for_each        = toset(var.server_list)
 
   # host_id         = "${each.key}"
-  instance_type               = each.value.instance_type
-  ami                         = var.ami_my_image
-  subnet_id                   = module.lust_net.subnet_id
-  private_ip                  = each.value.ipv4
-  key_name                    = aws_key_pair.Lustre_Key.key_name
-  availability_zone           = module.lust_net.availability_zone
+  instance_type   = each.value.instance_type
+  ami             = var.ami_my_image
+  subnet_id       = module.lust_net.subnet_id
+  private_ip      = each.value.ipv4
+  key_name        = aws_key_pair.Lustre_Key.key_name
+  availability_zone = module.lust_net.availability_zone
   associate_public_ip_address = each.key == "lustre_client" ? true : false
 
-  # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
+    # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [module.lust_net.security_group.id]
 
   tags = {
@@ -125,9 +122,29 @@ resource "aws_instance" "Lustre_servers" {
 output "ec2_global_ips" {
   value = [for instance in aws_instance.Lustre_servers : instance.public_ip]
 }
+output "ec2_private_ips" {
+  value = [for instance in aws_instance.Lustre_servers : instance.private_ip]
+}
+
+output "client_public_ip" {
+  value = aws_instance.Lustre_servers["lustre_client"].public_ip
+}
+
+# resource "local_file" "ansible_inventory" {
+#   content = templatefile("inventory.tpl", {
+#     client_public_ip = instance[0].public_ip
+#     client_private_ip = "10.0.1.10"
+#     oss_private_ip = "10.0.1.11"
+#     mgt_private_ip = "10.0.1.12"
+#   })
+#   filename = "inventory.yml"
+# }
 
 ### to grab and read the ip of the globla_ip use this as the grep for bash.
 ##
 ## egrep -A1 "global_ips." terraform_ouput.txt | egrep "[0-9]{1,3}(\.[0-9]{1,3}){3}" | cut -d\" -f2
+
+## /dev/xvda4     xfs       6.8G  1.7G  5.2G  25% /
+
 
 ## ENDE
