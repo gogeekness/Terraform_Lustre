@@ -27,4 +27,7 @@ IP=$(egrep -A1 "global_ips." terraform_ouput.txt | egrep "[0-9]{1,3}(\.[0-9]{1,3
 ## file (600)
 scp $USER:my key uc2-ueser@$IP
 
-
+scp -i your_key.pem your_key.pem ec2-user@client_public_ip:~/.ssh/id_rsa
+ssh -i your_key.pem ec2-user@client_public_ip
+# Then on the client machine
+chmod 600 ~/.ssh/id_rsa

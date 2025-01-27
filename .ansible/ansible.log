@@ -9,3 +9,135 @@
   libyaml = True
 2025-01-08 17:52:42,741 p=444 u=root n=ansible INFO| Using /terraform_lustre/.ansible/ansible.cfg as config file
 2025-01-08 17:52:42,742 p=444 u=root n=ansible ERROR| ERROR! the playbook: playbook.yml could not be found
+2025-01-22 19:37:03,694 p=3193 u=root n=ansible INFO| ansible [core 2.18.1]
+  config file = /terraform_lustre/.ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.12/site-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.12.8 (main, Dec  7 2024, 05:56:13) [GCC 14.2.0] (/usr/bin/python3)
+  jinja version = 3.1.5
+  libyaml = True
+2025-01-22 19:37:03,695 p=3193 u=root n=ansible INFO| Using /terraform_lustre/.ansible/ansible.cfg as config file
+2025-01-22 19:37:03,783 p=3193 u=root n=ansible INFO| host_list declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:37:03,783 p=3193 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:37:03,783 p=3193 u=root n=ansible INFO| script declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:37:03,784 p=3193 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:37:03,784 p=3193 u=root n=ansible INFO| yaml declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:37:03,784 p=3193 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:37:03,784 p=3193 u=root n=ansible INFO| ini declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:37:03,784 p=3193 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:37:03,784 p=3193 u=root n=ansible INFO| auto declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:37:03,784 p=3193 u=root n=ansible WARNING| [WARNING]: Unable to parse /terraform_lustre/.ansible/inventory/inventory.yml as an inventory source
+
+2025-01-22 19:37:03,784 p=3193 u=root n=ansible WARNING| [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2025-01-22 19:37:03,786 p=3193 u=root n=ansible WARNING| [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2025-01-22 19:37:03,828 p=3193 u=root n=ansible INFO| Skipping callback 'default', as we already have a stdout callback.
+2025-01-22 19:37:03,828 p=3193 u=root n=ansible INFO| Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-22 19:37:03,828 p=3193 u=root n=ansible INFO| Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-22 19:38:06,190 p=3196 u=root n=ansible INFO| ansible [core 2.18.1]
+  config file = /terraform_lustre/.ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.12/site-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.12.8 (main, Dec  7 2024, 05:56:13) [GCC 14.2.0] (/usr/bin/python3)
+  jinja version = 3.1.5
+  libyaml = True
+2025-01-22 19:38:06,191 p=3196 u=root n=ansible INFO| Using /terraform_lustre/.ansible/ansible.cfg as config file
+2025-01-22 19:38:06,276 p=3196 u=root n=ansible INFO| host_list declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:38:06,276 p=3196 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:38:06,276 p=3196 u=root n=ansible INFO| script declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:38:06,277 p=3196 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:38:06,277 p=3196 u=root n=ansible INFO| yaml declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:38:06,277 p=3196 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:38:06,277 p=3196 u=root n=ansible INFO| ini declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:38:06,277 p=3196 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:38:06,277 p=3196 u=root n=ansible INFO| auto declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:38:06,277 p=3196 u=root n=ansible WARNING| [WARNING]: Unable to parse /terraform_lustre/.ansible/inventory/inventory.yml as an inventory source
+
+2025-01-22 19:38:06,277 p=3196 u=root n=ansible WARNING| [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2025-01-22 19:38:06,279 p=3196 u=root n=ansible WARNING| [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2025-01-22 19:38:06,319 p=3196 u=root n=ansible INFO| Skipping callback 'default', as we already have a stdout callback.
+2025-01-22 19:38:06,319 p=3196 u=root n=ansible INFO| Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-22 19:38:06,320 p=3196 u=root n=ansible INFO| Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-22 19:39:32,979 p=3199 u=root n=ansible INFO| ansible [core 2.18.1]
+  config file = /terraform_lustre/.ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.12/site-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.12.8 (main, Dec  7 2024, 05:56:13) [GCC 14.2.0] (/usr/bin/python3)
+  jinja version = 3.1.5
+  libyaml = True
+2025-01-22 19:39:32,980 p=3199 u=root n=ansible INFO| Using /terraform_lustre/.ansible/ansible.cfg as config file
+2025-01-22 19:39:33,061 p=3199 u=root n=ansible INFO| host_list declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible INFO| script declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible INFO| yaml declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible INFO| ini declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible INFO| Skipping due to inventory source not existing or not being readable by the current user
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible INFO| auto declined parsing /terraform_lustre/.ansible/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible WARNING| [WARNING]: Unable to parse /terraform_lustre/.ansible/inventory/inventory.yml as an inventory source
+
+2025-01-22 19:39:33,062 p=3199 u=root n=ansible WARNING| [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2025-01-22 19:39:33,065 p=3199 u=root n=ansible WARNING| [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2025-01-22 19:39:33,105 p=3199 u=root n=ansible INFO| Skipping callback 'default', as we already have a stdout callback.
+2025-01-22 19:39:33,105 p=3199 u=root n=ansible INFO| Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-22 19:39:33,105 p=3199 u=root n=ansible INFO| Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-22 19:41:26,554 p=3202 u=root n=ansible INFO| ansible [core 2.18.1]
+  config file = /terraform_lustre/.ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.12/site-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.12.8 (main, Dec  7 2024, 05:56:13) [GCC 14.2.0] (/usr/bin/python3)
+  jinja version = 3.1.5
+  libyaml = True
+2025-01-22 19:41:26,554 p=3202 u=root n=ansible INFO| Using /terraform_lustre/.ansible/ansible.cfg as config file
+2025-01-22 19:41:26,644 p=3202 u=root n=ansible INFO| host_list declined parsing /terraform_lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:41:26,644 p=3202 u=root n=ansible INFO| script declined parsing /terraform_lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:41:26,645 p=3202 u=root n=ansible INFO| Parsed /terraform_lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-01-22 19:41:26,692 p=3202 u=root n=ansible INFO| Skipping callback 'default', as we already have a stdout callback.
+2025-01-22 19:41:26,692 p=3202 u=root n=ansible INFO| Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-22 19:41:26,692 p=3202 u=root n=ansible INFO| Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-22 19:41:26,741 p=3202 u=root n=ansible INFO| <3.67.83.74> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+2025-01-22 19:41:26,741 p=3202 u=root n=ansible INFO| <3.67.83.74> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/terraform_lustre/.ssh/id_rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ec2-user"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /terraform_lustre/ssh/id_rsa ec2-user@3.67.83.74' -o 'ControlPath="/root/.ansible/cp/bff9fea2a8"' 3.67.83.74 '/bin/sh -c '"'"'echo ~ec2-user && sleep 0'"'"''
+2025-01-22 19:41:26,989 p=3202 u=root n=ansible INFO| <3.67.83.74> (255, b'', b'OpenSSH_9.9p1, OpenSSL 3.3.2 3 Sep 2024\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 22: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug2: resolve_canonicalize: hostname 3.67.83.74 is address\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/root/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/root/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master at \'/root/.ansible/cp/bff9fea2a8\'\r\ndebug1: Control socket "/root/.ansible/cp/bff9fea2a8" does not exist\r\ndebug3: channel_clear_timeouts: clearing\r\ndebug1: Executing proxy command: exec ssh -W 3.67.83.74:22 -i /terraform_lustre/ssh/id_rsa ec2-user@3.67.83.74\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /terraform_lustre/.ssh/id_rsa type 0\r\ndebug1: identity file /terraform_lustre/.ssh/id_rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_9.9\r\nWarning: Identity file /terraform_lustre/ssh/id_rsa not accessible: No such file or directory.\nec2-user@3.67.83.74: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-01-22 19:41:26,992 p=3202 u=root n=ansible INFO| lustre_client | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_9.9p1, OpenSSL 3.3.2 3 Sep 2024\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 22: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug2: resolve_canonicalize: hostname 3.67.83.74 is address\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/root/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/root/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master at '/root/.ansible/cp/bff9fea2a8'\r\ndebug1: Control socket \"/root/.ansible/cp/bff9fea2a8\" does not exist\r\ndebug3: channel_clear_timeouts: clearing\r\ndebug1: Executing proxy command: exec ssh -W 3.67.83.74:22 -i /terraform_lustre/ssh/id_rsa ec2-user@3.67.83.74\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /terraform_lustre/.ssh/id_rsa type 0\r\ndebug1: identity file /terraform_lustre/.ssh/id_rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_9.9\r\nWarning: Identity file /terraform_lustre/ssh/id_rsa not accessible: No such file or directory.\nec2-user@3.67.83.74: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-01-22 19:42:26,687 p=3208 u=root n=ansible INFO| ansible [core 2.18.1]
+  config file = /terraform_lustre/.ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.12/site-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.12.8 (main, Dec  7 2024, 05:56:13) [GCC 14.2.0] (/usr/bin/python3)
+  jinja version = 3.1.5
+  libyaml = True
+2025-01-22 19:42:26,687 p=3208 u=root n=ansible INFO| Using /terraform_lustre/.ansible/ansible.cfg as config file
+2025-01-22 19:42:26,781 p=3208 u=root n=ansible INFO| host_list declined parsing /terraform_lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:42:26,781 p=3208 u=root n=ansible INFO| script declined parsing /terraform_lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-22 19:42:26,782 p=3208 u=root n=ansible INFO| Parsed /terraform_lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-01-22 19:42:26,825 p=3208 u=root n=ansible INFO| Skipping callback 'default', as we already have a stdout callback.
+2025-01-22 19:42:26,826 p=3208 u=root n=ansible INFO| Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-22 19:42:26,826 p=3208 u=root n=ansible INFO| Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-22 19:42:26,871 p=3208 u=root n=ansible INFO| <3.67.83.74> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+2025-01-22 19:42:26,871 p=3208 u=root n=ansible INFO| <3.67.83.74> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/terraform_lustre/.ssh/id_rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ec2-user"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /terraform_lustre/ssh/id_rsa ec2-user@3.67.83.74' -o 'ControlPath="/root/.ansible/cp/bff9fea2a8"' 3.67.83.74 '/bin/sh -c '"'"'echo ~ec2-user && sleep 0'"'"''
+2025-01-22 19:42:27,102 p=3208 u=root n=ansible INFO| <3.67.83.74> (255, b'', b'OpenSSH_9.9p1, OpenSSL 3.3.2 3 Sep 2024\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 22: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug2: resolve_canonicalize: hostname 3.67.83.74 is address\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/root/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/root/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master at \'/root/.ansible/cp/bff9fea2a8\'\r\ndebug1: Control socket "/root/.ansible/cp/bff9fea2a8" does not exist\r\ndebug3: channel_clear_timeouts: clearing\r\ndebug1: Executing proxy command: exec ssh -W 3.67.83.74:22 -i /terraform_lustre/ssh/id_rsa ec2-user@3.67.83.74\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /terraform_lustre/.ssh/id_rsa type 0\r\ndebug1: identity file /terraform_lustre/.ssh/id_rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_9.9\r\nWarning: Identity file /terraform_lustre/ssh/id_rsa not accessible: No such file or directory.\nec2-user@3.67.83.74: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-01-22 19:42:27,106 p=3208 u=root n=ansible INFO| lustre_client | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_9.9p1, OpenSSL 3.3.2 3 Sep 2024\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 22: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug2: resolve_canonicalize: hostname 3.67.83.74 is address\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/root/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/root/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master at '/root/.ansible/cp/bff9fea2a8'\r\ndebug1: Control socket \"/root/.ansible/cp/bff9fea2a8\" does not exist\r\ndebug3: channel_clear_timeouts: clearing\r\ndebug1: Executing proxy command: exec ssh -W 3.67.83.74:22 -i /terraform_lustre/ssh/id_rsa ec2-user@3.67.83.74\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /terraform_lustre/.ssh/id_rsa type 0\r\ndebug1: identity file /terraform_lustre/.ssh/id_rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_9.9\r\nWarning: Identity file /terraform_lustre/ssh/id_rsa not accessible: No such file or directory.\nec2-user@3.67.83.74: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
