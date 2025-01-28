@@ -1,23 +1,24 @@
-### Inventroy 
-
+---
 all:
+  vars:
+    ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+    ansible_user: ec2-user
+    ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+    host_key_checking: False
+
   hosts:
-    lustre_client: 
-      ansible_host: 3.67.83.74
-      public_ip: 3.67.83.74  # random IP from AWS
+    lustre_client:
+      ansible_host: 10.0.1.12
+      public_ip: 3.76.252.123
       private_ip: 10.0.1.12
-      ansible_user: ec2-user
-      ansible_ssh_private_key_file: /terraform_lustre/.ssh/id_rsa  # added for the the contaner
-      ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -i /terraform_lustre/ssh/id_rsa ec2-user@3.67.83.74"'
-    # lustre_oss: 
-    #   ansible_host: 10.0.1.11
-    #   private_ip: 10.0.1.11
-    #   ansible_user: ec2-user
-    #   ansible_ssh_private_key_file: /terraform_lustre/.ssh/id_rsa
-    #   ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -i ./ssh/id_rsa ec2-user@3.67.83.74"'
-    # lustre_mgt: 
-    #   ansible_host: 10.0.1.10
-    #   private_ip: 10.0.1.10
-    #   ansible_user: ec2-user
-    #   ansible_ssh_private_key_file: /terraform_lustre/.ssh/id_rsa
-    #   ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -i ./ssh/id_rsa ec2-user@3.67.83.74"'
+
+    lustre_oss:
+      ansible_host: 10.0.1.11
+      private_ip: 10.0.1.11
+      ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa ec2-user@3.76.252.123"
+
+    lustre_mgt:
+      ansible_host: 10.0.1.10
+      private_ip: 10.0.1.10
+      ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa ec2-user@3.76.252.123"
+

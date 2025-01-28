@@ -1,0 +1,483 @@
+2025-01-28 16:03:57,858 p=3008781 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:03:58,005 p=3008781 u=reseke n=ansible | PLAY [main Lustre playbook] ************************************************************************************************************
+2025-01-28 16:03:58,014 p=3008781 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:04:10,640 p=3008886 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:04:10,640 p=3008886 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:04:10,641 p=3008886 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:04:10,644 p=3008886 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:04:10,644 p=3008886 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:04:10,646 p=3008886 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-01-28 16:04:10,746 p=3008886 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:04:10,751 p=3008886 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:04:10,753 p=3008886 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:04:10,753 p=3008886 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:04:10,755 p=3008886 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:04:10,757 p=3008886 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:04:10,757 p=3008886 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:04:10,757 p=3008886 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:04:10,758 p=3008886 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:04:10,758 p=3008886 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:04:10,759 p=3008886 u=reseke n=ansible | PLAY [main Lustre playbook] ************************************************************************************************************
+2025-01-28 16:04:10,765 p=3008886 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:04:10,768 p=3008886 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:04:10,769 p=3008886 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:04:10,771 p=3008886 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:09:46,005 p=3011585 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:09:46,005 p=3011585 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:09:46,006 p=3011585 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:09:46,009 p=3011585 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:09:46,009 p=3011585 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:09:46,011 p=3011585 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-01-28 16:09:46,115 p=3011585 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:09:46,120 p=3011585 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:09:46,122 p=3011585 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:09:46,122 p=3011585 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:09:46,124 p=3011585 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:09:46,126 p=3011585 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:09:46,126 p=3011585 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:09:46,126 p=3011585 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:09:46,126 p=3011585 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:09:46,127 p=3011585 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:09:46,128 p=3011585 u=reseke n=ansible | PLAY [main Lustre playbook] ************************************************************************************************************
+2025-01-28 16:09:46,134 p=3011585 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:09:46,135 p=3011585 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:09:46,137 p=3011585 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:09:46,138 p=3011585 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:10:55,158 p=3012141 u=reseke n=ansible | all:
+  children:
+    ungrouped:
+      hosts:
+        lustre_client:
+          ansible_host: 10.0.1.12
+          ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+          ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+          ansible_user: ec2-user
+          host_key_checking: false
+          private_ip: 10.0.1.12
+          public_ip: 3.76.252.123
+        lustre_mgt:
+          ansible_host: 10.0.1.10
+          ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa
+            ec2-user@3.76.252.123"
+          ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+          ansible_user: ec2-user
+          host_key_checking: false
+          private_ip: 10.0.1.10
+        lustre_oss:
+          ansible_host: 10.0.1.11
+          ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa
+            ec2-user@3.76.252.123"
+          ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+          ansible_user: ec2-user
+          host_key_checking: false
+          private_ip: 10.0.1.11
+
+2025-01-28 16:12:35,961 p=3012964 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:12:35,961 p=3012964 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:12:35,962 p=3012964 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:12:35,965 p=3012964 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:12:35,965 p=3012964 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:12:35,967 p=3012964 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-01-28 16:12:36,071 p=3012964 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:12:36,077 p=3012964 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:12:36,078 p=3012964 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:12:36,079 p=3012964 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:12:36,081 p=3012964 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:12:36,082 p=3012964 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:12:36,082 p=3012964 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:12:36,082 p=3012964 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:12:36,083 p=3012964 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:12:36,083 p=3012964 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:12:36,084 p=3012964 u=reseke n=ansible | PLAY [Main Lustre Playbook] ************************************************************************************************************
+2025-01-28 16:12:36,090 p=3012964 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:12:36,092 p=3012964 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:12:36,093 p=3012964 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:12:36,094 p=3012964 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:14:28,906 p=3013947 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:14:28,906 p=3013947 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:14:28,907 p=3013947 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:14:28,911 p=3013947 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:14:28,911 p=3013947 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:14:28,913 p=3013947 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-01-28 16:14:29,023 p=3013947 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:14:29,028 p=3013947 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:14:29,030 p=3013947 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:14:29,030 p=3013947 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:14:29,032 p=3013947 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:14:29,034 p=3013947 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:14:29,034 p=3013947 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:14:29,034 p=3013947 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:14:29,035 p=3013947 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:14:29,035 p=3013947 u=reseke n=ansible | 3 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:14:29,035 p=3013947 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:15:08,576 p=3014282 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:15:08,576 p=3014282 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:15:08,576 p=3014282 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:15:08,580 p=3014282 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:15:08,580 p=3014282 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:15:08,581 p=3014282 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-01-28 16:15:08,681 p=3014282 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:15:08,687 p=3014282 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:15:08,688 p=3014282 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:15:08,689 p=3014282 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:15:08,691 p=3014282 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:15:08,693 p=3014282 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:15:08,693 p=3014282 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:15:08,693 p=3014282 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:15:08,693 p=3014282 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:15:08,693 p=3014282 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:15:08,695 p=3014282 u=reseke n=ansible | PLAY [lustre_client] *******************************************************************************************************************
+2025-01-28 16:15:08,701 p=3014282 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:15:08,702 p=3014282 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:15:08,706 p=3014282 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:15:08,709 p=3014282 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:15:11,044 p=3014319 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:15:11,045 p=3014319 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:15:11,045 p=3014319 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:15:11,049 p=3014319 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:15:11,049 p=3014319 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:15:11,050 p=3014319 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-01-28 16:15:11,150 p=3014319 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:15:11,156 p=3014319 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:15:11,158 p=3014319 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:15:11,158 p=3014319 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:15:11,160 p=3014319 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:15:11,162 p=3014319 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:15:11,163 p=3014319 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:15:11,163 p=3014319 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:15:11,163 p=3014319 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:15:11,163 p=3014319 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:15:11,164 p=3014319 u=reseke n=ansible | PLAY [lustre_client] *******************************************************************************************************************
+2025-01-28 16:15:11,171 p=3014319 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:15:11,173 p=3014319 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:15:11,174 p=3014319 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:15:11,175 p=3014319 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:15:45,370 p=3014616 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:15:45,370 p=3014616 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:15:45,370 p=3014616 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:15:45,374 p=3014616 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:15:45,374 p=3014616 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-01-28 16:15:45,375 p=3014616 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-01-28 16:15:45,476 p=3014616 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:15:45,481 p=3014616 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:15:45,483 p=3014616 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:15:45,483 p=3014616 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:15:45,485 p=3014616 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:15:45,487 p=3014616 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:15:45,487 p=3014616 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:15:45,487 p=3014616 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:15:45,487 p=3014616 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:15:45,487 p=3014616 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:15:45,488 p=3014616 u=reseke n=ansible | PLAY [all] *****************************************************************************************************************************
+2025-01-28 16:15:45,494 p=3014616 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:15:45,496 p=3014616 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:15:45,498 p=3014616 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:15:45,500 p=3014616 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:21:38,712 p=3017731 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:21:38,712 p=3017731 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:21:38,712 p=3017731 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:21:38,716 p=3017731 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:21:38,716 p=3017731 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:21:38,716 p=3017731 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:21:38,717 p=3017731 u=reseke n=ansible | Not replacing invalid character(s) "{'.'}" in group name (all.vars)
+2025-01-28 16:21:38,717 p=3017731 u=reseke n=ansible | [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+2025-01-28 16:21:38,717 p=3017731 u=reseke n=ansible | Not replacing invalid character(s) "{'.'}" in group name (all.vars)
+2025-01-28 16:21:38,718 p=3017731 u=reseke n=ansible | Not replacing invalid character(s) "{'.'}" in group name (all.hosts.lustre_client)
+2025-01-28 16:21:38,718 p=3017731 u=reseke n=ansible | Not replacing invalid character(s) "{'.'}" in group name (all.hosts.lustre_client)
+2025-01-28 16:21:38,718 p=3017731 u=reseke n=ansible | Not replacing invalid character(s) "{'.'}" in group name (all.hosts.lustre_oss)
+2025-01-28 16:21:38,718 p=3017731 u=reseke n=ansible | Not replacing invalid character(s) "{'.'}" in group name (all.hosts.lustre_oss)
+2025-01-28 16:21:38,719 p=3017731 u=reseke n=ansible | Not replacing invalid character(s) "{'.'}" in group name (all.hosts.lustre_mgt)
+2025-01-28 16:21:38,719 p=3017731 u=reseke n=ansible | Not replacing invalid character(s) "{'.'}" in group name (all.hosts.lustre_mgt)
+2025-01-28 16:21:38,719 p=3017731 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-01-28 16:21:38,820 p=3017731 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:21:38,826 p=3017731 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:21:38,828 p=3017731 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:21:38,828 p=3017731 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:21:38,830 p=3017731 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:21:38,832 p=3017731 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:21:38,832 p=3017731 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:21:38,832 p=3017731 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:21:38,833 p=3017731 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:21:38,833 p=3017731 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:21:38,834 p=3017731 u=reseke n=ansible | PLAY [all] *****************************************************************************************************************************
+2025-01-28 16:21:38,841 p=3017731 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:21:38,843 p=3017731 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:21:38,846 p=3017731 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:21:38,847 p=3017731 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:23:49,676 p=3018919 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:23:49,676 p=3018919 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:23:49,677 p=3018919 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:23:49,680 p=3018919 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:23:49,681 p=3018919 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:23:49,681 p=3018919 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:23:49,682 p=3018919 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-01-28 16:23:49,782 p=3018919 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:23:49,788 p=3018919 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:23:49,790 p=3018919 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:23:49,790 p=3018919 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:23:49,792 p=3018919 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:23:49,794 p=3018919 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:23:49,794 p=3018919 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:23:49,794 p=3018919 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:23:49,794 p=3018919 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:23:49,795 p=3018919 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:23:49,796 p=3018919 u=reseke n=ansible | PLAY [all] *****************************************************************************************************************************
+2025-01-28 16:23:49,804 p=3018919 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:23:49,806 p=3018919 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:23:49,808 p=3018919 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:23:49,809 p=3018919 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:26:07,982 p=3020034 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:26:07,983 p=3020034 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:26:07,983 p=3020034 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:26:07,987 p=3020034 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:26:07,987 p=3020034 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:26:07,987 p=3020034 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:26:07,989 p=3020034 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-01-28 16:26:07,989 p=3020034 u=reseke n=ansible | [WARNING]: Found both group and host with same name: lustre_oss
+
+2025-01-28 16:26:07,989 p=3020034 u=reseke n=ansible | [WARNING]: Found both group and host with same name: lustre_client
+
+2025-01-28 16:26:07,989 p=3020034 u=reseke n=ansible | [WARNING]: Found both group and host with same name: lustre_mgt
+
+2025-01-28 16:26:08,093 p=3020034 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:26:08,099 p=3020034 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:26:08,100 p=3020034 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:26:08,100 p=3020034 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:26:08,102 p=3020034 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:26:08,104 p=3020034 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:26:08,104 p=3020034 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:26:08,104 p=3020034 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:26:08,104 p=3020034 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:26:08,104 p=3020034 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:26:08,106 p=3020034 u=reseke n=ansible | PLAY [all] *****************************************************************************************************************************
+2025-01-28 16:26:08,114 p=3020034 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:26:08,117 p=3020034 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:26:08,119 p=3020034 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:26:08,120 p=3020034 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:27:01,197 p=3021218 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:27:01,197 p=3021218 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:27:01,197 p=3021218 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:27:01,200 p=3021218 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:27:01,201 p=3021218 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:27:01,201 p=3021218 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:27:01,202 p=3021218 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-01-28 16:27:01,311 p=3021218 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:27:01,316 p=3021218 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:27:01,318 p=3021218 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:27:01,318 p=3021218 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:27:01,320 p=3021218 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:27:01,322 p=3021218 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:27:01,322 p=3021218 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:27:01,322 p=3021218 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:27:01,322 p=3021218 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:27:01,323 p=3021218 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:27:01,324 p=3021218 u=reseke n=ansible | PLAY [all] *****************************************************************************************************************************
+2025-01-28 16:27:01,330 p=3021218 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:27:01,332 p=3021218 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:27:01,334 p=3021218 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:27:01,334 p=3021218 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set
+2025-01-28 16:27:33,975 p=3021488 u=reseke n=ansible | all:
+  children:
+    lustre:
+      children:
+        lustre_client:
+          hosts:
+            ansible_host=10.0.1.12:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+            private_ip=10.0.1.12:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+            public_ip=3.76.252.123:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+        lustre_mgt:
+          hosts:
+            ansible_host=10.0.1.10:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+            ? ansible_ssh_common_args=-o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa
+              ec2-user@3.76.252.123"
+            : ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+            private_ip=10.0.1.10:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+        lustre_oss:
+          hosts:
+            ansible_host=10.0.1.11:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+            ? ansible_ssh_common_args=-o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa
+              ec2-user@3.76.252.123"
+            : {}
+            private_ip=10.0.1.11:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+    ungrouped: {}
+
+2025-01-28 16:29:03,711 p=3022220 u=reseke n=ansible | all:
+  children:
+    lustre:
+      children:
+        lustre_client:
+          hosts:
+            ansible_host=10.0.1.12:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+              private_ip: 10.0.1.12
+              public_ip: 3.76.252.123
+        lustre_mgt:
+          hosts:
+            ansible_host=10.0.1.10:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa
+                ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+              private_ip: 10.0.1.10
+        lustre_oss:
+          hosts:
+            ansible_host=10.0.1.11:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa
+                ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+              private_ip: 10.0.1.11
+    ungrouped: {}
+
+2025-01-28 16:29:56,564 p=3022649 u=reseke n=ansible | all:
+  children:
+    lustre:
+      children:
+        lustre_client:
+          hosts:
+            ansible_host=10.0.1.12:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+              private_ip: 10.0.1.12
+              public_ip: 3.76.252.123
+        lustre_mgt:
+          hosts:
+            ansible_host=10.0.1.10:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa
+                ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+              private_ip: 10.0.1.10
+        lustre_oss:
+          hosts:
+            ansible_host=10.0.1.11:
+              ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa
+                ec2-user@3.76.252.123"
+              ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+              ansible_user: ec2-user
+              host_key_checking: 'false'
+              private_ip: 10.0.1.11
+    ungrouped: {}
+
+2025-01-28 16:30:04,693 p=3022718 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2025-01-28 16:30:04,693 p=3022718 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-01-28 16:30:04,693 p=3022718 u=reseke n=ansible | setting up inventory plugins
+2025-01-28 16:30:04,697 p=3022718 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:30:04,697 p=3022718 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:30:04,697 p=3022718 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-01-28 16:30:04,699 p=3022718 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-01-28 16:30:04,800 p=3022718 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-01-28 16:30:04,805 p=3022718 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-01-28 16:30:04,807 p=3022718 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-01-28 16:30:04,807 p=3022718 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-01-28 16:30:04,809 p=3022718 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-01-28 16:30:04,811 p=3022718 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-01-28 16:30:04,811 p=3022718 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-01-28 16:30:04,811 p=3022718 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-01-28 16:30:04,811 p=3022718 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************
+2025-01-28 16:30:04,811 p=3022718 u=reseke n=ansible | 2 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-01-28 16:30:04,812 p=3022718 u=reseke n=ansible | PLAY [all] *****************************************************************************************************************************
+2025-01-28 16:30:04,819 p=3022718 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:30:04,821 p=3022718 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:30:04,823 p=3022718 u=reseke n=ansible | META: ran handlers
+2025-01-28 16:30:04,824 p=3022718 u=reseke n=ansible | ERROR! the field 'hosts' is required but was not set

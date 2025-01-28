@@ -1,17 +1,17 @@
 ### main Lustre playbook
 ---
-- name: main Lustre palybook
-  hosts: all
+# Main Lustre Playbook
+- hosts: all
 
   become: true
   become_user: ec2-user
+  gather_facts: false
 
   vars:
     data_device_name: "/dev/xvdd"  # Lust 
     lustre_device_name: "dev/xvdz" # ZFS drive for Lustre
     lustre_pool_name: "Lust_pool"
     mount_point: "/mnt/data"
-
 
 - tasks:
     - name: Add SSH private key
