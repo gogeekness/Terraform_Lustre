@@ -18,8 +18,8 @@ tasks:
     copy:
       content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
       dest: "/home/ec2-user/.ssh/rsa.id"
-      owner: ec2-user
-      group: ec2-user
+      owner: rdeseke-ec2
+      group: rdeseke-ec2
       mode: '0600'
 
   - name: Install common packages
