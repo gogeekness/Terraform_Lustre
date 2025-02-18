@@ -33,7 +33,9 @@ Then, log into the client system to then ssh into the 2 servers (MGT & OSS)
 ### Bash adn command line
 The scrip will create the container with Tofu, AWS CLI, and Ansible.
 Run Tofo on AWS then pass the public IP to Ansible to configure.
-Then the script will run the contrainer creating the Lustre cluster by Tofu
+Then the script will run the contrainer creating the Lustre cluster by Tofu.
+* The `deploy_lustre.sh` is more of a pseudo-code, in I have not tested it.
+** However, the commands as a sequence works.  This is who I solved the installation of ZFS on Alma 8 (manualy).    
 
 ### Cluster layout
 There are 3 servers 
@@ -41,10 +43,18 @@ There are 3 servers
 * Managment / MD
 * OSS
 
-All of the servers have 30 GB data drives for extra working data.
+All of the servers have 30 GB data drives (scratch pad) for extra working data.
 The OSS drive has a extra drive 500 GB drive for ZFS.
 
+The Client also is a jumpbox or portal to the other two servers.  I only public IP is to the Client.
+From it I tunnel to the other two machines.
  
 ## The goal
 To have a working Lustre test Cluster with a couple of commands.
-Then direct access to create 
+Then direct access to create and use a simple Lustre FS and use the commands. 
+
+## The Path
+While so far I have not reached my goal the path has been rewarding.
+* Learn Terraform.  I can depoy various infrasture layout by TF
+* More time with Ansible.  Learn better ways of implementing Ansible in AWS and understand some of Anislble's limitations.
+* Learn to use and install ZFS (far harder then I was expecting)
