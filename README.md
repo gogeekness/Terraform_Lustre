@@ -48,11 +48,12 @@ All of the servers have 30 GB data drives (scratch pad) for extra working data.
 The OSS drive has a extra drive 500 GB drive for ZFS.
 
 The Client also is a jumpbox or portal to the other two servers.  I only public IP is to the Client.
-From it I tunnel to the other two machines.
+From it, Ansible can tunnel to the other two machines.
  
 ## The goal
 To have a working Lustre test Cluster with a couple of commands.
 Then direct access to create and use a simple Lustre FS and use the commands. 
+This is not ment to be a usable cluster as the OSS and the MD servers are only link by 1G network.  It is very slow compared to a proper cluster.
 
 ## The Path
 While so far I have not reached my goal the path has been rewarding.
