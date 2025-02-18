@@ -18,7 +18,7 @@ There is a secrets file that is used by `variables.tf`.
 ### secrets.auto.tfvar 
 This file contains keys to access AWS and use SSH
 * aws_key_pub (A RSA the public key, please chnage you your perfered key type.)
-** This was the easiest way to add the ssh key with Tofu.     
+  * This was the easiest way to add the ssh key with Tofu.     
 * Access_Key_ID (AWS API/CLI access ID)
 * Sercret_Access_Key (AWS API/CLI sercet key).
 
@@ -34,8 +34,9 @@ Then, log into the client system to then ssh into the 2 servers (MGT & OSS)
 The scrip will create the container with Tofu, AWS CLI, and Ansible.
 Run Tofo on AWS then pass the public IP to Ansible to configure.
 Then the script will run the contrainer creating the Lustre cluster by Tofu.
-* The `deploy_lustre.sh` is more of a pseudo-code, in I have not tested it.
-** However, the commands as a sequence works.  This is who I solved the installation of ZFS on Alma 8 (manualy).    
+* The `Lustre.sh` is more of draft in I have not tested it.
+  *  I have used parts of it when I started to create my inital vm, then created a snapshot of the OS disk.
+  *  However, the commands as a sequence works.  This is who I solved the installation of ZFS on Alma 8 (manualy).    
 
 ### Cluster layout
 There are 3 servers 
