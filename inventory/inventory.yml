@@ -2,7 +2,7 @@
 all:
   vars:
     ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p ec2-user@3.76.252.123"
-    ansible_user: rdeseke-ec2
+    ansible_user: rdeseke_aws1
     ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
     host_key_checking: False
 
@@ -15,10 +15,10 @@ all:
     lustre_oss:
       ansible_host: 10.0.1.11
       private_ip: 10.0.1.11
-      ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke-ec2@3.76.252.123"
+      ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@3.76.252.123"
 
     lustre_mgt:
       ansible_host: 10.0.1.10
       private_ip: 10.0.1.10
-      ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke-ec2@3.76.252.123"
+      ansible_ssh_common_args: -o ProxyCommand="ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@3.76.252.123"
 
