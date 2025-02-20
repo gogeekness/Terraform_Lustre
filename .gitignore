@@ -3,3 +3,5 @@ secrets*
 .terraform/
 terraform.tfstate*
 .terraform*
+*plan
+
