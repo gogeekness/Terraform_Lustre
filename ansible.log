@@ -531,3 +531,494 @@ The offending line appears to be:
 hosts: lustre
 ^ here
 
+2025-02-20 10:47:50,708 p=256776 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 10:47:50,708 p=256776 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 10:47:50,708 p=256776 u=reseke n=ansible | ERROR! the playbook: all could not be found
+2025-02-20 10:48:16,270 p=256992 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 10:48:16,271 p=256992 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 10:48:16,271 p=256992 u=reseke n=ansible | ERROR! the playbook: all could not be found
+2025-02-20 10:49:06,510 p=257404 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 10:49:06,510 p=257404 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 10:49:06,511 p=257404 u=reseke n=ansible | ERROR! the playbook: all could not be found
+2025-02-20 10:49:25,677 p=257559 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 10:49:25,677 p=257559 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 10:49:25,677 p=257559 u=reseke n=ansible | ERROR! the playbook: .playbook.yml could not be found
+2025-02-20 10:49:45,154 p=257725 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 10:49:45,154 p=257725 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 10:49:45,154 p=257725 u=reseke n=ansible | ERROR! the playbook: all could not be found
+2025-02-20 11:03:07,888 p=264262 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:03:07,888 p=264262 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:03:08,058 p=264262 u=reseke n=ansible | ERROR! A playbook must be a list of plays, got a <class 'ansible.parsing.yaml.objects.AnsibleMapping'> instead
+
+The error appears to be in '/home/reseke/docker/Terraform_Lustre/playbook.yml': line 4, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+# Main Lustre Playbook
+hosts: lustre
+^ here
+
+2025-02-20 11:14:41,567 p=270055 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:14:41,568 p=270055 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:14:41,665 p=270055 u=reseke n=ansible | ERROR! A playbook must be a list of plays, got a <class 'ansible.parsing.yaml.objects.AnsibleMapping'> instead
+
+The error appears to be in '/home/reseke/docker/Terraform_Lustre/playbook.yml': line 4, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+# Main Lustre Playbook
+hosts: lustre
+^ here
+
+2025-02-20 11:14:46,876 p=270104 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:14:46,876 p=270104 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:14:46,962 p=270104 u=reseke n=ansible | ERROR! A playbook must be a list of plays, got a <class 'ansible.parsing.yaml.objects.AnsibleMapping'> instead
+
+The error appears to be in '/home/reseke/docker/Terraform_Lustre/playbook.yml': line 4, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+# Main Lustre Playbook
+hosts: lustre
+^ here
+
+2025-02-20 11:17:26,272 p=271472 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:17:26,272 p=271472 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:17:26,358 p=271472 u=reseke n=ansible | ERROR! A playbook must be a list of plays, got a <class 'ansible.parsing.yaml.objects.AnsibleMapping'> instead
+
+The error appears to be in '/home/reseke/docker/Terraform_Lustre/playbook.yml': line 4, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+# Main Lustre Playbook
+hosts: all
+^ here
+
+2025-02-20 11:17:48,037 p=271654 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:17:48,037 p=271654 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:17:48,038 p=271654 u=reseke n=ansible | setting up inventory plugins
+2025-02-20 11:17:48,041 p=271654 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-02-20 11:17:48,042 p=271654 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml as it did not pass its verify_file() method
+2025-02-20 11:17:48,043 p=271654 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.yml inventory source with yaml plugin
+2025-02-20 11:17:48,129 p=271654 u=reseke n=ansible | ERROR! A playbook must be a list of plays, got a <class 'ansible.parsing.yaml.objects.AnsibleMapping'> instead
+
+The error appears to be in '/home/reseke/docker/Terraform_Lustre/playbook.yml': line 4, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+# Main Lustre Playbook
+hosts: all
+^ here
+
+2025-02-20 11:18:19,614 p=271915 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:18:19,614 p=271915 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:18:19,614 p=271915 u=reseke n=ansible | setting up inventory plugins
+2025-02-20 11:18:19,618 p=271915 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:18:19,618 p=271915 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:18:19,618 p=271915 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:18:19,620 p=271915 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-02-20 11:18:19,703 p=271915 u=reseke n=ansible | ERROR! A playbook must be a list of plays, got a <class 'ansible.parsing.yaml.objects.AnsibleMapping'> instead
+
+The error appears to be in '/home/reseke/docker/Terraform_Lustre/playbook.yml': line 4, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+# Main Lustre Playbook
+hosts: all
+^ here
+
+2025-02-20 11:18:29,884 p=272001 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:18:29,884 p=272001 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:18:29,973 p=272001 u=reseke n=ansible | ERROR! A playbook must be a list of plays, got a <class 'ansible.parsing.yaml.objects.AnsibleMapping'> instead
+
+The error appears to be in '/home/reseke/docker/Terraform_Lustre/playbook.yml': line 4, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+# Main Lustre Playbook
+hosts: all
+^ here
+
+2025-02-20 11:20:54,905 p=273229 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:20:54,905 p=273229 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:20:55,066 p=273229 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-02-20 11:20:55,076 p=273229 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-02-20 11:20:55,082 p=273229 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-02-20 11:20:55,082 p=273229 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-02-20 11:20:55,082 p=273229 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-02-20 11:20:55,083 p=273229 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-02-20 11:20:55,083 p=273229 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-02-20 11:20:55,085 p=273229 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-02-20 11:20:55,093 p=273229 u=reseke n=ansible | META: ran handlers
+2025-02-20 11:20:55,096 p=273229 u=reseke n=ansible | TASK [Add SSH private key] ************************************************************************************************************
+2025-02-20 11:21:05,145 p=273229 u=reseke n=ansible | fatal: [ansible_host=10.0.1.12]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Connection timed out during banner exchange\r\nConnection to UNKNOWN port 65535 timed out", "unreachable": true}
+2025-02-20 11:21:05,147 p=273229 u=reseke n=ansible | fatal: [ansible_host=10.0.1.11]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Connection timed out during banner exchange\r\nConnection to UNKNOWN port 65535 timed out", "unreachable": true}
+2025-02-20 11:21:05,149 p=273229 u=reseke n=ansible | fatal: [ansible_host=10.0.1.10]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Connection timed out during banner exchange\r\nConnection to UNKNOWN port 65535 timed out", "unreachable": true}
+2025-02-20 11:21:05,149 p=273229 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-02-20 11:21:05,149 p=273229 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:21:05,150 p=273229 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:21:05,150 p=273229 u=reseke n=ansible | ansible_host=10.0.1.12     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:36:19,253 p=280871 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:36:19,253 p=280871 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:36:19,254 p=280871 u=reseke n=ansible | ERROR! the playbook: i could not be found
+2025-02-20 11:36:24,027 p=280907 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:36:24,027 p=280907 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:36:24,130 p=280907 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-02-20 11:36:24,137 p=280907 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-02-20 11:36:24,141 p=280907 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-02-20 11:36:24,141 p=280907 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-02-20 11:36:24,141 p=280907 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-02-20 11:36:24,141 p=280907 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-02-20 11:36:24,141 p=280907 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-02-20 11:36:24,142 p=280907 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-02-20 11:36:24,149 p=280907 u=reseke n=ansible | META: ran handlers
+2025-02-20 11:36:24,151 p=280907 u=reseke n=ansible | TASK [Add SSH private key] ************************************************************************************************************
+2025-02-20 11:36:28,822 p=280907 u=reseke n=ansible | fatal: [ansible_host=10.0.1.12]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: kex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535", "unreachable": true}
+2025-02-20 11:36:34,196 p=280907 u=reseke n=ansible | fatal: [ansible_host=10.0.1.10]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Connection timed out during banner exchange\r\nConnection to UNKNOWN port 65535 timed out", "unreachable": true}
+2025-02-20 11:36:34,197 p=280907 u=reseke n=ansible | fatal: [ansible_host=10.0.1.11]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Connection timed out during banner exchange\r\nConnection to UNKNOWN port 65535 timed out", "unreachable": true}
+2025-02-20 11:36:34,197 p=280907 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-02-20 11:36:34,197 p=280907 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:36:34,198 p=280907 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:36:34,198 p=280907 u=reseke n=ansible | ansible_host=10.0.1.12     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:39:52,994 p=282704 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:39:52,994 p=282704 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:39:53,109 p=282704 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-02-20 11:39:53,116 p=282704 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-02-20 11:39:53,120 p=282704 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-02-20 11:39:53,120 p=282704 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-02-20 11:39:53,120 p=282704 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-02-20 11:39:53,120 p=282704 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-02-20 11:39:53,120 p=282704 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-02-20 11:39:53,122 p=282704 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-02-20 11:39:53,128 p=282704 u=reseke n=ansible | META: ran handlers
+2025-02-20 11:39:53,130 p=282704 u=reseke n=ansible | TASK [Add SSH private key] ************************************************************************************************************
+2025-02-20 11:39:53,480 p=282704 u=reseke n=ansible | fatal: [ansible_host=10.0.1.11]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: kex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535", "unreachable": true}
+2025-02-20 11:39:53,483 p=282704 u=reseke n=ansible | fatal: [ansible_host=10.0.1.10]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: kex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535", "unreachable": true}
+2025-02-20 11:39:53,637 p=282704 u=reseke n=ansible | fatal: [ansible_host=10.0.1.12]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: kex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535", "unreachable": true}
+2025-02-20 11:39:53,640 p=282704 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-02-20 11:39:53,640 p=282704 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:39:53,641 p=282704 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:39:53,641 p=282704 u=reseke n=ansible | ansible_host=10.0.1.12     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:40:14,367 p=282896 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:40:14,367 p=282896 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:40:14,368 p=282896 u=reseke n=ansible | setting up inventory plugins
+2025-02-20 11:40:14,371 p=282896 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:40:14,371 p=282896 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:40:14,371 p=282896 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:40:14,373 p=282896 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-02-20 11:40:14,477 p=282896 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-02-20 11:40:14,483 p=282896 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-02-20 11:40:14,484 p=282896 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-02-20 11:40:14,485 p=282896 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-02-20 11:40:14,487 p=282896 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-02-20 11:40:14,489 p=282896 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-02-20 11:40:14,489 p=282896 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-02-20 11:40:14,489 p=282896 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-02-20 11:40:14,489 p=282896 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-02-20 11:40:14,489 p=282896 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-02-20 11:40:14,491 p=282896 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-02-20 11:40:14,496 p=282896 u=reseke n=ansible | META: ran handlers
+2025-02-20 11:40:14,499 p=282896 u=reseke n=ansible | TASK [Add SSH private key] ************************************************************************************************************
+2025-02-20 11:40:14,526 p=282905 u=reseke n=ansible | <ansible_host=10.0.1.12> ESTABLISH SSH CONNECTION FOR USER: rdeseke_aws1
+2025-02-20 11:40:14,526 p=282905 u=reseke n=ansible | <ansible_host=10.0.1.12> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="rdeseke_aws1"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p ec2-user@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/1fccdcc93d ansible_host=10.0.1.12 '/bin/sh -c '"'"'echo ~rdeseke_aws1 && sleep 0'"'"''
+2025-02-20 11:40:14,530 p=282906 u=reseke n=ansible | <ansible_host=10.0.1.11> ESTABLISH SSH CONNECTION FOR USER: rdeseke_aws1
+2025-02-20 11:40:14,531 p=282906 u=reseke n=ansible | <ansible_host=10.0.1.11> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="rdeseke_aws1"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/0b45fd9615 ansible_host=10.0.1.11 '/bin/sh -c '"'"'echo ~rdeseke_aws1 && sleep 0'"'"''
+2025-02-20 11:40:14,536 p=282907 u=reseke n=ansible | <ansible_host=10.0.1.10> ESTABLISH SSH CONNECTION FOR USER: rdeseke_aws1
+2025-02-20 11:40:14,537 p=282907 u=reseke n=ansible | <ansible_host=10.0.1.10> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="rdeseke_aws1"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/d659a050fc ansible_host=10.0.1.10 '/bin/sh -c '"'"'echo ~rdeseke_aws1 && sleep 0'"'"''
+2025-02-20 11:40:14,844 p=282906 u=reseke n=ansible | <ansible_host=10.0.1.11> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/0b45fd9615" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 11:40:14,849 p=282896 u=reseke n=ansible | fatal: [ansible_host=10.0.1.11]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/0b45fd9615\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 11:40:14,858 p=282907 u=reseke n=ansible | <ansible_host=10.0.1.10> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/d659a050fc" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.10:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 11:40:14,863 p=282896 u=reseke n=ansible | fatal: [ansible_host=10.0.1.10]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/d659a050fc\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.10:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 11:40:15,041 p=282905 u=reseke n=ansible | <ansible_host=10.0.1.12> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/1fccdcc93d" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.12:22 ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 11:40:15,045 p=282896 u=reseke n=ansible | fatal: [ansible_host=10.0.1.12]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/1fccdcc93d\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.12:22 ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 11:40:15,047 p=282896 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-02-20 11:40:15,048 p=282896 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:40:15,048 p=282896 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:40:15,049 p=282896 u=reseke n=ansible | ansible_host=10.0.1.12     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:41:50,783 p=283799 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:41:50,783 p=283799 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:41:50,784 p=283799 u=reseke n=ansible | setting up inventory plugins
+2025-02-20 11:41:50,787 p=283799 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:41:50,787 p=283799 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:41:50,788 p=283799 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:41:50,789 p=283799 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-02-20 11:41:50,890 p=283799 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-02-20 11:41:50,896 p=283799 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-02-20 11:41:50,897 p=283799 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-02-20 11:41:50,897 p=283799 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-02-20 11:41:50,899 p=283799 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-02-20 11:41:50,901 p=283799 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-02-20 11:41:50,901 p=283799 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-02-20 11:41:50,901 p=283799 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-02-20 11:41:50,901 p=283799 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-02-20 11:41:50,902 p=283799 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-02-20 11:41:50,903 p=283799 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-02-20 11:41:50,909 p=283799 u=reseke n=ansible | META: ran handlers
+2025-02-20 11:41:50,911 p=283799 u=reseke n=ansible | TASK [Add SSH private key] ************************************************************************************************************
+2025-02-20 11:41:50,937 p=283804 u=reseke n=ansible | <ansible_host=10.0.1.12> ESTABLISH SSH CONNECTION FOR USER: rdeseke_aws1
+2025-02-20 11:41:50,938 p=283804 u=reseke n=ansible | <ansible_host=10.0.1.12> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="rdeseke_aws1"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p ec2-user@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/1fccdcc93d ansible_host=10.0.1.12 '/bin/sh -c '"'"'echo ~rdeseke_aws1 && sleep 0'"'"''
+2025-02-20 11:41:50,943 p=283805 u=reseke n=ansible | <ansible_host=10.0.1.11> ESTABLISH SSH CONNECTION FOR USER: rdeseke_aws1
+2025-02-20 11:41:50,944 p=283805 u=reseke n=ansible | <ansible_host=10.0.1.11> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="rdeseke_aws1"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/0b45fd9615 ansible_host=10.0.1.11 '/bin/sh -c '"'"'echo ~rdeseke_aws1 && sleep 0'"'"''
+2025-02-20 11:41:50,948 p=283806 u=reseke n=ansible | <ansible_host=10.0.1.10> ESTABLISH SSH CONNECTION FOR USER: rdeseke_aws1
+2025-02-20 11:41:50,949 p=283806 u=reseke n=ansible | <ansible_host=10.0.1.10> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="rdeseke_aws1"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/d659a050fc ansible_host=10.0.1.10 '/bin/sh -c '"'"'echo ~rdeseke_aws1 && sleep 0'"'"''
+2025-02-20 11:41:51,301 p=283805 u=reseke n=ansible | <ansible_host=10.0.1.11> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/0b45fd9615" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 11:41:51,301 p=283806 u=reseke n=ansible | <ansible_host=10.0.1.10> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/d659a050fc" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.10:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 11:41:51,308 p=283799 u=reseke n=ansible | fatal: [ansible_host=10.0.1.10]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/d659a050fc\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.10:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 11:41:51,310 p=283799 u=reseke n=ansible | fatal: [ansible_host=10.0.1.11]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/0b45fd9615\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 11:41:51,467 p=283804 u=reseke n=ansible | <ansible_host=10.0.1.12> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/1fccdcc93d" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.12:22 ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 11:41:51,471 p=283799 u=reseke n=ansible | fatal: [ansible_host=10.0.1.12]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/1fccdcc93d\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.12:22 ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 11:41:51,473 p=283799 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-02-20 11:41:51,474 p=283799 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:41:51,474 p=283799 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:41:51,475 p=283799 u=reseke n=ansible | ansible_host=10.0.1.12     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:42:15,380 p=284054 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 11:42:15,380 p=284054 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 11:42:15,381 p=284054 u=reseke n=ansible | setting up inventory plugins
+2025-02-20 11:42:15,384 p=284054 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:42:15,384 p=284054 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:42:15,384 p=284054 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 11:42:15,386 p=284054 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-02-20 11:42:15,501 p=284054 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-02-20 11:42:15,507 p=284054 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-02-20 11:42:15,508 p=284054 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-02-20 11:42:15,508 p=284054 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-02-20 11:42:15,511 p=284054 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-02-20 11:42:15,512 p=284054 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-02-20 11:42:15,512 p=284054 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-02-20 11:42:15,512 p=284054 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-02-20 11:42:15,512 p=284054 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-02-20 11:42:15,513 p=284054 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-02-20 11:42:15,514 p=284054 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-02-20 11:42:15,524 p=284054 u=reseke n=ansible | META: ran handlers
+2025-02-20 11:42:15,527 p=284054 u=reseke n=ansible | TASK [Add SSH private key] ************************************************************************************************************
+2025-02-20 11:42:15,550 p=284070 u=reseke n=ansible | <ansible_host=10.0.1.12> ESTABLISH SSH CONNECTION FOR USER: rdeseke_aws1
+2025-02-20 11:42:15,550 p=284070 u=reseke n=ansible | <ansible_host=10.0.1.12> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="rdeseke_aws1"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p ec2-user@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/1fccdcc93d ansible_host=10.0.1.12 '/bin/sh -c '"'"'echo ~rdeseke_aws1 && sleep 0'"'"''
+2025-02-20 11:42:15,559 p=284071 u=reseke n=ansible | <ansible_host=10.0.1.11> ESTABLISH SSH CONNECTION FOR USER: rdeseke_aws1
+2025-02-20 11:42:15,560 p=284071 u=reseke n=ansible | <ansible_host=10.0.1.11> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="rdeseke_aws1"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/0b45fd9615 ansible_host=10.0.1.11 '/bin/sh -c '"'"'echo ~rdeseke_aws1 && sleep 0'"'"''
+2025-02-20 11:42:15,566 p=284072 u=reseke n=ansible | <ansible_host=10.0.1.10> ESTABLISH SSH CONNECTION FOR USER: rdeseke_aws1
+2025-02-20 11:42:15,567 p=284072 u=reseke n=ansible | <ansible_host=10.0.1.10> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="rdeseke_aws1"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/d659a050fc ansible_host=10.0.1.10 '/bin/sh -c '"'"'echo ~rdeseke_aws1 && sleep 0'"'"''
+2025-02-20 11:42:15,896 p=284072 u=reseke n=ansible | <ansible_host=10.0.1.10> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/d659a050fc" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.10:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 11:42:15,902 p=284054 u=reseke n=ansible | fatal: [ansible_host=10.0.1.10]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/d659a050fc\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.10:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 11:42:15,902 p=284071 u=reseke n=ansible | <ansible_host=10.0.1.11> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/0b45fd9615" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 11:42:15,906 p=284054 u=reseke n=ansible | fatal: [ansible_host=10.0.1.11]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/0b45fd9615\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa rdeseke_aws1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nrdeseke_aws1@18.184.73.248: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 11:42:16,049 p=284070 u=reseke n=ansible | <ansible_host=10.0.1.12> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/1fccdcc93d" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.12:22 ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 11:42:16,054 p=284054 u=reseke n=ansible | fatal: [ansible_host=10.0.1.12]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/1fccdcc93d\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.12:22 ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 11:42:16,056 p=284054 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-02-20 11:42:16,057 p=284054 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:42:16,057 p=284054 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 11:42:16,057 p=284054 u=reseke n=ansible | ansible_host=10.0.1.12     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 12:45:04,544 p=315603 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 12:45:04,544 p=315603 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 12:45:04,650 p=315603 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-02-20 12:45:04,657 p=315603 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-02-20 12:45:04,661 p=315603 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-02-20 12:45:04,661 p=315603 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-02-20 12:45:04,661 p=315603 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-02-20 12:45:04,661 p=315603 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-02-20 12:45:04,661 p=315603 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-02-20 12:45:04,663 p=315603 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-02-20 12:45:04,669 p=315603 u=reseke n=ansible | META: ran handlers
+2025-02-20 12:45:04,671 p=315603 u=reseke n=ansible | TASK [Add SSH private key] ************************************************************************************************************
+2025-02-20 12:45:05,296 p=315603 u=reseke n=ansible | fatal: [ansible_host=10.0.1.10]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: kex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535", "unreachable": true}
+2025-02-20 12:45:05,297 p=315603 u=reseke n=ansible | fatal: [ansible_host=10.0.1.12]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: kex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535", "unreachable": true}
+2025-02-20 12:45:05,297 p=315603 u=reseke n=ansible | fatal: [ansible_host=10.0.1.11]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: kex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535", "unreachable": true}
+2025-02-20 12:45:05,298 p=315603 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-02-20 12:45:05,298 p=315603 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 12:45:05,298 p=315603 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 12:45:05,298 p=315603 u=reseke n=ansible | ansible_host=10.0.1.12     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 12:45:30,708 p=315833 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-02-20 12:45:30,708 p=315833 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-02-20 12:45:30,708 p=315833 u=reseke n=ansible | setting up inventory plugins
+2025-02-20 12:45:30,712 p=315833 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 12:45:30,712 p=315833 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 12:45:30,712 p=315833 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-02-20 12:45:30,714 p=315833 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-02-20 12:45:30,812 p=315833 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-02-20 12:45:30,817 p=315833 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-02-20 12:45:30,819 p=315833 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-02-20 12:45:30,820 p=315833 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-02-20 12:45:30,822 p=315833 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-02-20 12:45:30,823 p=315833 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-02-20 12:45:30,824 p=315833 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-02-20 12:45:30,824 p=315833 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-02-20 12:45:30,824 p=315833 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-02-20 12:45:30,824 p=315833 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-02-20 12:45:30,825 p=315833 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-02-20 12:45:30,832 p=315833 u=reseke n=ansible | META: ran handlers
+2025-02-20 12:45:30,835 p=315833 u=reseke n=ansible | TASK [Add SSH private key] ************************************************************************************************************
+2025-02-20 12:45:30,861 p=315836 u=reseke n=ansible | <ansible_host=10.0.1.12> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+2025-02-20 12:45:30,862 p=315836 u=reseke n=ansible | <ansible_host=10.0.1.12> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ec2-user"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p ec2-user@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/e3ba75ceb0 ansible_host=10.0.1.12 '/bin/sh -c '"'"'echo ~ec2-user && sleep 0'"'"''
+2025-02-20 12:45:30,868 p=315837 u=reseke n=ansible | <ansible_host=10.0.1.11> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+2025-02-20 12:45:30,869 p=315837 u=reseke n=ansible | <ansible_host=10.0.1.11> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ec2-user"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa ec2-user@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/1c3fc59762 ansible_host=10.0.1.11 '/bin/sh -c '"'"'echo ~ec2-user && sleep 0'"'"''
+2025-02-20 12:45:30,875 p=315838 u=reseke n=ansible | <ansible_host=10.0.1.10> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+2025-02-20 12:45:30,876 p=315838 u=reseke n=ansible | <ansible_host=10.0.1.10> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/docker/Terraform_Lustre/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ec2-user"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa ec2-user@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/12b06b06e5 ansible_host=10.0.1.10 '/bin/sh -c '"'"'echo ~ec2-user && sleep 0'"'"''
+2025-02-20 12:45:31,410 p=315836 u=reseke n=ansible | <ansible_host=10.0.1.12> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/e3ba75ceb0" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.12:22 ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 12:45:31,411 p=315838 u=reseke n=ansible | <ansible_host=10.0.1.10> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/12b06b06e5" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.10:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 12:45:31,414 p=315833 u=reseke n=ansible | fatal: [ansible_host=10.0.1.12]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/e3ba75ceb0\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.12:22 ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 12:45:31,414 p=315833 u=reseke n=ansible | fatal: [ansible_host=10.0.1.10]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/12b06b06e5\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.10:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 12:45:31,419 p=315837 u=reseke n=ansible | <ansible_host=10.0.1.11> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/1c3fc59762" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535\r\n')
+2025-02-20 12:45:31,421 p=315833 u=reseke n=ansible | fatal: [ansible_host=10.0.1.11]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/1c3fc59762\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa ec2-user@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nWarning: Identity file /home/reseke/docker/Terraform_Lustre/.ssh/id_rsa not accessible: No such file or directory.\nchannel 0: open failed: connect failed: Name or service not known\r\nstdio forwarding failed\r\nkex_exchange_identification: Connection closed by remote host\r\nConnection closed by UNKNOWN port 65535",
+    "unreachable": true
+}
+2025-02-20 12:45:31,423 p=315833 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-02-20 12:45:31,423 p=315833 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 12:45:31,423 p=315833 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-02-20 12:45:31,423 p=315833 u=reseke n=ansible | ansible_host=10.0.1.12     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
