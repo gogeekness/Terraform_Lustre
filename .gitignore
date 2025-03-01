@@ -4,4 +4,4 @@ secrets*
 terraform.tfstate*
 .terraform*
 *plan
-
+*.log

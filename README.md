@@ -30,6 +30,12 @@ The playbook will add the private ssh key to the client server, allowing it to r
 When up, the scrip will copy you profile from `$(USER) ./.ssh` 
 Then, log into the client system to then ssh into the 2 servers (MGT & OSS)
 
+### The base diskimage and snapshot
+If you entend to use this image and snapshot, be aware that the build in user is `ec-user`.
+Once you are in the VMs update the active users, the Ansibel code will do that.
+I included my ZFS install commands so you can create your ZFS installation on Alma8 
+
+
 ### Bash adn command line
 The scrip will create the container with Tofu, AWS CLI, and Ansible.
 Run Tofo on AWS then pass the public IP to Ansible to configure.
