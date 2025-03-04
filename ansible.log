@@ -1075,3 +1075,178 @@ hosts: all
 2025-03-01 14:12:56,302 p=2011193 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 2025-03-01 14:12:56,302 p=2011193 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 2025-03-01 14:12:56,302 p=2011193 u=reseke n=ansible | ansible_host=10.0.1.12     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-03-04 13:32:59,674 p=2376386 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-03-04 13:32:59,675 p=2376386 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-03-04 13:32:59,675 p=2376386 u=reseke n=ansible | setting up inventory plugins
+2025-03-04 13:32:59,680 p=2376386 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:32:59,680 p=2376386 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:32:59,680 p=2376386 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:32:59,684 p=2376386 u=reseke n=ansible | auto declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:32:59,684 p=2376386 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini with ini plugin:
+/home/reseke/docker/Terraform_Lustre/inventory/inventory.ini:16: Expected key=value host variable assignment, got: jump_ip
+
+2025-03-04 13:32:59,684 p=2376386 u=reseke n=ansible |   File "/usr/lib/python3/dist-packages/ansible/inventory/manager.py", line 289, in parse_source
+    plugin.parse(self._inventory, self._loader, source, cache=cache)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/inventory/ini.py", line 138, in parse
+    raise AnsibleParserError(e)
+
+2025-03-04 13:32:59,685 p=2376386 u=reseke n=ansible | [WARNING]: Unable to parse /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as an inventory source
+
+2025-03-04 13:32:59,685 p=2376386 u=reseke n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2025-03-04 13:32:59,693 p=2376386 u=reseke n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2025-03-04 13:32:59,837 p=2376386 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-03-04 13:32:59,843 p=2376386 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-03-04 13:32:59,844 p=2376386 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-03-04 13:32:59,845 p=2376386 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-03-04 13:32:59,847 p=2376386 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-03-04 13:32:59,849 p=2376386 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-03-04 13:32:59,849 p=2376386 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-03-04 13:32:59,849 p=2376386 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-03-04 13:32:59,849 p=2376386 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-03-04 13:32:59,850 p=2376386 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-03-04 13:32:59,851 p=2376386 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-03-04 13:32:59,851 p=2376386 u=reseke n=ansible | skipping: no hosts matched
+2025-03-04 13:32:59,851 p=2376386 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-03-04 13:36:41,227 p=2379522 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-03-04 13:36:41,227 p=2379522 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-03-04 13:36:41,228 p=2379522 u=reseke n=ansible | setting up inventory plugins
+2025-03-04 13:36:41,231 p=2379522 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:36:41,231 p=2379522 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:36:41,231 p=2379522 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:36:41,232 p=2379522 u=reseke n=ansible | auto declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:36:41,233 p=2379522 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini with ini plugin:
+/home/reseke/docker/Terraform_Lustre/inventory/inventory.ini:16: Expected key=value host variable assignment, got: jump_ip
+
+2025-03-04 13:36:41,233 p=2379522 u=reseke n=ansible |   File "/usr/lib/python3/dist-packages/ansible/inventory/manager.py", line 289, in parse_source
+    plugin.parse(self._inventory, self._loader, source, cache=cache)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/inventory/ini.py", line 138, in parse
+    raise AnsibleParserError(e)
+
+2025-03-04 13:36:41,233 p=2379522 u=reseke n=ansible | [WARNING]: Unable to parse /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as an inventory source
+
+2025-03-04 13:36:41,233 p=2379522 u=reseke n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2025-03-04 13:36:41,235 p=2379522 u=reseke n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2025-03-04 13:36:41,327 p=2379522 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-03-04 13:36:41,332 p=2379522 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-03-04 13:36:41,333 p=2379522 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-03-04 13:36:41,334 p=2379522 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-03-04 13:36:41,336 p=2379522 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-03-04 13:36:41,337 p=2379522 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-03-04 13:36:41,338 p=2379522 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-03-04 13:36:41,338 p=2379522 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-03-04 13:36:41,338 p=2379522 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-03-04 13:36:41,338 p=2379522 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-03-04 13:36:41,339 p=2379522 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-03-04 13:36:41,339 p=2379522 u=reseke n=ansible | skipping: no hosts matched
+2025-03-04 13:36:41,339 p=2379522 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-03-04 13:46:25,317 p=2387991 u=reseke n=ansible | ansible-playbook 2.10.8
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.10.12 (main, Jan 17 2025, 14:35:34) [GCC 11.4.0]
+2025-03-04 13:46:25,317 p=2387991 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-03-04 13:46:25,318 p=2387991 u=reseke n=ansible | setting up inventory plugins
+2025-03-04 13:46:25,322 p=2387991 u=reseke n=ansible | host_list declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:46:25,322 p=2387991 u=reseke n=ansible | script declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:46:25,322 p=2387991 u=reseke n=ansible | yaml declined parsing /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini as it did not pass its verify_file() method
+2025-03-04 13:46:25,323 p=2387991 u=reseke n=ansible | Parsed /home/reseke/docker/Terraform_Lustre/inventory/inventory.ini inventory source with ini plugin
+2025-03-04 13:46:25,426 p=2387991 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-03-04 13:46:25,431 p=2387991 u=reseke n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2025-03-04 13:46:25,433 p=2387991 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-03-04 13:46:25,433 p=2387991 u=reseke n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2025-03-04 13:46:25,435 p=2387991 u=reseke n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2025-03-04 13:46:25,437 p=2387991 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-03-04 13:46:25,437 p=2387991 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-03-04 13:46:25,437 p=2387991 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-03-04 13:46:25,437 p=2387991 u=reseke n=ansible | PLAYBOOK: playbook.yml ****************************************************************************************************************
+2025-03-04 13:46:25,437 p=2387991 u=reseke n=ansible | 1 plays in /home/reseke/docker/Terraform_Lustre/playbook.yml
+2025-03-04 13:46:25,438 p=2387991 u=reseke n=ansible | PLAY [all] ****************************************************************************************************************************
+2025-03-04 13:46:25,447 p=2387991 u=reseke n=ansible | META: ran handlers
+2025-03-04 13:46:25,450 p=2387991 u=reseke n=ansible | TASK [Add SSH private key] ************************************************************************************************************
+2025-03-04 13:46:25,480 p=2387996 u=reseke n=ansible | <ansible_host={{ jump_ip }}> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+2025-03-04 13:46:25,481 p=2387996 u=reseke n=ansible | <ansible_host={{ jump_ip }}> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ec2-user"' -o ConnectTimeout=10 -o ControlPath=/home/reseke/.ansible/cp/c5ff0641b1 'ansible_host={{ jump_ip }}' '/bin/sh -c '"'"'echo ~ec2-user && sleep 0'"'"''
+2025-03-04 13:46:25,483 p=2387997 u=reseke n=ansible | <ansible_host=10.0.1.11> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+2025-03-04 13:46:25,484 p=2387997 u=reseke n=ansible | <ansible_host=10.0.1.11> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o 'IdentityFile="/home/reseke/.ssh/id.rsa"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ec2-user"' -o ConnectTimeout=10 -o 'ProxyCommand=ssh -W %h:%p -i /home/reseke/.ssh/id_rsa ec2-user1@18.184.73.248' -o ControlPath=/home/reseke/.ansible/cp/1c3fc59762 ansible_host=10.0.1.11 '/bin/sh -c '"'"'echo ~ec2-user && sleep 0'"'"''
+2025-03-04 13:46:25,486 p=2387996 u=reseke n=ansible | <ansible_host={{ jump_ip }}> (255, b'', b'hostname contains invalid characters\r\n')
+2025-03-04 13:46:25,488 p=2387991 u=reseke n=ansible | fatal: [ansible_host={{ jump_ip }}]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: hostname contains invalid characters",
+    "unreachable": true
+}
+2025-03-04 13:46:25,494 p=2387998 u=reseke n=ansible | <ansible_host=10.0.1.10> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+2025-03-04 13:46:25,502 p=2387991 u=reseke n=ansible | The full traceback is:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/ansible/plugins/connection/__init__.py", line 119, in _split_ssh_args
+    return [to_text(x.strip()) for x in shlex.split(to_bytes(argstring)) if x.strip()]
+  File "/usr/lib/python3.10/shlex.py", line 315, in split
+    return list(lex)
+  File "/usr/lib/python3.10/shlex.py", line 300, in __next__
+    token = self.get_token()
+  File "/usr/lib/python3.10/shlex.py", line 109, in get_token
+    raw = self.read_token()
+  File "/usr/lib/python3.10/shlex.py", line 140, in read_token
+    nextchar = self.instream.read(1)
+AttributeError: 'bytes' object has no attribute 'read'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/ansible/executor/task_executor.py", line 158, in run
+    res = self._execute()
+  File "/usr/lib/python3/dist-packages/ansible/executor/task_executor.py", line 663, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/action/copy.py", line 411, in run
+    result = super(ActionModule, self).run(tmp, task_vars)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/action/__init__.py", line 115, in run
+    self._make_tmp_path()
+  File "/usr/lib/python3/dist-packages/ansible/plugins/action/__init__.py", line 388, in _make_tmp_path
+    tmpdir = self._remote_expand_user(self.get_shell_option('remote_tmp', default='~/.ansible/tmp'), sudoable=False)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/action/__init__.py", line 709, in _remote_expand_user
+    data = self._low_level_execute_command(cmd, sudoable=False)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/action/__init__.py", line 1121, in _low_level_execute_command
+    rc, stdout, stderr = self._connection.exec_command(cmd, in_data=in_data, sudoable=sudoable)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/connection/ssh.py", line 1222, in exec_command
+    cmd = self._build_command(*args)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/connection/ssh.py", line 667, in _build_command
+    b_args = [to_bytes(a, errors='surrogate_or_strict') for a in self._split_ssh_args(attr)]
+  File "/usr/lib/python3/dist-packages/ansible/plugins/connection/__init__.py", line 122, in _split_ssh_args
+    return [to_text(x.strip()) for x in shlex.split(argstring) if x.strip()]
+  File "/usr/lib/python3.10/shlex.py", line 315, in split
+    return list(lex)
+  File "/usr/lib/python3.10/shlex.py", line 300, in __next__
+    token = self.get_token()
+  File "/usr/lib/python3.10/shlex.py", line 109, in get_token
+    raw = self.read_token()
+  File "/usr/lib/python3.10/shlex.py", line 191, in read_token
+    raise ValueError("No closing quotation")
+ValueError: No closing quotation
+
+2025-03-04 13:46:25,502 p=2387991 u=reseke n=ansible | fatal: [ansible_host=10.0.1.10]: FAILED! => {
+    "msg": "Unexpected failure during module execution.",
+    "stdout": ""
+}
+2025-03-04 13:46:35,502 p=2387997 u=reseke n=ansible | <ansible_host=10.0.1.11> (255, b'', b'OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts\' -> \'/home/reseke/.ssh/known_hosts\'\r\ndebug3: expanded UserKnownHostsFile \'~/.ssh/known_hosts2\' -> \'/home/reseke/.ssh/known_hosts2\'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/home/reseke/.ansible/cp/1c3fc59762" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/.ssh/id_rsa ec2-user1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nConnection timed out during banner exchange\r\nConnection to UNKNOWN port 65535 timed out\r\n')
+2025-03-04 13:46:35,504 p=2387991 u=reseke n=ansible | fatal: [ansible_host=10.0.1.11]: UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.9p1 Ubuntu-3ubuntu0.10, OpenSSL 3.0.2 15 Mar 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/reseke/.ssh/known_hosts'\r\ndebug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/reseke/.ssh/known_hosts2'\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/home/reseke/.ansible/cp/1c3fc59762\" does not exist\r\ndebug1: Executing proxy command: exec ssh -W ansible_host=10.0.1.11:22 -i /home/reseke/.ssh/id_rsa ec2-user1@18.184.73.248\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: identity file /home/reseke/.ssh/id.rsa type -1\r\ndebug1: identity file /home/reseke/.ssh/id.rsa-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10\r\nConnection timed out during banner exchange\r\nConnection to UNKNOWN port 65535 timed out",
+    "unreachable": true
+}
+2025-03-04 13:46:35,506 p=2387991 u=reseke n=ansible | PLAY RECAP ****************************************************************************************************************************
+2025-03-04 13:46:35,506 p=2387991 u=reseke n=ansible | ansible_host=10.0.1.10     : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-03-04 13:46:35,506 p=2387991 u=reseke n=ansible | ansible_host=10.0.1.11     : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-03-04 13:46:35,507 p=2387991 u=reseke n=ansible | ansible_host={{ jump_ip }} : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   

@@ -3,7 +3,7 @@
 # Main Lustre Playbook
 - hosts: all
   become: true
-  become_user: rdeseke_aws1
+  become_user: ec2-user
   gather_facts: false
 
   vars:
@@ -17,8 +17,8 @@
       copy:
         content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
         dest: "/home/rdeseke_aws1/.ssh/rsa.id"
-        owner: rdeseke-ec2
-        group: rdeseke-ec2
+        owner: ec2-user
+        group: ec2-user
         mode: '0600'
 
     - name: Install common packages
@@ -60,7 +60,7 @@
     - name: Add SSH private key to point connection server
       copy:
         content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
-        dest: "/home/rdeseke_aws1/.ssh/cluster_key"
+        dest: "/home/reseke/.ssh/id_rsa"
         owner: rdeseke_aws1
         group: rdeseke_aws1
         mode: '0600'
