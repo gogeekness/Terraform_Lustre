@@ -13,6 +13,9 @@
     mount_point: "/mnt/data"
 
   tasks:
+    - name: Ping it 
+      ansible.builtin.ping:
+        
     - name: Add SSH private key
       copy:
         content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
