@@ -39,6 +39,7 @@ locals {
   server_names = toset([for server in var.server_list : server.host_name])
 }
 
+
 ## Adding for access to the internet, I don't need it for testing.
 ## I add it here for future upgrades if needed. 
 # ##
@@ -116,6 +117,14 @@ resource "aws_instance" "Lustre_servers" {
   tags = {
     Name = "${each.key}"
   }
+}
+
+# Create a dynamic inventory with terraform so Ansibel can configure the VMs without manually transfering the ips
+resource "templatefile" "Make Dynamic Inventory" {
+  provisioner "file" {
+    source      = "Ansible_Inv_template.tftpl"
+    destination = "inventory/inventory_bak.yml"
+  }  
 }
 
 ### output public IP address

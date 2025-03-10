@@ -13,3 +13,9 @@ variable "availability_zone" {
   description = "VPC zone"
 # default = "eu-central-1a"
 }
+
+variable "ssh_key_location" {
+  type = string
+  description = "SSH kkey location"
+  sensitive = true
+}
