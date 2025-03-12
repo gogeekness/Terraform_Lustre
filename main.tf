@@ -4,9 +4,9 @@
 
 module "lust_net" {
   source = "./Lustre_Net"
-
   region             = var.region
   availability_zone  = var.availability_zone
+  ssh_key_location   = var.aws_key_pub
 }
 
 # for each node of this small cluster
@@ -21,16 +21,19 @@ variable "server_list" {
       host_name       = "lustre_mgt" 
       instance_type   = "t3a.large"
       ipv4            = "10.0.1.10"
+      public_ip     = ""  # Terraform will assign the public IP dynamically
     },
     {
       host_name       = "lustre_oss"  
       instance_type   = "t3.xlarge"
       ipv4            = "10.0.1.11"
+      public_ip     = ""  # Terraform will assign the public IP dynamically
     },    
     {
       host_name     = "lustre_client" 
       instance_type = "t2.micro"
       ipv4          = "10.0.1.12"
+      public_ip     = ""  # Terraform will assign the public IP dynamically
     }
   ]
 }
@@ -120,12 +123,17 @@ resource "aws_instance" "Lustre_servers" {
 }
 
 # Create a dynamic inventory with terraform so Ansibel can configure the VMs without manually transfering the ips
-resource "templatefile" "Make Dynamic Inventory" {
-  provisioner "file" {
-    source      = "Ansible_Inv_template.tftpl"
-    destination = "inventory/inventory_bak.yml"
-  }  
-}
+resource "template_file" "inventory" {
+  inventory = "${file(".Ansible_Inv_template.tftpl")}"
+
+  vars = {
+    server_list = var.server_list
+
+  }
+
+
+
+  }
 
 ### output public IP address
 output "ec2_global_ips" {

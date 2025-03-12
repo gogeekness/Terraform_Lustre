@@ -1,0 +1,36 @@
+# all:
+#   vars:
+#     ansible_ssh_private_key_file: /home/reseke/docker/Terraform_Lustre/.ssh/id.rsa
+#     host_key_checking: False
+#     ansible_user: ec2-user
+
+#   hosts:
+#     %{ for server in jsondecode(server_list) ~}
+#     {{ server.host_name }}:
+#       ansible_host: {{ server.public_ip if server.public_ip != "" else server.ipv4 }}
+#       private_ip: {{ server.ipv4 }}
+#       {% if server.public_ip != "" %}
+#       # If there's a public IP, you can add specific proxy settings or other attributes here
+#       ansible_ssh_common_args: "-o ProxyCommand=\"ssh -W %h:%p -i /home/reseke/.ssh/id.rsa ec2-user@{{ server.public_ip }}\""
+#       {% endif %}
+#     {% endfor %}
+
+
+all:
+  vars:
+    ansible_ssh_private_key_file: ${ var.ssh_key_location ~}
+    host_key_checking: False
+    ansible_user: ${ var.user ~}
+
+    hosts:
+    %{ for server in server_list ~}:  #server name
+
+        %{if server == lustre_client ~}
+        ansible_host: ${ public_ip ~}
+        { endif }
+        private_ip: ${ var.priate_ip ~}
+        %{if != lustre_client ~}
+        ansible_ssh_common_args: "-o ProxyCommand=\"ssh -W %h:%p -i /home/reseke/.ssh/id_rsa ec2-user@3.67.196.143\""
+        { endif }
+
+    %{ endfor ~}

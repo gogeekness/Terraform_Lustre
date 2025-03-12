@@ -16,6 +16,7 @@ variable "availability_zone" {
 
 variable "ssh_key_location" {
   type = string
-  description = "SSH kkey location"
+  description = "SSH key location"
+  default = "/home/reseke/.ssh/id.rsa"
   sensitive = true
 }
