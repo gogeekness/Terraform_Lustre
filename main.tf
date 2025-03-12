@@ -123,17 +123,18 @@ resource "aws_instance" "Lustre_servers" {
 }
 
 # Create a dynamic inventory with terraform so Ansibel can configure the VMs without manually transfering the ips
-resource "template_file" "inventory" {
-  inventory = "${file(".Ansible_Inv_template.tftpl")}"
+data "template_file" "ansible_inventory" {
+  template = file("${path.module}/inventory/inventory_template.tftpl")
 
   vars = {
-    server_list = var.server_list
-
+    server_list = jsonencode(var.server_list)
   }
+}
 
-
-
-  }
+resource "local_file" "ansible_inventory" {
+  content  = data.template_file.ansible_inventory.rendered
+  filename = "${path.module}/inventory/inventory.yml"
+}
 
 ### output public IP address
 output "ec2_global_ips" {
