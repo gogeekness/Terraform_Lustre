@@ -10,6 +10,7 @@ module "lust_net" {
 }
 
 # for each node of this small cluster
+# Terraform will assign the public IP dynamically
 variable "server_list" {
   type = list(object({
     host_name     = string
@@ -21,19 +22,19 @@ variable "server_list" {
       host_name       = "lustre_mgt" 
       instance_type   = "t3a.large"
       ipv4            = "10.0.1.10"
-      public_ip     = ""  # Terraform will assign the public IP dynamically
+      public_ip     = ""  
     },
     {
       host_name       = "lustre_oss"  
       instance_type   = "t3.xlarge"
       ipv4            = "10.0.1.11"
-      public_ip     = ""  # Terraform will assign the public IP dynamically
+      public_ip     = ""  
     },    
     {
       host_name     = "lustre_client" 
       instance_type = "t2.micro"
       ipv4          = "10.0.1.12"
-      public_ip     = ""  # Terraform will assign the public IP dynamically
+      public_ip     = "" 
     }
   ]
 }
