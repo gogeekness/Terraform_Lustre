@@ -60,3 +60,9 @@ variable "availability_zone" {
   type        = string
   description = "VPC zone"
 }
+
+variable "aws_user" {
+  type        = string
+  description = "Key user for teh cluster"
+  default = "ec2-user"
+}

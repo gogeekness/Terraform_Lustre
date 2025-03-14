@@ -41,6 +41,7 @@ variable "server_list" {
 
 locals {
   server_names = toset([for server in var.server_list : server.host_name])
+  inventory = ""
 }
 
 
@@ -129,13 +130,22 @@ data "template_file" "ansible_inventory" {
 
   vars = {
     server_list = jsonencode(var.server_list)
+    ssh_key_location = "./Terraform_Lustre/.ssh/id.rsa"
+    user = jsonencode(var.aws_user)
   }
+ # server_list = jsonencode(var.server_list) 
 }
 
+# Write the final rendered inventory to a file on the local system
 resource "local_file" "ansible_inventory" {
   content  = data.template_file.ansible_inventory.rendered
-  filename = "${path.module}/inventory/inventory.yml"
+  filename = "${path.module}/generated_inventory.yml"  # Path to save the file locally
 }
+
+# resource "local_file" "ansible_inventory" {
+#   content  = data.template_file.ansible_inventory.rendered
+#   filename = "${path.module}/inventory/inventory.yml"
+# }
 
 ### output public IP address
 output "ec2_global_ips" {
@@ -148,22 +158,5 @@ output "ec2_private_ips" {
 output "client_public_ip" {
   value = aws_instance.Lustre_servers["lustre_client"].public_ip
 }
-
-# resource "local_file" "ansible_inventory" {
-#   content = templatefile("inventory.tpl", {
-#     client_public_ip = instance[0].public_ip
-#     client_private_ip = "10.0.1.10"
-#     oss_private_ip = "10.0.1.11"
-#     mgt_private_ip = "10.0.1.12"
-#   })
-#   filename = "inventory.yml"
-# }
-
-### to grab and read the ip of the globla_ip use this as the grep for bash.
-##
-## egrep -A1 "global_ips." terraform_ouput.txt | egrep "[0-9]{1,3}(\.[0-9]{1,3}){3}" | cut -d\" -f2
-
-## /dev/xvda4     xfs       6.8G  1.7G  5.2G  25% /
-
 
 ## ENDE
