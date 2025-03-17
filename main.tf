@@ -16,6 +16,7 @@ variable "server_list" {
     host_name     = string
     instance_type = string
     ipv4          = string
+    public_ip     = string
   }))
   default = [
     {
@@ -125,27 +126,27 @@ resource "aws_instance" "Lustre_servers" {
 }
 
 # Create a dynamic inventory with terraform so Ansibel can configure the VMs without manually transfering the ips
-data "template_file" "ansible_inventory2" {
-  template = file("${path.module}/inventory/inventory_template2.tftpl")
+# data "template_file" "ansible_inventory2" {
+#   template = file("${path.module}/inventory/inventory_template2.tftpl")
 
-  vars = {
-    server_list = jsonencode(var.server_list)
-    ssh_key_location = "./Terraform_Lustre/.ssh/id.rsa"
-    user = jsonencode(var.aws_user)
-  }
- # server_list = jsonencode(var.server_list) 
-}
-
-# Write the final rendered inventory to a file on the local system
-resource "local_file" "ansible_inventory2" {
-  content  = data.template_file.ansible_inventory2.rendered
-  filename = "${path.module}/generated_inventory.yml"  # Path to save the file locally
-}
-
-# resource "local_file" "ansible_inventory" {
-#   content  = data.template_file.ansible_inventory.rendered
-#   filename = "${path.module}/inventory/inventory.yml"
+#   vars = {
+#     server_list = yamlencode(var.server_list)
+#     ssh_key_location = "./Terraform_Lustre/.ssh/id.rsa"
+#     user = yamlencode(var.aws_user)
+#   }
+#  # server_list = jsonencode(var.server_list) 
 # }
+
+# # Write the final rendered inventory to a file on the local system
+# resource "local_file" "ansible_inventory2" {
+#   content  = data.template_file.ansible_inventory2.rendered
+#   filename = "${path.module}/generated_inventory.yml"  # Path to save the file locally
+# }
+
+resource "local_file" "ansible_inventory" {
+  content  = templatefile("${path.module}/inventory/inventory_template2.tftpl", { server = var.server_list })
+  filename = "${path.module}/inventory/generated_inventory.yml"
+}
 
 ### output public IP address
 output "ec2_global_ips" {
@@ -157,6 +158,11 @@ output "ec2_private_ips" {
 
 output "client_public_ip" {
   value = aws_instance.Lustre_servers["lustre_client"].public_ip
+}
+
+variable "server_list" {
+    
+  
 }
 
 ## ENDE
