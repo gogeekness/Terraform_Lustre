@@ -125,8 +125,8 @@ resource "aws_instance" "Lustre_servers" {
 }
 
 # Create a dynamic inventory with terraform so Ansibel can configure the VMs without manually transfering the ips
-data "template_file" "ansible_inventory" {
-  template = file("${path.module}/inventory/inventory_template.tftpl")
+data "template_file" "ansible_inventory2" {
+  template = file("${path.module}/inventory/inventory_template2.tftpl")
 
   vars = {
     server_list = jsonencode(var.server_list)
@@ -137,8 +137,8 @@ data "template_file" "ansible_inventory" {
 }
 
 # Write the final rendered inventory to a file on the local system
-resource "local_file" "ansible_inventory" {
-  content  = data.template_file.ansible_inventory.rendered
+resource "local_file" "ansible_inventory2" {
+  content  = data.template_file.ansible_inventory2.rendered
   filename = "${path.module}/generated_inventory.yml"  # Path to save the file locally
 }
 
