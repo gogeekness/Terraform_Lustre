@@ -1,0 +1,18 @@
+# Generated inventory for ansible from ec2 instances.
+
+---
+plugin: aws_ec2
+aws_profile: default
+regions:
+  - eu-central-1
+# filters:
+#   tag:Name:
+#     - dev-*
+#     - share-resource
+#     - hotfix
+#   instance-state-name : running
+# keyed_groups:
+#   - prefix: env
+#     key: tags['env']
+#   - prefix: dev
+#     key: tags['ssm']

@@ -34,7 +34,7 @@ variable "server_list" {
       host_name     = "lustre_client" 
       instance_type = "t2.micro"
       ipv4          = "10.0.1.12"
-      public_ip     = "" 
+      public_ip     = "fill" 
     }
   ]
 }
@@ -124,27 +124,22 @@ resource "aws_instance" "Lustre_servers" {
   }
 }
 
-# Create a dynamic inventory with terraform so Ansibel can configure the VMs without manually transfering the ips
-data "template_file" "ansible_inventory" {
-  template = file("${path.module}/inventory/inventory_template.tftpl")
+# resource "ansible_host" "Lustre_servers" {
+#   #for_each        = { for server in var.server_list : server.host_name => server }
+#   groups                   = ["hosts"]
+#   vars = {
+#     name                    = each.host_name
+#     inventory_hostname      = each.host_name
+#     user                    = each.user
+#     ansible_host            = each.value.public_ip == "" ? "0.0.0.0" : aws_instance.Lustre_servers["lustre_client"].public_ip
+#     private_ip              = each.value.ipv4
+#     ansible_ssh_common_args = join(",", "-o ProxyCommand=\"", "ssh -W %h:%p -i /home/reseke/.ssh/id_rsa ec2-user@", aws_instance.Lustre_servers["lustre_client"].public_ip,"\"")
+#     associate_public_ip_address = each.key == "lustre_client" ? true : false
+#   }
 
-  vars = {
-    server_list = jsonencode(var.server_list)
-    ssh_key_location = "./Terraform_Lustre/.ssh/id.rsa"
-    user = jsonencode(var.aws_user)
-  }
- # server_list = jsonencode(var.server_list) 
-}
-
-# Write the final rendered inventory to a file on the local system
-resource "local_file" "ansible_inventory" {
-  content  = data.template_file.ansible_inventory.rendered
-  filename = "${path.module}/generated_inventory.yml"  # Path to save the file locally
-}
-
-# resource "local_file" "ansible_inventory" {
-#   content  = data.template_file.ansible_inventory.rendered
-#   filename = "${path.module}/inventory/inventory.yml"
+#   tags = {
+#     Name = "Ansible-${each.key}"
+#   }
 # }
 
 ### output public IP address
