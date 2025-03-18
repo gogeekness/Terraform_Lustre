@@ -7455,3 +7455,109 @@ YAML file, not YAML inventory
 2025-03-18 13:00:54,262 p=154698 u=reseke n=ansible | |
 2025-03-18 13:00:54,363 p=154698 u=reseke n=ansible | /
 2025-03-18 13:00:54,465 p=154698 u=reseke n=ansible | amazon.aws (9.3.0) was installed successfully
+2025-03-18 15:25:56,229 p=229245 u=reseke n=ansible | [WARNING]: Collection amazon.aws does not support Ansible version 2.10.8
+
+2025-03-18 15:25:56,278 p=229245 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with yaml plugin: Plugin configuration YAML
+file, not YAML inventory
+
+2025-03-18 15:25:56,279 p=229245 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with ini plugin: Invalid host pattern '---'
+supplied, '---' is normally a sign this is a YAML file.
+
+2025-03-18 15:25:56,280 p=229245 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with auto plugin: Failed to import the
+required Python library (botocore and boto3) on reseke-NH5x-7xDCx-DDx's Python /usr/bin/python3. Please read the module documentation
+and install it in the appropriate location. If the required library is installed, but Ansible is using the wrong Python interpreter,
+please consult the documentation on ansible_python_interpreter
+
+2025-03-18 15:25:56,280 p=229245 u=reseke n=ansible | [WARNING]: Unable to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml as an inventory source
+
+2025-03-18 15:25:56,280 p=229245 u=reseke n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2025-03-18 15:25:56,286 p=229245 u=reseke n=ansible | {
+    "_meta": {
+        "hostvars": {}
+    },
+    "all": {
+        "children": [
+            "ungrouped"
+        ]
+    }
+}
+2025-03-18 15:39:29,211 p=239711 u=reseke n=ansible | [WARNING]: Collection amazon.aws does not support Ansible version 2.10.8
+
+2025-03-18 15:39:29,251 p=239711 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with yaml plugin: Plugin configuration YAML
+file, not YAML inventory
+
+2025-03-18 15:39:29,251 p=239711 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with ini plugin: Invalid host pattern '---'
+supplied, '---' is normally a sign this is a YAML file.
+
+2025-03-18 15:39:29,252 p=239711 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with auto plugin: Failed to import the
+required Python library (botocore and boto3) on reseke-NH5x-7xDCx-DDx's Python /usr/bin/python3. Please read the module documentation
+and install it in the appropriate location. If the required library is installed, but Ansible is using the wrong Python interpreter,
+please consult the documentation on ansible_python_interpreter
+
+2025-03-18 15:39:29,252 p=239711 u=reseke n=ansible | [WARNING]: Unable to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml as an inventory source
+
+2025-03-18 15:39:29,252 p=239711 u=reseke n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2025-03-18 15:39:29,257 p=239711 u=reseke n=ansible | {
+    "_meta": {
+        "hostvars": {}
+    },
+    "all": {
+        "children": [
+            "ungrouped"
+        ]
+    }
+}
+2025-03-18 15:42:25,222 p=242234 u=reseke n=ansible | [WARNING]: Collection amazon.aws does not support Ansible version 2.10.8
+
+2025-03-18 15:42:25,254 p=242234 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with yaml plugin: Plugin configuration YAML
+file, not YAML inventory
+
+2025-03-18 15:42:25,255 p=242234 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with ini plugin: Invalid host pattern '---'
+supplied, '---' is normally a sign this is a YAML file.
+
+2025-03-18 15:42:25,256 p=242234 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with auto plugin: Failed to import the
+required Python library (botocore and boto3) on reseke-NH5x-7xDCx-DDx's Python /usr/bin/python3. Please read the module documentation
+and install it in the appropriate location. If the required library is installed, but Ansible is using the wrong Python interpreter,
+please consult the documentation on ansible_python_interpreter
+
+2025-03-18 15:42:25,256 p=242234 u=reseke n=ansible | [WARNING]: Unable to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml as an inventory source
+
+2025-03-18 15:42:25,256 p=242234 u=reseke n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2025-03-18 15:42:25,264 p=242234 u=reseke n=ansible | {
+    "_meta": {
+        "hostvars": {}
+    },
+    "all": {
+        "children": [
+            "ungrouped"
+        ]
+    }
+}
+2025-03-18 15:47:44,345 p=246420 u=reseke n=ansible | [WARNING]: Collection amazon.aws does not support Ansible version 2.10.8
+
+2025-03-18 15:47:44,572 p=246420 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with yaml plugin: Plugin configuration YAML
+file, not YAML inventory
+
+2025-03-18 15:47:44,573 p=246420 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with ini plugin: Invalid host pattern '---'
+supplied, '---' is normally a sign this is a YAML file.
+
+2025-03-18 15:47:44,574 p=246420 u=reseke n=ansible | [WARNING]:  * Failed to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml with auto plugin: 'super' object has no
+attribute 'get_options'
+
+2025-03-18 15:47:44,574 p=246420 u=reseke n=ansible | [WARNING]: Unable to parse /home/reseke/docker/Terraform_Lustre/inventory/aws_ec2.yml as an inventory source
+
+2025-03-18 15:47:44,574 p=246420 u=reseke n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2025-03-18 15:47:44,581 p=246420 u=reseke n=ansible | {
+    "_meta": {
+        "hostvars": {}
+    },
+    "all": {
+        "children": [
+            "ungrouped"
+        ]
+    }
+}

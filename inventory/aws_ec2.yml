@@ -5,6 +5,9 @@ plugin: aws_ec2
 aws_profile: default
 regions:
   - eu-central-1
+filters: 
+  instance-state-name : running
+
 # filters:
 #   tag:Name:
 #     - dev-*
