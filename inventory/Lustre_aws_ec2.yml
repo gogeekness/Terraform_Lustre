@@ -8,9 +8,15 @@ regions:
 filters: 
   instance-state-name : running
 
+keyed_groups:
+  - key: aws_ec2
+    prefix: Lustre
+
 hostnames:
   - private-ip-address
 
+compose: 
+  ansible_host: public_ip_address
 
 # filters:
 #   tag:Name:

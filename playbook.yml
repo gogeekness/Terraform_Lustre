@@ -20,64 +20,87 @@
 
 
   tasks:
-    - name: Ping it 
-      ansible.builtin.ping:
+    # - name: Ping it 
+    #   ansible.builtin.ping:
+
+    - name: Print Public IP Address
+      debug:
+        msg: "Public IP of {{ inventory_hostname }} is {{ hostvars[inventory_hostname]['public_ip_address'] }}"
+
+    - name: Store Public IP for Later Use
+      set_fact:
+        ec2_public_ip: "{{ hostvars[inventory_hostname]['public_ip_address'] }}"
+
+    - name: Use Public IP (Example)
+      debug:
+        msg: "Using stored IP: {{ ec2_public_ip }}"
+
+    - name: Get Hostname
+      ansible.builtin.command:
+        echo {{ all }}
+      register: hostnames
+
+    - name: show hosts
+      ansible.builtin.debug:
+        var: hostnames
+        verbosity: 2
         
-    - name: Add SSH private key
-      copy:
-        content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
-        dest: "/home/{{ ansible_user }}/.ssh/rsa.id"
-        owner: ec2-user
-        group: ec2-user
-        mode: '0600'
 
-    - name: Install common packages
-      become: true
-      become_user: root
-      ansible.builtin.package:
-        name: 
-          - util-linux
-          - xfsprogs
-          - nano
-          - openssh
-        state: present
-      async: 60
-      poll: 60
+  #   - name: Add SSH private key
+  #     copy:
+  #       content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
+  #       dest: "/home/{{ ansible_user }}/.ssh/rsa.id"
+  #       owner: ec2-user
+  #       group: ec2-user
+  #       mode: '0600'
+
+  #   - name: Install common packages
+  #     become: true
+  #     become_user: root
+  #     ansible.builtin.package:
+  #       name: 
+  #         - util-linux
+  #         - xfsprogs
+  #         - nano
+  #         - openssh
+  #       state: present
+  #     async: 60
+  #     poll: 60
 
         
 
-  ### set the three servers with data drives
-    - name: Create mount points for data drives
-      file:
-        path: "{{ data_device_name }}"
-        state: directory
-        mode: '0755'
-      with_sequence: start=1 end=3
+  # ### set the three servers with data drives
+  #   - name: Create mount points for data drives
+  #     file:
+  #       path: "{{ data_device_name }}"
+  #       state: directory
+  #       mode: '0755'
+  #     with_sequence: start=1 end=3
 
-    - name: Create filesystem on EBS volume
-      filesystem:
-        fstype: ext4
-        dev: "{{ data_device_name }}"
-      when: device_name is defined
+  #   - name: Create filesystem on EBS volume
+  #     filesystem:
+  #       fstype: ext4
+  #       dev: "{{ data_device_name }}"
+  #     when: device_name is defined
 
-    - name: Create mount directory
-      file:
-        path: "{{ mount_point }}"
-        state: directory
-        mode: '0755'
+  #   - name: Create mount directory
+  #     file:
+  #       path: "{{ mount_point }}"
+  #       state: directory
+  #       mode: '0755'
 
-    - name: Mount EBS volume
-      mount:
-        path: "{{ mount_point }}"
-        src: "{{ device_name }}"
-        fstype: ext4
-        state: mounted
+  #   - name: Mount EBS volume
+  #     mount:
+  #       path: "{{ mount_point }}"
+  #       src: "{{ device_name }}"
+  #       fstype: ext4
+  #       state: mounted
 
-    - name: Add SSH private key to point connection server
-      copy:
-        content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
-        dest: "/home/reseke/.ssh/id_rsa"
-        owner: rdeseke_aws1
-        group: rdeseke_aws1
-        mode: '0600'
-      when: lookup('env', 'SSH_PRIVATE_KEY') is defined
+  #   - name: Add SSH private key to point connection server
+  #     copy:
+  #       content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
+  #       dest: "/home/reseke/.ssh/id_rsa"
+  #       owner: rdeseke_aws1
+  #       group: rdeseke_aws1
+  #       mode: '0600'
+  #     when: lookup('env', 'SSH_PRIVATE_KEY') is defined
