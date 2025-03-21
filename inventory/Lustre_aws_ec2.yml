@@ -5,18 +5,22 @@ plugin: aws_ec2
 aws_profile: default
 regions:
   - eu-central-1
-filters: 
-  instance-state-name : running
 
 keyed_groups:
   - key: aws_ec2
-    prefix: Lustre
+    prefix: aws_ec2  
 
-hostnames:
-  - private-ip-address
+filters:
+  instance-state-name: running
 
-compose: 
-  ansible_host: public_ip_address
+compose:
+  ansible_host: private_ip_address  # Ensure Ansible connects via private IP
+  public_ip_address: public_ip_address | default('')  # Ensure key exists
+
+# Set SSH ProxyCommand for private hosts
+# hostvars:
+#   ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -i /home/reseke/.ssh/id_rsa ec2-user@' + hostvars['10.0.1.12']['public_ip_address'] + '"' if inventory_hostname in ['10.0.1.10', '10.0.1.11'] and hostvars['10.0.1.12']['public_ip_address'] | default('') != '' else ''
+    
 
 # filters:
 #   tag:Name:
