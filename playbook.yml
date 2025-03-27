@@ -23,6 +23,10 @@
     # - name: Ping it 
     #   ansible.builtin.ping:
 
+    - name: include vault
+      ansible.builtin.include_vars:
+        file: Terraform_Vault
+
     - name: Print Public IP Address
       debug:
         msg: 
@@ -46,29 +50,39 @@
         #- inventory_hostname | regex_search("^ec2.*")
       delegate_to: localhost
       run_once: true
-    
+
     ## varify that the public IP is aviable to all hosts
     - name: Mark ec2 public IP
       ansible.builtin.debug:
-        msg: "{{ inventory_hostname }} The public IP is {{ ec2_public_ip }}"
+        msg: 
+          - "{{ inventory_hostname }} The public IP is {{ ec2_public_ip }}"
+          - "{{ ansible_host }} IP to connect with"
 
+    - name: Debug matching hostnames
+      debug:
+        msg: "This host matches: {{ inventory_hostname }}"
+      when: inventory_hostname is match("^ip-10.*")
 
     ## define the ssh setting to use the bastion_public_ip so ansible can reach all of the servers
     ## Good ssh: ssh -i /home/user/.ssh/lustretest ec2-user@public_ip
-    ## ssh -i /home/user/.ssh/lustretest -J ec2-user@52.29.192.136:22 ec2-user@10.0.1.10
+    ## ssh -i /home/user/.ssh/lustretest -J ec2-user@52.29.192.136:22 ec2-user@10.0.1.x
+    ## Then I use the client as the jumphost/bastion so a direct connection is needed.
     - name: Set SSH ProxyCommand for Specific Hosts
       set_fact:
         ansible_ssh_common_args: >-
-          -o ProxyCommand="ssh -i {{ ssh_key_location }} -J ec2-user@{{ ec2_public_ip }}:%p ec2_user@%h"
+          -o ProxyCommand="ssh -i {{ ssh_key_location }} -J -tt ec2-user@{{ ec2_public_ip }}:%p ec2_user@%h"
+      when: inventory_hostname is match("^ip-10.*")
 
-        ## varify that the public IP is aviable to all hosts
-    - name: Print out the ssh connection settings
-      ansible.builtin.debug:
-        msg: "{{ ansible_ssh_common_args }}"
+    - name: Set SSH for client
+      set_fact:
+        ansible_ssh_common_args: >-
+          -o ProxyCommand="ssh -i {{ ssh_key_location }} -tt ec2-user@{{ ec2_public_ip }}"
+      when: inventory_hostname is match("^ec2.*")
 
     - name: Print SSH connection details
       debug:
-        msg: "Connecting to {{ inventory_hostname }} via {{ ansible_host }} using {{ ansible_ssh_common_args }}"
+        msg: "Connecting to {{ inventory_hostname }} via {{ ansible_host }} \
+          using {{ ansible_ssh_common_args | default('No SSH args set')  }}"
       ignore_errors: true
 
     - name: Ping servers
