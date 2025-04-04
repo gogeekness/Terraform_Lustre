@@ -7,19 +7,21 @@ regions:
   - eu-central-1
 filters: 
   instance-state-name : running
+  # tag:Project: LustreTest
 
 hostnames:
-  - private-ip-address
+  - ip-address
+  - dns-name
 
+keyed_groups:
+  - key: tags.Name
+    prefix: tag_Name_
+  - key: tags.Role
+    prefix: tag_Role_
+  - key: tags.Project
+    prefix: tag_Project_
 
-# filters:
-#   tag:Name:
-#     - dev-*
-#     - share-resource
-#     - hotfix
-#   instance-state-name : running
-# keyed_groups:
-#   - prefix: env
-#     key: tags['env']
-#   - prefix: dev
-#     key: tags['ssm']
+compose:
+  ansible_host: "{{ private_ip_address }}"
+  public_ip_address: "{{ public_ip_address | default('') }}"
+  

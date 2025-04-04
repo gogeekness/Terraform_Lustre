@@ -16,34 +16,51 @@ variable "server_list" {
     host_name     = string
     instance_type = string
     ipv4          = string
+    public_ip     = string
+    tags          = map(string)
   }))
   default = [
     {
-      host_name       = "lustre_mgt" 
-      instance_type   = "t3a.large"
-      ipv4            = "10.0.1.10"
-      public_ip     = ""  
+      host_name     = "lustre_mgt"
+      instance_type = "t3a.large"
+      ipv4          = "10.0.1.10"
+      public_ip     = ""
+      tags = {
+        Name    = "lustre_mgt"
+        Role    = "manager"
+        Project = "lustre"
+      }
     },
     {
-      host_name       = "lustre_oss"  
-      instance_type   = "t3.xlarge"
-      ipv4            = "10.0.1.11"
-      public_ip     = ""  
-    },    
+      host_name     = "lustre_oss"
+      instance_type = "t3.xlarge"
+      ipv4          = "10.0.1.11"
+      public_ip     = ""
+      tags = {
+        Name    = "lustre_oss"
+        Role    = "storage"
+        Project = "lustre"
+      }
+    },
     {
-      host_name     = "lustre_client" 
+      host_name     = "lustre_client"
       instance_type = "t2.micro"
       ipv4          = "10.0.1.12"
-      public_ip     = "fill" 
+      public_ip     = "fill"
+      tags = {
+        Name    = "bastion"
+        Role    = "client"
+        Project = "lustre"
+      }
     }
   ]
 }
+
 
 locals {
   server_names = toset([for server in var.server_list : server.host_name])
   inventory = ""
 }
-
 
 ## Adding for access to the internet, I don't need it for testing.
 ## I add it here for future upgrades if needed. 
@@ -96,12 +113,11 @@ resource "aws_volume_attachment" "oss_large_drive" {
 
 
 resource "aws_key_pair" "Lustre_Key" {
-  # the name for the resource
+  # the name for the resource adding the RSA key to servers
   key_name  = "Lustre_Key"
   public_key = var.aws_key_pub
   # public_key = file("./ssh/lustretest.pub")  #defined in screts
 }
-
 
 resource "aws_instance" "Lustre_servers" {
   for_each        = { for server in var.server_list : server.host_name => server }
@@ -119,28 +135,13 @@ resource "aws_instance" "Lustre_servers" {
     # the one we created as "RESOURCE 1) Also we now use the "aws_security_group" of RESOURCE 2) above
   vpc_security_group_ids = [module.lust_net.security_group.id]
 
-  tags = {
-    Name = "${each.key}"
-  }
+  tags = merge(
+    {
+      Name = each.value.host_name
+    },
+    each.value.tags
+  )
 }
-
-# resource "ansible_host" "Lustre_servers" {
-#   #for_each        = { for server in var.server_list : server.host_name => server }
-#   groups                   = ["hosts"]
-#   vars = {
-#     name                    = each.host_name
-#     inventory_hostname      = each.host_name
-#     user                    = each.user
-#     ansible_host            = each.value.public_ip == "" ? "0.0.0.0" : aws_instance.Lustre_servers["lustre_client"].public_ip
-#     private_ip              = each.value.ipv4
-#     ansible_ssh_common_args = join(",", "-o ProxyCommand=\"", "ssh -W %h:%p -i /home/reseke/.ssh/id_rsa ec2-user@", aws_instance.Lustre_servers["lustre_client"].public_ip,"\"")
-#     associate_public_ip_address = each.key == "lustre_client" ? true : false
-#   }
-
-#   tags = {
-#     Name = "Ansible-${each.key}"
-#   }
-# }
 
 ### output public IP address
 output "ec2_global_ips" {
