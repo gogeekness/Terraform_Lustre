@@ -43,3 +43,5 @@
     ansible_ssh_common_args: >-
       -o ProxyCommand="ssh -W %h:%p -i {{ ssh_key_location }} ec2-user@{{ ec2_public_ip }}"
   when: inventory_hostname is match("^ip-10.*")
+  
+...

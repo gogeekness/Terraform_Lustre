@@ -1,19 +1,52 @@
 ---
     ## Need to install a newer version of python to have ansible run properly
     ## Alma 8 version is only paython 3.6
-  - nmae: Pyton upgrarde block on Bastion
-    block:
-    - name: Install Python 3.8
-      raw: |
-        sudo yum install -y python38 || dnf install -y python38
-      become: yes
-      
-    - name: Set Python interpreter for future tasks
-      set_fact:
-        ansible_python_interpreter: /usr/bin/python3.8    
+- name: BLOCK Pyton upgrarde on Bastion
+  when: inventory_hostname is match('^ec2.*')
+  block:
+  - name: Install Python 3.8
+    raw: |
+      sudo yum install -y python38 || dnf install -y python38
+    become: true
 
-    - name: Load Python 3.8 ONLY
-      raw: |
-        sudo yum  -y --downloadonly python38 || dnf install -y python38
+  - name: Set Python interpreter for future tasks
+    set_fact:
+      ansible_python_interpreter: /usr/bin/python3.8   
 
-    when: inventory_hostname is match('^ec2.*')
+  - name: Load Python 3.8 ONLY
+    raw: |
+      sudo yum  -y download --downloadonly python38
+    become: true
+  # end block    
+
+- name: BLOCK Pyton upgrarde on other systems
+  when: inventory_hostname is match('^ip-.*')
+  block:
+  - name: Copy package to other servers.
+    raw: |
+      'sudo scp ec2-user${{ tag_Name__bastion[host] }}:./python30*8 ec2_user@"{{ hostvars[inventory_hostname]['private_ip_address'] }}":.' 
+    become: true
+  # end block
+  #always:
+
+# - name: BLOCK on other servers, update python3.8
+#   block:
+#   - name:  python3.8 package
+#     stat: 
+#       path: ./python38
+#     register: python_is_good
+          
+#   - name: install package
+#     raw:
+#       sudo yum localinstall ./python38
+#       path
+#   when: inventory_hostname is match('^ip-.*')
+
+  
+  ### exeption handing
+  # rescue:
+
+  # end block
+
+  
+...

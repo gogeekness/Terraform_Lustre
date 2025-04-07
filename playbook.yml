@@ -15,8 +15,8 @@
   #### set roles for playbook 
   ## update python to python3.8
   roles:
-    - Set_SSh_Vars
-    - Python_Up
+    - role: Set_SSH_Vars
+    - role: Python_Up
 
 
   vars:
