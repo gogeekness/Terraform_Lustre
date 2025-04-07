@@ -1,0 +1,45 @@
+---
+#### Task to define the public_IP and set the facts to use it as teh Bastion IP
+
+## loop through all of the hosts to find the one with a public ip
+## Save it for all hosts as a bastion or jump host access
+- name: set_fact hostvar of public IP
+  set_fact:
+    ec2_public_ip: "{{ hostvars[item]['public_ip_address'] }}"  
+  when:
+    - when: hostvars[item]['public_ip_address'] is defined
+    - hostvars[item]['public_ip_address'] != ''
+    - ec2_public_ip is not defined
+  loop: "{{ ansible_play_hosts }}"
+  loop_control: 
+    label: "{{ item }}"
+    #- inventory_hostname | regex_search("^ec2.*")
+  delegate_to: localhost
+  run_once: true
+
+## varify that the public IP is aviable to all hosts
+- name: Mark ec2 public IP
+  ansible.builtin.debug:
+    msg: 
+      - "{{ inventory_hostname }} The public IP is {{ ec2_public_ip }}"
+      - "{{ ansible_host }} IP to connect with"
+
+- name: Debug matching hostnames
+  debug:
+    msg: "This host matches: {{ inventory_hostname }}"
+  when: inventory_hostname is match("^ip-10.*")
+
+- name: Make sure bastion uses public IP
+  ansible.builtin.set_fact:
+    ansible_host: "{{ hostvars[inventory_hostname]['public_ip_address'] }}"
+  when: inventory_hostname is match('^ec2.*')
+
+## define the ssh setting to use the bastion_public_ip so ansible can reach all of the servers
+## Good ssh: ssh -i /home/user/.ssh/lustretest ec2-user@public_ip
+## ssh -i /home/user/.ssh/lustretest -J ec2-user@52.29.192.136:22 ec2-user@10.0.1.x
+## Then I use the client as the jumphost/bastion so a direct connection is needed.
+- name: Set SSH ProxyCommand for Specific Hosts
+  set_fact:
+    ansible_ssh_common_args: >-
+      -o ProxyCommand="ssh -W %h:%p -i {{ ssh_key_location }} ec2-user@{{ ec2_public_ip }}"
+  when: inventory_hostname is match("^ip-10.*")

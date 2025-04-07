@@ -1,0 +1,19 @@
+---
+    ## Need to install a newer version of python to have ansible run properly
+    ## Alma 8 version is only paython 3.6
+  - nmae: Pyton upgrarde block on Bastion
+    block:
+    - name: Install Python 3.8
+      raw: |
+        sudo yum install -y python38 || dnf install -y python38
+      become: yes
+      
+    - name: Set Python interpreter for future tasks
+      set_fact:
+        ansible_python_interpreter: /usr/bin/python3.8    
+
+    - name: Load Python 3.8 ONLY
+      raw: |
+        sudo yum  -y --downloadonly python38 || dnf install -y python38
+
+    when: inventory_hostname is match('^ec2.*')

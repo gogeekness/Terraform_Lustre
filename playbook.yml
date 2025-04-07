@@ -6,10 +6,18 @@
   become: true
   become_user: ec2-user
   gather_facts: false
+  
   #stop ansible from hanging
   any_errors_fatal: true
   #stop ansible if can not log on.
   ignore_unreachable: true
+
+  #### set roles for playbook 
+  ## update python to python3.8
+  roles:
+    - Set_SSh_Vars
+    - Python_Up
+
 
   vars:
     data_device_name: "/dev/xvdd"  # Lust 
@@ -18,64 +26,23 @@
     mount_point: "/mnt/data"
     ansible_command_timeout: 60  # timeout if ansible gets stuck
 
-  tasks:
-    # - name: Ping it 
-    #   ansible.builtin.ping:
-
+  pre_tasks:
+    ### Set vault file and fetch vars from it
     - name: include vault
       ansible.builtin.include_vars:
         file: Terraform_Vault
 
+    ### Shoe the starting hostnames and IPs 
     - name: Print Public IP Address
       debug:
         msg: 
           - "Public IP of {{ inventory_hostname }} is {{ hostvars[inventory_hostname]['public_ip_address'] }}"
           - "Ansible Play hosts {{ ansible_play_hosts }}"
       ignore_errors: true
-  
 
-    ## loop through all of the hosts to find the one with a public ip
-    ## Save it for all hosts as a bastion or jump host access
-    - name: set_fact hostvar of public IP
-      set_fact:
-        ec2_public_ip: "{{ hostvars[item]['public_ip_address'] }}"  
-      when:
-        - when: hostvars[item]['public_ip_address'] is defined
-        - hostvars[item]['public_ip_address'] != ''
-        - ec2_public_ip is not defined
-      loop: "{{ ansible_play_hosts }}"
-      loop_control: 
-        label: "{{ item }}"
-        #- inventory_hostname | regex_search("^ec2.*")
-      delegate_to: localhost
-      run_once: true
-
-    ## varify that the public IP is aviable to all hosts
-    - name: Mark ec2 public IP
-      ansible.builtin.debug:
-        msg: 
-          - "{{ inventory_hostname }} The public IP is {{ ec2_public_ip }}"
-          - "{{ ansible_host }} IP to connect with"
-
-    - name: Debug matching hostnames
-      debug:
-        msg: "This host matches: {{ inventory_hostname }}"
-      when: inventory_hostname is match("^ip-10.*")
-
-    - name: Make sure bastion uses public IP
-      ansible.builtin.set_fact:
-        ansible_host: "{{ hostvars[inventory_hostname]['public_ip_address'] }}"
-      when: inventory_hostname is match('^ec2.*')
-
-    ## define the ssh setting to use the bastion_public_ip so ansible can reach all of the servers
-    ## Good ssh: ssh -i /home/user/.ssh/lustretest ec2-user@public_ip
-    ## ssh -i /home/user/.ssh/lustretest -J ec2-user@52.29.192.136:22 ec2-user@10.0.1.x
-    ## Then I use the client as the jumphost/bastion so a direct connection is needed.
-    - name: Set SSH ProxyCommand for Specific Hosts
-      set_fact:
-        ansible_ssh_common_args: >-
-          -o ProxyCommand="ssh -W %h:%p -i {{ ssh_key_location }} ec2-user@{{ ec2_public_ip }}"
-      when: inventory_hostname is match("^ip-10.*")
+  tasks:
+    # - name: Ping it 
+    #   ansible.builtin.ping:
 
     # - name: Set SSH for client
     #   set_fact:
@@ -88,18 +55,27 @@
           using {{ ansible_ssh_common_args | default('No SSH args set')  }}"
       ignore_errors: true
 
-    - name: Ping servers
-      ansible.builtin.ping:    
-
-    - name: Get Hostname
-      ansible.builtin.command:
-        cmd: "echo $(uname -a)" 
+    ### test access to the servers
+    - name: Get Hostname via raw (bypasses Python)
+      raw: uname -a
       register: hostnames
 
+    # - name: Ping servers
+    #   ansible.builtin.ping:   
+
+    ## After updating python test to work.
     - name: show hosts
       ansible.builtin.debug:
         var: hostnames
         verbosity: 2
+
+            ### Test raw command and gain host information
+    - name: Get Hostname
+      ansible.builtin.command:
+        cmd: "echo $(uname -a)" 
+      register: hostnames
+      vars:
+        ansible_python_interpreter: /usr/libexec/platform-python
         
 
   #   - name: Add SSH private key
