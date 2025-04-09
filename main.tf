@@ -141,6 +141,18 @@ resource "aws_instance" "Lustre_servers" {
     },
     each.value.tags
   )
+    ### Ansible needs a more modern version of Python then the on installed on the IAM
+    #   Install python by yum command and link it as python3.  
+    user_data = <<EOF
+              #!/bin/bash
+              set -e
+
+              # Install Python 3.8
+              yum install -y python38
+
+              # Ensure it's available for Ansible
+              ln -sf /usr/bin/python3.8 /usr/bin/python3
+              EOF
 }
 
 ### output public IP address

@@ -2,58 +2,62 @@
 ---
 # Main Lustre Playbook
 
-- hosts: all
+- name: Setup Lustre on test servers 
+  hosts: all
   become: true
   become_user: ec2-user
   gather_facts: false
-  
-  #stop ansible from hanging
+
+  # stop ansible from hanging
   any_errors_fatal: true
-  #stop ansible if can not log on.
+  # stop ansible if can not log on.
   ignore_unreachable: true
 
-  #### set roles for playbook 
+  #### set roles for playbook
   ## update python to python3.8
   roles:
     - role: Set_SSH_Vars
-    - role: Python_Up
-
 
   vars:
-    data_device_name: "/dev/xvdd"  # Lust 
+    data_device_name: "/dev/xvdd"  # Lust
     lustre_device_name: "dev/xvdz" # ZFS drive for Lustre
     lustre_pool_name: "Lust_pool"
     mount_point: "/mnt/data"
     ansible_command_timeout: 60  # timeout if ansible gets stuck
 
   pre_tasks:
-    ### Set vault file and fetch vars from it
-    - name: include vault
+  
+  ### Set vault file and fetch secret vars from it
+    - name: Include vault
       ansible.builtin.include_vars:
         file: Terraform_Vault
 
-    ### Shoe the starting hostnames and IPs 
+  tasks:
+    ### I need to key to be on the bastion host so it can copy file to the other servers.
+    - name: Copy ssh-key to bastion_host
+      ansible.builtin.file:
+        src: "{{ ssh_key_location }}"
+        dest: "/home/ec2-user/.ssh/lustretest"
+      when: inventory_hostname == bastion_host
+
+    ### shwo Current IP ans host status
     - name: Print Public IP Address
       debug:
-        msg: 
+        msg:
           - "Public IP of {{ inventory_hostname }} is {{ hostvars[inventory_hostname]['public_ip_address'] }}"
           - "Ansible Play hosts {{ ansible_play_hosts }}"
+          - "Ansible Private_ip_address {{ hostvars[inventory_hostname]['private_ip_address'] }}"
       ignore_errors: true
 
-  tasks:
-    # - name: Ping it 
-    #   ansible.builtin.ping:
-
-    # - name: Set SSH for client
-    #   set_fact:
-    #     ansible_ssh_common_args: >-
-    #       -o ProxyCommand="ssh -i {{ ssh_key_location }} -tt ec2-user@{{ ec2_public_ip }}"
-    #   when: inventory_hostname is match("^ec2.*")
     - name: Print SSH connection details
       debug:
         msg: "Connecting to {{ inventory_hostname }} via {{ ansible_host }} \
           using {{ ansible_ssh_common_args | default('No SSH args set')  }}"
       ignore_errors: true
+
+    - name: Now run Python update with all of the proper vars set
+      ansible.builtin.include_role:
+        name: Python_Up
 
     ### test access to the servers
     - name: Get Hostname via raw (bypasses Python)
