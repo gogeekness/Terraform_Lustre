@@ -51,10 +51,10 @@
   when: inventory_hostname != bastion_host
 
 ### To access the other servers from the bastion, I need to copy the private ssh key
-- name: SCP from bastion to private hosts
-  raw: >-
-    sudo scp -o StrictHostKeyChecking=no -i {{ ssh_key_location }} {{ ssh_key_location }}/lustretest {{ ansible_user }}@{{ hostvars[inventory_hostname]['private_ip_address'] }}:/home/{{ ansible_user }}/.ssh/lustretest
-  delegate_to: localhost
-  when: inventory_hostname != bastion_host
+# - name: SCP from bastion to private hosts
+  # raw: >-
+  #   scp -o StrictHostKeyChecking=no -i {{ ssh_key_location }} {{ ssh_key_location }}/lustretest {{ ansible_user }}@{{ hostvars[inventory_hostname]['private_ip_address'] }}:/home/{{ ansible_user }}/.ssh/lustretest
+  # delegate_to: localhost
+  # when: inventory_hostname == bastion_host
 
 ...

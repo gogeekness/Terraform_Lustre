@@ -38,7 +38,9 @@
       ansible.builtin.file:
         src: "{{ ssh_key_location }}"
         dest: "/home/ec2-user/.ssh/lustretest"
-      when: inventory_hostname == bastion_host
+        owner: ec2-user
+        mode: '0600'
+      when: inventory_hostname != bastion_host
 
     ### shwo Current IP ans host status
     - name: Print Public IP Address

@@ -19,11 +19,6 @@ compose:
 
 # Set SSH ProxyCommand for private hosts
 # hostvars:
-#   ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -i /home/reseke/.ssh/id_rsa ec2-user@' + hostvars['10.0.1.12']['public_ip_address'] + '"' if inventory_hostname in ['10.0.1.10', '10.0.1.11'] and hostvars['10.0.1.12']['public_ip_address'] | default('') != '' else ''
-    
-
-# filters:
-#   tag:Name:
 #     - dev-*
 #     - share-resource
 #     - hotfix
