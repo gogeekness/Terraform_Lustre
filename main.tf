@@ -44,7 +44,7 @@ variable "server_list" {
     },
     {
       host_name     = "lustre_client"
-      instance_type = "t2.micro"
+      instance_type = "t3a.large"
       ipv4          = "10.0.1.12"
       public_ip     = "fill"
       tags = {
@@ -74,16 +74,16 @@ locals {
 
 
 # EBS volumes for data drives all VM will have a extra 30 GB drive
-resource "aws_ebs_volume" "data_drives" {
-  for_each = toset(local.server_names)
+# resource "aws_ebs_volume" "data_drives" {
+#   for_each = toset(local.server_names)
 
-  availability_zone = module.lust_net.availability_zone
-  size             = 30  #GB
-  type             = "gp3"
-  tags = {
-    Name = "data-drive-${each.key}"
-  }
-}
+#   availability_zone = module.lust_net.availability_zone
+#   size             = 30  #GB
+#   type             = "gp3"
+#   tags = {
+#     Name = "data-drive-${each.key}"
+#   }
+# }
 
 # EBS volumes main Data drive 500 GB drive for the oss
 resource "aws_ebs_volume" "zfs_data_drive" {
@@ -96,13 +96,13 @@ resource "aws_ebs_volume" "zfs_data_drive" {
 }
 
 # Need to attach the data drives 
-resource "aws_volume_attachment" "data_drive_attachments" {
-  for_each = { for server in var.server_list : server.host_name => server }
+# resource "aws_volume_attachment" "data_drive_attachments" {
+#   for_each = { for server in var.server_list : server.host_name => server }
 
-  device_name = "/dev/sdd"  # Set as second drive 
-  volume_id   = aws_ebs_volume.data_drives[each.key].id
-  instance_id = aws_instance.Lustre_servers[each.key].id
-}
+#   device_name = "/dev/sdd"  # Set as second drive 
+#   volume_id   = aws_ebs_volume.data_drives[each.key].id
+#   instance_id = aws_instance.Lustre_servers[each.key].id
+# }
 
 # Attach large drive specifically to OSS server
 resource "aws_volume_attachment" "oss_large_drive" {

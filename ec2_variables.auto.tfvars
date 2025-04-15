@@ -3,7 +3,7 @@
 #
 
 # ami_image = "ami-0eef48bf23b6479b3"
-ami_my_image = "ami-09c6f59e2627e19c0"
+ami_my_image = "ami-0c9a7681c8631e73e"
 # ami_my_image = "ami-08bacc8479e361271"
 lustre_snapshot   = "snap-05443946df91a3b0f"
 instance_type     = "t3.small"
