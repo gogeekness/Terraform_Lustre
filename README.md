@@ -10,9 +10,10 @@ Requirements
 * Linux envrionment, bash is used as a wraper script.
 * docker (docker engine) 27.3.0 or later
 * docker-compose 1.29.2 or later
-* Python 3.10 or later
+* Python 3.10 or later  (My servers have 3.11)
 * ToFu will be installed online into the container
-* Ansible 2.15 or above
+* Ansible 2.16 or above
+  * Ansible-core nees to be at or lower than 2.16 (There is a but with python less than 3.12)
   * Ansible Plugin aws_ec2 (or for other special plugin for Azure or other cloud provider)
   * Also suport packages are needed (install by pip / pip3)
     * boto3 >= 1.28.0
@@ -50,10 +51,14 @@ Then install the lastest Ansible. If this install is still the old verion, then 
 1. `sudo apt install ansible`
 
 
+
 ### The base diskimage and snapshot
 If you entend to use this image and snapshot, be aware that the build in user is `ec-user`.
 Once you are in the VMs update the active users, the Ansibel code will do that.
 I included my ZFS install commands so you can create your ZFS installation on Alma8 
+The snapshot should have python3 set to verion 3.11 
+*  Do it here with the snap shot as updating through the client (Bastion) is more involved.
+*  Do it here one and then use the snapshot as a template for the other servers.
 
 
 ### Bash adn command line

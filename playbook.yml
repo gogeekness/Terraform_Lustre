@@ -34,8 +34,8 @@
 
   tasks:
     ### I need to key to be on the bastion host so it can copy file to the other servers.
-    - name: Copy ssh-key to bastion_host
-      ansible.builtin.file:
+    - name: Copy ssh-key to non-bastion hosts
+      ansible.builtin.copy:
         src: "{{ ssh_key_location }}"
         dest: "/home/ec2-user/.ssh/lustretest"
         owner: ec2-user
@@ -57,53 +57,40 @@
           using {{ ansible_ssh_common_args | default('No SSH args set')  }}"
       ignore_errors: true
 
-    - name: Now run Python update with all of the proper vars set
-      ansible.builtin.include_role:
-        name: Python_Up
+    # - name: Now run Python update with all of the proper vars set
+    #   ansible.builtin.include_role:
+    #     name: Python_Up
 
     ### test access to the servers
-    - name: Get Hostname via raw (bypasses Python)
-      raw: uname -a
-      register: hostnames
+    # - name: Get Hostname via raw (bypasses Python)
+    #   raw: uname -a
+    #   register: hostnames
 
-    # - name: Ping servers
-    #   ansible.builtin.ping:   
+    ### Test raw command and gain host information
+    - name: Get Hostname
+      ansible.builtin.shell: "echo $(python3 --version)" 
+      register: python_ver
 
     ## After updating python test to work.
-    - name: show hosts
+    - name: show python3 version
       ansible.builtin.debug:
-        var: hostnames
-        verbosity: 2
-
-            ### Test raw command and gain host information
-    - name: Get Hostname
-      ansible.builtin.command:
-        cmd: "echo $(uname -a)" 
-      register: hostnames
-      vars:
-        ansible_python_interpreter: /usr/libexec/platform-python
+        msg:
+          - "{{ python_ver.stdout}}" 
         
 
-  #   - name: Add SSH private key
-  #     copy:
-  #       content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
-  #       dest: "/home/{{ ansible_user }}/.ssh/rsa.id"
-  #       owner: ec2-user
-  #       group: ec2-user
-  #       mode: '0600'
 
-  #   - name: Install common packages
-  #     become: true
-  #     become_user: root
-  #     ansible.builtin.package:
-  #       name: 
-  #         - util-linux
-  #         - xfsprogs
-  #         - nano
-  #         - openssh
-  #       state: present
-  #     async: 60
-  #     poll: 60
+    - name: Install common packages
+      become: true
+      become_user: root
+      ansible.builtin.dnf:
+        name: 
+          - util-linux
+          - xfsprogs
+          - nano
+          - openssh
+        state: present
+      async: 60
+      poll: 60
 
         
 

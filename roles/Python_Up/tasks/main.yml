@@ -1,4 +1,7 @@
 ---
+    ### This is abbonded in place.
+    ### It is not required as the servers have prython 3.11
+    
     ## Need to install a newer version of python to have ansible run properly
     ## Alma 8 version is only paython 3.6
 - name: BLOCK Pyton upgrarde on Bastion

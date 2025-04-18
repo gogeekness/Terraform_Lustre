@@ -74,16 +74,16 @@ locals {
 
 
 # EBS volumes for data drives all VM will have a extra 30 GB drive
-# resource "aws_ebs_volume" "data_drives" {
-#   for_each = toset(local.server_names)
+resource "aws_ebs_volume" "data_drives" {
+  for_each = toset(local.server_names)
 
-#   availability_zone = module.lust_net.availability_zone
-#   size             = 30  #GB
-#   type             = "gp3"
-#   tags = {
-#     Name = "data-drive-${each.key}"
-#   }
-# }
+  availability_zone = module.lust_net.availability_zone
+  size             = 30  #GB
+  type             = "gp3"
+  tags = {
+    Name = "data-drive-${each.key}"
+  }
+}
 
 # EBS volumes main Data drive 500 GB drive for the oss
 resource "aws_ebs_volume" "zfs_data_drive" {

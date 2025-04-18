@@ -1,26 +1,27 @@
 {
     "_meta": {
         "hostvars": {
-            "ec2-18-159-214-13.eu-central-1.compute.amazonaws.com": {
+            "ec2-35-158-92-53.eu-central-1.compute.amazonaws.com": {
                 "ami_launch_index": 0,
+                "ansible_host": "10.0.1.12",
                 "architecture": "x86_64",
                 "block_device_mappings": [
                     {
                         "device_name": "/dev/sda1",
                         "ebs": {
-                            "attach_time": "2025-04-09T11:45:12+00:00",
+                            "attach_time": "2025-04-18T14:02:35+00:00",
                             "delete_on_termination": true,
                             "status": "attached",
-                            "volume_id": "vol-05a59ccd64745b711"
+                            "volume_id": "vol-0702a03376c66f28c"
                         }
                     },
                     {
                         "device_name": "/dev/sdd",
                         "ebs": {
-                            "attach_time": "2025-04-09T11:45:34.031000+00:00",
+                            "attach_time": "2025-04-18T14:02:35+00:00",
                             "delete_on_termination": false,
                             "status": "attached",
-                            "volume_id": "vol-006b9f0f118f9ace9"
+                            "volume_id": "vol-0213e86a00cd2e581"
                         }
                     }
                 ],
@@ -28,12 +29,12 @@
                 "capacity_reservation_specification": {
                     "capacity_reservation_preference": "open"
                 },
-                "client_token": "terraform-20250409114510447500000008",
+                "client_token": "terraform-20250418140231806200000007",
                 "cpu_options": {
                     "core_count": 1,
-                    "threads_per_core": 1
+                    "threads_per_core": 2
                 },
-                "current_instance_boot_mode": "legacy-bios",
+                "current_instance_boot_mode": "uefi",
                 "ebs_optimized": false,
                 "ena_support": true,
                 "enclave_options": {
@@ -43,11 +44,11 @@
                     "configured": false
                 },
                 "hypervisor": "xen",
-                "image_id": "ami-09c6f59e2627e19c0",
-                "instance_id": "i-0c7cc48067c953f55",
-                "instance_type": "t2.micro",
+                "image_id": "ami-0c9a7681c8631e73e",
+                "instance_id": "i-0a9e07203cc1f6f21",
+                "instance_type": "t3a.large",
                 "key_name": "Lustre_Key",
-                "launch_time": "2025-04-09T11:45:11+00:00",
+                "launch_time": "2025-04-18T14:02:34+00:00",
                 "maintenance_options": {
                     "auto_recovery": "default"
                 },
@@ -66,12 +67,12 @@
                     {
                         "association": {
                             "ip_owner_id": "amazon",
-                            "public_dns_name": "ec2-18-159-214-13.eu-central-1.compute.amazonaws.com",
-                            "public_ip": "18.159.214.13"
+                            "public_dns_name": "ec2-35-158-92-53.eu-central-1.compute.amazonaws.com",
+                            "public_ip": "35.158.92.53"
                         },
                         "attachment": {
-                            "attach_time": "2025-04-09T11:45:11+00:00",
-                            "attachment_id": "eni-attach-06028d8a967507b5d",
+                            "attach_time": "2025-04-18T14:02:34+00:00",
+                            "attachment_id": "eni-attach-0dd068c443985fadf",
                             "delete_on_termination": true,
                             "device_index": 0,
                             "network_card_index": 0,
@@ -80,14 +81,14 @@
                         "description": "",
                         "groups": [
                             {
-                                "group_id": "sg-02635d4197689c783",
+                                "group_id": "sg-0d493082fac48426e",
                                 "group_name": "Lustre_SG"
                             }
                         ],
                         "interface_type": "interface",
                         "ipv6_addresses": [],
-                        "mac_address": "02:fe:45:aa:d1:b5",
-                        "network_interface_id": "eni-0e77e013afb71aad5",
+                        "mac_address": "02:1d:30:cb:b4:d1",
+                        "network_interface_id": "eni-06899b58c7aaae3cc",
                         "operator": {
                             "managed": false
                         },
@@ -98,8 +99,8 @@
                             {
                                 "association": {
                                     "ip_owner_id": "amazon",
-                                    "public_dns_name": "ec2-18-159-214-13.eu-central-1.compute.amazonaws.com",
-                                    "public_ip": "18.159.214.13"
+                                    "public_dns_name": "ec2-35-158-92-53.eu-central-1.compute.amazonaws.com",
+                                    "public_ip": "35.158.92.53"
                                 },
                                 "primary": true,
                                 "private_dns_name": "ip-10-0-1-12.eu-central-1.compute.internal",
@@ -108,8 +109,8 @@
                         ],
                         "source_dest_check": true,
                         "status": "in-use",
-                        "subnet_id": "subnet-0796a9f27564673db",
-                        "vpc_id": "vpc-0b6f2a0c615a2a89a"
+                        "subnet_id": "subnet-0ce172a167281f0dc",
+                        "vpc_id": "vpc-0c798be23e1f563ca"
                     }
                 ],
                 "network_performance_options": {
@@ -139,15 +140,15 @@
                         "product_code_type": "marketplace"
                     }
                 ],
-                "public_dns_name": "ec2-18-159-214-13.eu-central-1.compute.amazonaws.com",
-                "public_ip_address": "18.159.214.13",
+                "public_dns_name": "ec2-35-158-92-53.eu-central-1.compute.amazonaws.com",
+                "public_ip_address": "35.158.92.53",
                 "requester_id": "",
-                "reservation_id": "r-060eabe974cef9d19",
+                "reservation_id": "r-0134d7289a9b488a0",
                 "root_device_name": "/dev/sda1",
                 "root_device_type": "ebs",
                 "security_groups": [
                     {
-                        "group_id": "sg-02635d4197689c783",
+                        "group_id": "sg-0d493082fac48426e",
                         "group_name": "Lustre_SG"
                     }
                 ],
@@ -157,37 +158,38 @@
                     "name": "running"
                 },
                 "state_transition_reason": "",
-                "subnet_id": "subnet-0796a9f27564673db",
+                "subnet_id": "subnet-0ce172a167281f0dc",
                 "tags": {
                     "Name": "bastion",
                     "Project": "lustre",
                     "Role": "client"
                 },
                 "usage_operation": "RunInstances",
-                "usage_operation_update_time": "2025-04-09T11:45:11+00:00",
+                "usage_operation_update_time": "2025-04-18T14:02:34+00:00",
                 "virtualization_type": "hvm",
-                "vpc_id": "vpc-0b6f2a0c615a2a89a"
+                "vpc_id": "vpc-0c798be23e1f563ca"
             },
             "ip-10-0-1-10.eu-central-1.compute.internal": {
                 "ami_launch_index": 0,
+                "ansible_host": "10.0.1.10",
                 "architecture": "x86_64",
                 "block_device_mappings": [
                     {
                         "device_name": "/dev/sda1",
                         "ebs": {
-                            "attach_time": "2025-04-09T11:45:11+00:00",
+                            "attach_time": "2025-04-18T14:02:35+00:00",
                             "delete_on_termination": true,
                             "status": "attached",
-                            "volume_id": "vol-087bfa5c99900b999"
+                            "volume_id": "vol-04623c3e3d0300e05"
                         }
                     },
                     {
                         "device_name": "/dev/sdd",
                         "ebs": {
-                            "attach_time": "2025-04-09T11:45:34.048000+00:00",
+                            "attach_time": "2025-04-18T14:02:35+00:00",
                             "delete_on_termination": false,
                             "status": "attached",
-                            "volume_id": "vol-04dda29c2fcb2177a"
+                            "volume_id": "vol-09e3bec3cbfbdd428"
                         }
                     }
                 ],
@@ -195,7 +197,7 @@
                 "capacity_reservation_specification": {
                     "capacity_reservation_preference": "open"
                 },
-                "client_token": "terraform-20250409114510447500000006",
+                "client_token": "terraform-20250418140231806400000008",
                 "cpu_options": {
                     "core_count": 1,
                     "threads_per_core": 2
@@ -210,11 +212,11 @@
                     "configured": false
                 },
                 "hypervisor": "xen",
-                "image_id": "ami-09c6f59e2627e19c0",
-                "instance_id": "i-06af4efcb5b63fe77",
+                "image_id": "ami-0c9a7681c8631e73e",
+                "instance_id": "i-0035f88706b4b2eb1",
                 "instance_type": "t3a.large",
                 "key_name": "Lustre_Key",
-                "launch_time": "2025-04-09T11:45:11+00:00",
+                "launch_time": "2025-04-18T14:02:34+00:00",
                 "maintenance_options": {
                     "auto_recovery": "default"
                 },
@@ -232,8 +234,8 @@
                 "network_interfaces": [
                     {
                         "attachment": {
-                            "attach_time": "2025-04-09T11:45:11+00:00",
-                            "attachment_id": "eni-attach-040c6d12ee67b99f5",
+                            "attach_time": "2025-04-18T14:02:34+00:00",
+                            "attachment_id": "eni-attach-0a24c0a9f9b8f7637",
                             "delete_on_termination": true,
                             "device_index": 0,
                             "network_card_index": 0,
@@ -242,14 +244,14 @@
                         "description": "",
                         "groups": [
                             {
-                                "group_id": "sg-02635d4197689c783",
+                                "group_id": "sg-0d493082fac48426e",
                                 "group_name": "Lustre_SG"
                             }
                         ],
                         "interface_type": "interface",
                         "ipv6_addresses": [],
-                        "mac_address": "02:f4:b1:81:ae:81",
-                        "network_interface_id": "eni-07b965ed45efb88ce",
+                        "mac_address": "02:4a:d5:8e:81:ad",
+                        "network_interface_id": "eni-0249c79900b001217",
                         "operator": {
                             "managed": false
                         },
@@ -265,8 +267,8 @@
                         ],
                         "source_dest_check": true,
                         "status": "in-use",
-                        "subnet_id": "subnet-0796a9f27564673db",
-                        "vpc_id": "vpc-0b6f2a0c615a2a89a"
+                        "subnet_id": "subnet-0ce172a167281f0dc",
+                        "vpc_id": "vpc-0c798be23e1f563ca"
                     }
                 ],
                 "network_performance_options": {
@@ -297,13 +299,14 @@
                     }
                 ],
                 "public_dns_name": "",
+                "public_ip_address": "",
                 "requester_id": "",
-                "reservation_id": "r-03ef450edeb9ed77b",
+                "reservation_id": "r-0010e904af0424c7f",
                 "root_device_name": "/dev/sda1",
                 "root_device_type": "ebs",
                 "security_groups": [
                     {
-                        "group_id": "sg-02635d4197689c783",
+                        "group_id": "sg-0d493082fac48426e",
                         "group_name": "Lustre_SG"
                     }
                 ],
@@ -313,46 +316,47 @@
                     "name": "running"
                 },
                 "state_transition_reason": "",
-                "subnet_id": "subnet-0796a9f27564673db",
+                "subnet_id": "subnet-0ce172a167281f0dc",
                 "tags": {
                     "Name": "lustre_mgt",
                     "Project": "lustre",
                     "Role": "manager"
                 },
                 "usage_operation": "RunInstances",
-                "usage_operation_update_time": "2025-04-09T11:45:11+00:00",
+                "usage_operation_update_time": "2025-04-18T14:02:34+00:00",
                 "virtualization_type": "hvm",
-                "vpc_id": "vpc-0b6f2a0c615a2a89a"
+                "vpc_id": "vpc-0c798be23e1f563ca"
             },
             "ip-10-0-1-11.eu-central-1.compute.internal": {
                 "ami_launch_index": 0,
+                "ansible_host": "10.0.1.11",
                 "architecture": "x86_64",
                 "block_device_mappings": [
                     {
                         "device_name": "/dev/sda1",
                         "ebs": {
-                            "attach_time": "2025-04-09T11:45:12+00:00",
+                            "attach_time": "2025-04-18T14:02:34+00:00",
                             "delete_on_termination": true,
                             "status": "attached",
-                            "volume_id": "vol-01f61e639a93d5dec"
+                            "volume_id": "vol-0993220a23d7a783f"
                         }
                     },
                     {
                         "device_name": "/dev/sdd",
                         "ebs": {
-                            "attach_time": "2025-04-09T11:45:34.131000+00:00",
+                            "attach_time": "2025-04-18T14:02:34+00:00",
                             "delete_on_termination": false,
                             "status": "attached",
-                            "volume_id": "vol-07ce29394bd82dbc1"
+                            "volume_id": "vol-0501367a0db76cf4a"
                         }
                     },
                     {
                         "device_name": "/dev/sdz",
                         "ebs": {
-                            "attach_time": "2025-04-09T11:45:34.067000+00:00",
+                            "attach_time": "2025-04-18T14:02:57.042000+00:00",
                             "delete_on_termination": false,
                             "status": "attached",
-                            "volume_id": "vol-09593ae7817d69b9d"
+                            "volume_id": "vol-0a6314ffff9ce989f"
                         }
                     }
                 ],
@@ -360,7 +364,7 @@
                 "capacity_reservation_specification": {
                     "capacity_reservation_preference": "open"
                 },
-                "client_token": "terraform-20250409114510447500000007",
+                "client_token": "terraform-20250418140231806200000006",
                 "cpu_options": {
                     "core_count": 2,
                     "threads_per_core": 2
@@ -375,11 +379,11 @@
                     "configured": false
                 },
                 "hypervisor": "xen",
-                "image_id": "ami-09c6f59e2627e19c0",
-                "instance_id": "i-0338858757c9023cd",
+                "image_id": "ami-0c9a7681c8631e73e",
+                "instance_id": "i-01e789e20d76a1719",
                 "instance_type": "t3.xlarge",
                 "key_name": "Lustre_Key",
-                "launch_time": "2025-04-09T11:45:11+00:00",
+                "launch_time": "2025-04-18T14:02:34+00:00",
                 "maintenance_options": {
                     "auto_recovery": "default"
                 },
@@ -397,8 +401,8 @@
                 "network_interfaces": [
                     {
                         "attachment": {
-                            "attach_time": "2025-04-09T11:45:11+00:00",
-                            "attachment_id": "eni-attach-0a7b00882cd5c80d7",
+                            "attach_time": "2025-04-18T14:02:34+00:00",
+                            "attachment_id": "eni-attach-0996da4c3018e35ec",
                             "delete_on_termination": true,
                             "device_index": 0,
                             "network_card_index": 0,
@@ -407,14 +411,14 @@
                         "description": "",
                         "groups": [
                             {
-                                "group_id": "sg-02635d4197689c783",
+                                "group_id": "sg-0d493082fac48426e",
                                 "group_name": "Lustre_SG"
                             }
                         ],
                         "interface_type": "interface",
                         "ipv6_addresses": [],
-                        "mac_address": "02:c4:12:5c:13:2b",
-                        "network_interface_id": "eni-0dbc2dcabb54c550c",
+                        "mac_address": "02:88:84:80:49:91",
+                        "network_interface_id": "eni-0417dd2d5785f009a",
                         "operator": {
                             "managed": false
                         },
@@ -430,8 +434,8 @@
                         ],
                         "source_dest_check": true,
                         "status": "in-use",
-                        "subnet_id": "subnet-0796a9f27564673db",
-                        "vpc_id": "vpc-0b6f2a0c615a2a89a"
+                        "subnet_id": "subnet-0ce172a167281f0dc",
+                        "vpc_id": "vpc-0c798be23e1f563ca"
                     }
                 ],
                 "network_performance_options": {
@@ -462,13 +466,14 @@
                     }
                 ],
                 "public_dns_name": "",
+                "public_ip_address": "",
                 "requester_id": "",
-                "reservation_id": "r-03c6d5d1a84250078",
+                "reservation_id": "r-002f0d6ad5e480852",
                 "root_device_name": "/dev/sda1",
                 "root_device_type": "ebs",
                 "security_groups": [
                     {
-                        "group_id": "sg-02635d4197689c783",
+                        "group_id": "sg-0d493082fac48426e",
                         "group_name": "Lustre_SG"
                     }
                 ],
@@ -478,16 +483,16 @@
                     "name": "running"
                 },
                 "state_transition_reason": "",
-                "subnet_id": "subnet-0796a9f27564673db",
+                "subnet_id": "subnet-0ce172a167281f0dc",
                 "tags": {
                     "Name": "lustre_oss",
                     "Project": "lustre",
                     "Role": "storage"
                 },
                 "usage_operation": "RunInstances",
-                "usage_operation_update_time": "2025-04-09T11:45:11+00:00",
+                "usage_operation_update_time": "2025-04-18T14:02:34+00:00",
                 "virtualization_type": "hvm",
-                "vpc_id": "vpc-0b6f2a0c615a2a89a"
+                "vpc_id": "vpc-0c798be23e1f563ca"
             }
         }
     },
@@ -499,9 +504,9 @@
     },
     "aws_ec2": {
         "hosts": [
-            "ip-10-0-1-11.eu-central-1.compute.internal",
             "ip-10-0-1-10.eu-central-1.compute.internal",
-            "ec2-18-159-214-13.eu-central-1.compute.amazonaws.com"
+            "ip-10-0-1-11.eu-central-1.compute.internal",
+            "ec2-35-158-92-53.eu-central-1.compute.amazonaws.com"
         ]
     }
 }
