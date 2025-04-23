@@ -1,22 +1,9 @@
 #  The networking side of this cluster
 
-
-# variable "server_ips" {
-#   type = map(string)
-#   default = {
-#     lustre_mgt    = 
-#     lustre_oss    = "10.0.1.11"
-#     lustre_client = "10.0.1.12"
-#   }
-# }
-
-
-
 variable "subnet_cidr" {
   type    = string
   default = "10.0.1.0/24"
 }
-
 resource "aws_vpc" "lustre_vpc" {
   cidr_block = "10.0.0.0/16"
   enable_dns_hostnames = true
@@ -59,6 +46,13 @@ resource "aws_security_group" "our_security_group" {
     protocol    = "tcp"
     cidr_blocks = [var.subnet_cidr]
   }
+    # Give access to squid so dnf can install components in the internal servers
+    ingress {
+    from_port   = 3128
+    to_port     = 3128
+    protocol    = "tcp"
+    cidr_blocks = [var.subnet_cidr]
+  }
 
   # Allow Lustre traffic internally
   ingress {
@@ -79,7 +73,6 @@ resource "aws_security_group" "our_security_group" {
   tags = {
     Name = "lustre-security-group"
   }
-
 }
 
 # Route table for internet access
