@@ -65,19 +65,17 @@
             name: 
               - squid
             state: present
-          async: 60
-          poll: 60
 
         ### to install packages on the servers behind the bastion/client I need to set dnf to use the bastion as a proxy.
         - name: define squi.conf
-          ansible.builtin.tempfile:
-            src: squid_conf.j2
+          ansible.builtin.template:
+            src: templates/squid_conf.j2
             dest: /etc/squid/squid.conf
-            force: ture
+            force: true
 
         ### might need sudo for systemctl
         - name: Run command to enable squid
-          ansible.builtin.command: systemctl enable --now squid
+          ansible.builtin.command: sudo systemctl enable --now squid
 
       become: yes
       become_user: root
