@@ -77,6 +77,11 @@
         - name: Run command to enable squid
           ansible.builtin.command: sudo systemctl enable --now squid
 
+        ### need to get the internal targe IP for the other internal servers
+        - name: set bastion ip address for the other servers
+          ansible.builtin.set_fact:
+            bastion_ip: "{{ ansible_host }}"
+            
       become: yes
       become_user: root
       ### Block Ende 
@@ -88,7 +93,7 @@
         - name: Add proxy data to dnf.config to other servers
           ansible.builtin.lineinfile:
             path: /etc/dnf/dnf.conf 
-            line: "proxy=http://{{ ec2_public_ip }}:3128" 
+            line: "proxy=http://10.0.1.12:3128" 
           when: inventory_hostname != bastion_host
       become: yes
       become_user: root
@@ -124,8 +129,8 @@
           - nano
           - openssh
         state: present
-      async: 60
-      poll: 60
+      async: 300
+      poll: 10
 
         
 
