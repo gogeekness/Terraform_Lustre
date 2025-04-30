@@ -72,20 +72,28 @@ locals {
 #   }
 # }
 
-
+### Maybe in a future expancion.  I need to keep it simple.
 # EBS volumes for data drives all VM will have a extra 30 GB drive
-resource "aws_ebs_volume" "data_drives" {
-  for_each = toset(local.server_names)
+# resource "aws_ebs_volume" "data_drives" {
+#   for_each = toset(local.server_names)
+#   availability_zone = module.lust_net.availability_zone
+#   size             = 30  #GB
+#   type             = "gp3"
+#   tags = {
+#     Name = "data-drive-${each.key}"
+#   }
+# }
+# # Need to attach the buffer data drives 
+# resource "aws_volume_attachment" "data_drive_attachments" {
+#   for_each = { for server in var.server_list : server.host_name => server }
 
-  availability_zone = module.lust_net.availability_zone
-  size             = 30  #GB
-  type             = "gp3"
-  tags = {
-    Name = "data-drive-${each.key}"
-  }
-}
+#   device_name = "/dev/sdd"  # Set as second drive 
+#   volume_id   = aws_ebs_volume.data_drives[each.key].id
+#   instance_id = aws_instance.Lustre_servers[each.key].id
+### }
 
 # EBS volumes main Data drive 500 GB drive for the oss
+# This is only a test drive.
 resource "aws_ebs_volume" "zfs_data_drive" {
   availability_zone = module.lust_net.availability_zone
   size             = 500  #GB 
@@ -94,16 +102,6 @@ resource "aws_ebs_volume" "zfs_data_drive" {
     Name = "data-drive-oss-server"
   }
 }
-
-# Need to attach the data drives 
-# resource "aws_volume_attachment" "data_drive_attachments" {
-#   for_each = { for server in var.server_list : server.host_name => server }
-
-#   device_name = "/dev/sdd"  # Set as second drive 
-#   volume_id   = aws_ebs_volume.data_drives[each.key].id
-#   instance_id = aws_instance.Lustre_servers[each.key].id
-# }
-
 # Attach large drive specifically to OSS server
 resource "aws_volume_attachment" "oss_large_drive" {
   device_name = "/dev/sdz"  # Set as -last- drive for the oss

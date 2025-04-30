@@ -91,3 +91,27 @@ While so far I have not reached my goal the path has been rewarding.
 * Learn Terraform.  I can depoy various infrasture layout by TF
 * More time with Ansible.  Learn better ways of implementing Ansible in AWS and understand some of Anislble's limitations.
 * Learn to use and install ZFS (far harder then I was expecting)
+
+# Runing commands on Tofu and Ansible
+### To run commands in Tofu (in the container)
+- Use a variation of `tofu apply -var-file="secrets.auto.tfvar"`
+- - The secrets file has all of the credenticals required for AWS and TF
+### Runing Ansible
+- Use a variation of `ansible-playbook -vv -i ../Terraform_Lustre/inventory/Lustre_aws_ec2.yml --ask-vault-password ../Terraform_Lustre/playbook.yml`
+- - Ansible and Playbook
+- - vv for verbosity (v - vvvv)
+- - The inventory, for me using "...aws_ec2.yml" 
+- - - This is a special Invnetory plugin for Ansible that pulls AWS data of your infrastructure. 
+- - - https://docs.ansible.com/ansible/latest/collections/amazon/aws/aws_ec2_inventory.html
+- - A password for a local ansible vault (optional)
+
+
+- name: Lets look at some disks
+  hosts: localhost
+  become: false
+  gather_facts: false
+  tasks:
+  - name: Collect only facts about hardware
+    setup:
+      gather_subset:
+      - hardware

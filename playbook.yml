@@ -19,11 +19,13 @@
     - role: Set_SSH_Vars
 
   vars:
-    data_device_name: "/dev/xvdd"  # Lust
-    lustre_device_name: "dev/xvdz" # ZFS drive for Lustre
+    data_device_name: "/dev/nvme1n1"  # Lust
+    lustre_device_name: "dev/nvme2n1" # ZFS drive for Lustre device_name = "/dev/sdz"
     lustre_pool_name: "Lust_pool"
     mount_point: "/mnt/data"
+    lustre_point: "/mnt/lustre"
     ansible_command_timeout: 60  # timeout if ansible gets stuck
+    mounted_devices: "{{ ansible_mounts | map(attribute='device') }}"
 
   pre_tasks:
   
@@ -57,115 +59,160 @@
           using {{ ansible_ssh_common_args | default('No SSH args set')  }}"
       ignore_errors: true
 
-    - name: install and set up squid proxy for trhe Bastion/client
-      when: inventory_hostname == bastion_host
-      block:
-        - name: Install squid proxy on bastion
-          ansible.builtin.dnf:
-            name: 
-              - squid
-            state: present
+    - name:  Add in the DNF update and install role
+      ansible.builtin.include_role:
+        role: Dnf_access_install     
+        public: yes
 
-        ### to install packages on the servers behind the bastion/client I need to set dnf to use the bastion as a proxy.
-        - name: define squi.conf
-          ansible.builtin.template:
-            src: templates/squid_conf.j2
-            dest: /etc/squid/squid.conf
-            force: true
+    # - name: install and set up squid proxy for trhe Bastion/client
+    #   when: inventory_hostname == bastion_host
+    #   block:
+    #     - name: Install squid proxy on bastion
+    #       ansible.builtin.dnf:
+    #         name: 
+    #           - squid
+    #         state: present
 
-        ### might need sudo for systemctl
-        - name: Run command to enable squid
-          ansible.builtin.command: sudo systemctl enable --now squid
+    #     ### to install packages on the servers behind the bastion/client I need to set dnf to use the bastion as a proxy.
+    #     - name: define squi.conf
+    #       ansible.builtin.template:
+    #         src: templates/squid_conf.j2
+    #         dest: /etc/squid/squid.conf
+    #         force: true
 
-        ### need to get the internal targe IP for the other internal servers
-        - name: set bastion ip address for the other servers
-          ansible.builtin.set_fact:
-            bastion_ip: "{{ ansible_host }}"
+    #     ### might need sudo for systemctl
+    #     - name: Run command to enable squid
+    #       ansible.builtin.command: sudo systemctl enable --now squid
+
+    #     ### need to get the internal targe IP for the other internal servers
+    #     - name: set bastion ip address for the other servers
+    #       ansible.builtin.set_fact:
+    #         bastion_ip: "{{ ansible_host }}"
             
+    #   become: yes
+    #   become_user: root
+    #   ### Block Ende 
+
+
+    # - name: block - edit dnf file on internal servers
+    #   block: 
+    #     ### to install packages on the servers behind the bastion/client I need to set dnf to use the bastion as a proxy.
+    #     - name: Add proxy data to dnf.config to other servers
+    #       ansible.builtin.lineinfile:
+    #         path: /etc/dnf/dnf.conf 
+    #         line: "proxy=http://10.0.1.12:3128" 
+    #       when: inventory_hostname != bastion_host
+    #   become: yes
+    #   become_user: root
+
+    # ### Test raw command and gain pyhton3 information as that became an issue with Ansible
+    # - name: Get Python version
+    #   ansible.builtin.shell: "echo $(python3 --version)" 
+    #   register: python_ver
+
+    # ### Test raw command to find if the dnf.conf is changed correctly
+    # - name: cat dnf.conf
+    #   ansible.builtin.shell: "echo $(cat /etc/dnf/dnf.conf)" 
+    #   register: dnf_conf
+    #   become: yes
+    #   become_user: root
+
+
+    # ## After updating python test to work.
+    # - name: show python and dnf.conf version
+    #   ansible.builtin.debug:
+    #     msg:
+    #       - "Python version: {{ python_ver.stdout}}" 
+    #       - "dnf config file: {{ dnf_conf.stdout }}"
+        
+
+    # - name: Install common packages
+    #   become: true
+    #   become_user: root
+    #   ansible.builtin.dnf:
+    #     name: 
+    #       - util-linux
+    #       - xfsprogs
+    #       - nano
+    #       - openssh
+    #       - pciutils
+    #     state: present
+    #   async: 300
+    #   poll: 10
+
+    - name: Print ZFS Status
+      ansible.builtin.shell:
+        cmd: "lsblk | grep [35]0."
+      register: zfs_status
       become: yes
       become_user: root
-      ### Block Ende 
+      
 
-
-    - name: block - edit dnf file on internal servers
-      block: 
-        ### to install packages on the servers behind the bastion/client I need to set dnf to use the bastion as a proxy.
-        - name: Add proxy data to dnf.config to other servers
-          ansible.builtin.lineinfile:
-            path: /etc/dnf/dnf.conf 
-            line: "proxy=http://10.0.1.12:3128" 
-          when: inventory_hostname != bastion_host
-      become: yes
-      become_user: root
-
-    ### Test raw command and gain pyhton3 information as that became an issue with Ansible
-    - name: Get Python version
-      ansible.builtin.shell: "echo $(python3 --version)" 
-      register: python_ver
-
-    ### Test raw command to find if the dnf.conf is changed correctly
-    - name: cat dnf.conf
-      ansible.builtin.shell: "echo $(cat /etc/dnf/dnf.conf)" 
-      register: dnf_conf
-      become: yes
-      become_user: root
-
-
-    ## After updating python test to work.
-    - name: show python and dnf.conf version
+    - name: Is zfs on the systems?
       ansible.builtin.debug:
-        msg:
-          - "Python version: {{ python_ver.stdout}}" 
-          - "dnf config file: {{ dnf_conf.stdout }}"
-        
+        msg: "What is there: {{ zfs_status }}"
 
-    - name: Install common packages
-      become: true
+    ### A place to store temporary and extra data for Lustre on alll servers
+    - name: Create mound point for data scratch drive
+      ansible.builtin.file:
+        path: "{{ mount_point }}"
+        state: directory
+        mode: '0755'
+      become: yes
       become_user: root
-      ansible.builtin.dnf:
-        name: 
-          - util-linux
-          - xfsprogs
-          - nano
-          - openssh
-        state: present
-      async: 300
-      poll: 10
 
-        
+    ### for data drives create ex4 fiel system
+    - name: Create File System
+      filesystem:
+        fstype: ext4
+        dev: "{{ data_device_name }}"
+      become: yes
+      become_user: root
 
-  # ### set the three servers with data drives
-  #   - name: Create mount points for data drives
-  #     file:
-  #       path: "{{ data_device_name }}"
-  #       state: directory
-  #       mode: '0755'
-  #     with_sequence: start=1 end=3
+    - name: Mount File System
+      mount:
+        path: "{{ mount_point }}"
+        src: "{{ data_device_name }}"
+        fstype: ext4
+        state: mounted
+      become: yes
+      become_user: root
 
-  #   - name: Create filesystem on EBS volume
-  #     filesystem:
-  #       fstype: ext4
-  #       dev: "{{ data_device_name }}"
-  #     when: device_name is defined
+    ### set the three servers with data drives
+    - name: Create mount points for data drives
+      when: "ansible_host == '10.0.1.11'" 
+      block:
+        - name: Create mound point for OSS server
+          ansible.builtin.file:
+            path: "{{ mount_point }}"
+            state: directory
+            mode: '0755'
+          
+          # become: yes
+          # become_user: root
 
-  #   - name: Create mount directory
-  #     file:
-  #       path: "{{ mount_point }}"
-  #       state: directory
-  #       mode: '0755'
+        - name: Create a new file system called myfs in pool rpool with the setuid property turned off
+          community.general.zfs:
+            name: rpool/myfs
+            state: present
+            extra_zfs_properties:
+              setuid: 'off'
 
-  #   - name: Mount EBS volume
-  #     mount:
-  #       path: "{{ mount_point }}"
-  #       src: "{{ device_name }}"
-  #       fstype: ext4
-  #       state: mounted
 
-  #   - name: Add SSH private key to point connection server
-  #     copy:
-  #       content: "{{ lookup('env', 'SSH_PRIVATE_KEY') }}"
-  #       dest: "/home/reseke/.ssh/id_rsa"
-  #       owner: rdeseke_aws1
-  #       group: rdeseke_aws1
-  #       mode: '0600'
-  #     when: lookup('env', 'SSH_PRIVATE_KEY') is defined
+        - name: Create mount directory
+          ansible.builtin.file:
+            path: "{{ mount_point }}"
+            state: directory
+            mode: '0755'
+
+        - name: Mount EBS volume
+          mount:
+            path: "{{ mount_point }}"
+            src: "{{ device_name }}"
+            fstype: ext4
+            state: mounted
+      become: yes
+      become_user: root
+    ### ende
+
+
