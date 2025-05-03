@@ -53,104 +53,30 @@
           - "Ansible Private_ip_address {{ hostvars[inventory_hostname]['private_ip_address'] }}"
       ignore_errors: true
 
-    - name: Print SSH connection details
+    - name: Print SSH connection
       debug:
         msg: "Connecting to {{ inventory_hostname }} via {{ ansible_host }} \
           using {{ ansible_ssh_common_args | default('No SSH args set')  }}"
       ignore_errors: true
 
+    ### Setup Proxy and install the needed packages for the test servers.
+    ### All of the servers have zfs set for use, but needs to set activeated
     - name:  Add in the DNF update and install role
       ansible.builtin.include_role:
-        role: Dnf_access_install     
-        public: yes
+        name: Dnf_access_install
 
-    # - name: install and set up squid proxy for trhe Bastion/client
-    #   when: inventory_hostname == bastion_host
-    #   block:
-    #     - name: Install squid proxy on bastion
-    #       ansible.builtin.dnf:
-    #         name: 
-    #           - squid
-    #         state: present
-
-    #     ### to install packages on the servers behind the bastion/client I need to set dnf to use the bastion as a proxy.
-    #     - name: define squi.conf
-    #       ansible.builtin.template:
-    #         src: templates/squid_conf.j2
-    #         dest: /etc/squid/squid.conf
-    #         force: true
-
-    #     ### might need sudo for systemctl
-    #     - name: Run command to enable squid
-    #       ansible.builtin.command: sudo systemctl enable --now squid
-
-    #     ### need to get the internal targe IP for the other internal servers
-    #     - name: set bastion ip address for the other servers
-    #       ansible.builtin.set_fact:
-    #         bastion_ip: "{{ ansible_host }}"
-            
-    #   become: yes
-    #   become_user: root
-    #   ### Block Ende 
-
-
-    # - name: block - edit dnf file on internal servers
-    #   block: 
-    #     ### to install packages on the servers behind the bastion/client I need to set dnf to use the bastion as a proxy.
-    #     - name: Add proxy data to dnf.config to other servers
-    #       ansible.builtin.lineinfile:
-    #         path: /etc/dnf/dnf.conf 
-    #         line: "proxy=http://10.0.1.12:3128" 
-    #       when: inventory_hostname != bastion_host
-    #   become: yes
-    #   become_user: root
-
-    # ### Test raw command and gain pyhton3 information as that became an issue with Ansible
-    # - name: Get Python version
-    #   ansible.builtin.shell: "echo $(python3 --version)" 
-    #   register: python_ver
-
-    # ### Test raw command to find if the dnf.conf is changed correctly
-    # - name: cat dnf.conf
-    #   ansible.builtin.shell: "echo $(cat /etc/dnf/dnf.conf)" 
-    #   register: dnf_conf
-    #   become: yes
-    #   become_user: root
-
-
-    # ## After updating python test to work.
-    # - name: show python and dnf.conf version
-    #   ansible.builtin.debug:
-    #     msg:
-    #       - "Python version: {{ python_ver.stdout}}" 
-    #       - "dnf config file: {{ dnf_conf.stdout }}"
-        
-
-    # - name: Install common packages
-    #   become: true
-    #   become_user: root
-    #   ansible.builtin.dnf:
-    #     name: 
-    #       - util-linux
-    #       - xfsprogs
-    #       - nano
-    #       - openssh
-    #       - pciutils
-    #     state: present
-    #   async: 300
-    #   poll: 10
-
+    ### find teh data drives nvme1n1, and for teh OSS nvme1n2
     - name: Print ZFS Status
       ansible.builtin.shell:
         cmd: "lsblk | grep [35]0."
-      register: zfs_status
+      register: Data_disks
       become: yes
       become_user: root
       
 
-    - name: Is zfs on the systems?
+    - name: Is zfs on the systems? No, but here is the lsblk info
       ansible.builtin.debug:
-        msg: "What is there: {{ zfs_status }}"
+        msg: "What is there: {{ Data_disks }}"
 
     ### A place to store temporary and extra data for Lustre on alll servers
     - name: Create mound point for data scratch drive
@@ -161,7 +87,7 @@
       become: yes
       become_user: root
 
-    ### for data drives create ex4 fiel system
+    ### for data drives create ex4 file system
     - name: Create File System
       filesystem:
         fstype: ext4
@@ -184,12 +110,18 @@
       block:
         - name: Create mound point for OSS server
           ansible.builtin.file:
-            path: "{{ mount_point }}"
+            path: "{{ luster_point }}"
             state: directory
             mode: '0755'
           
-          # become: yes
-          # become_user: root
+        - name: start ZFS
+          ansible.builtin.command: "/sbin/modprobe zfs"
+          register: modprobe_zfs
+        
+        - name: Is zfs on the systems? No, but here is the lsblk info
+          ansible.builtin.debug:
+            msg: "What is there: {{ modprobe_zfs }}"
+
 
         - name: Create a new file system called myfs in pool rpool with the setuid property turned off
           community.general.zfs:
@@ -198,14 +130,7 @@
             extra_zfs_properties:
               setuid: 'off'
 
-
-        - name: Create mount directory
-          ansible.builtin.file:
-            path: "{{ mount_point }}"
-            state: directory
-            mode: '0755'
-
-        - name: Mount EBS volume
+        - name: Mount Lustre EBS volume
           mount:
             path: "{{ mount_point }}"
             src: "{{ device_name }}"

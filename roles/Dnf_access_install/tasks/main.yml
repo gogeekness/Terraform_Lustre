@@ -1,7 +1,12 @@
 ---
   ### need to add squid proxy and update dnf config
   ### The internal servers need to install packages, but don't have access to the internet
-  ### thus a Proxy on teh cliet is needed to be a bastion for the rest of the clients
+  ### thus a Proxy on teh cliet is needed to be a bastion for the rest of the clients## After updating python test to work.
+
+- name: show python and dnf.conf version
+  ansible.builtin.debug:
+    msg:
+      - "Ansible Host from DNF role: {{ ansible_host }}" 
 
 - name: install and set up squid proxy for trhe Bastion/client
   when: inventory_hostname == bastion_host
