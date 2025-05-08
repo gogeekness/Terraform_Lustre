@@ -6778,3 +6778,233 @@ BrokenPipeError: [Errno 32] Broken pipe
 2025-05-08 17:12:13,639 p=265617 u=reseke n=ansible | ec2-63-178-8-224.eu-central-1.compute.amazonaws.com : ok=19   changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 2025-05-08 17:12:13,640 p=265617 u=reseke n=ansible | ip-10-0-1-10.eu-central-1.compute.internal : ok=19   changed=3    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
 2025-05-08 17:12:13,640 p=265617 u=reseke n=ansible | ip-10-0-1-11.eu-central-1.compute.internal : ok=20   changed=4    unreachable=0    failed=1    skipped=5    rescued=0    ignored=0   
+2025-05-08 17:24:54,487 p=276204 u=reseke n=ansible | ansible-playbook [core 2.16.14]
+  config file = /home/reseke/docker/Terraform_Lustre/ansible.cfg
+  configured module search path = ['/home/reseke/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/reseke/.local/lib/python3.10/site-packages/ansible
+  ansible collection location = /home/reseke/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/reseke/.local/bin/ansible-playbook
+  python version = 3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0] (/usr/bin/python3)
+  jinja version = 3.0.3
+  libyaml = True
+2025-05-08 17:24:54,487 p=276204 u=reseke n=ansible | Using /home/reseke/docker/Terraform_Lustre/ansible.cfg as config file
+2025-05-08 17:24:57,608 p=276204 u=reseke n=ansible | redirecting (type: inventory) ansible.builtin.aws_ec2 to amazon.aws.aws_ec2
+2025-05-08 17:24:57,696 p=276204 u=reseke n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-05-08 17:24:58,355 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-05-08 17:24:58,362 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-05-08 17:24:58,372 p=276204 u=reseke n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2025-05-08 17:24:58,373 p=276204 u=reseke n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2025-05-08 17:24:58,373 p=276204 u=reseke n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2025-05-08 17:24:58,373 p=276204 u=reseke n=ansible | PLAYBOOK: playbook.yml *****************************************************************************************************************************************
+2025-05-08 17:24:58,373 p=276204 u=reseke n=ansible | 1 plays in ../Terraform_Lustre/playbook.yml
+2025-05-08 17:24:58,374 p=276204 u=reseke n=ansible | PLAY [Setup Lustre on test servers] ****************************************************************************************************************************
+2025-05-08 17:24:58,382 p=276204 u=reseke n=ansible | TASK [Include vault] *******************************************************************************************************************************************
+2025-05-08 17:24:58,411 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": false}
+2025-05-08 17:24:58,420 p=276204 u=reseke n=ansible | ok: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": false}
+2025-05-08 17:24:58,425 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-10.eu-central-1.compute.internal] => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": false}
+2025-05-08 17:24:58,427 p=276204 u=reseke n=ansible | TASK [Set_SSH_Vars : Set_fact hostvar of public IP] ************************************************************************************************************
+2025-05-08 17:24:58,439 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-11.eu-central-1.compute.internal] => (item=ip-10-0-1-11.eu-central-1.compute.internal)  => {"ansible_loop_var": "item", "changed": false, "false_condition": "hostvars[item]['public_ip_address'] != ''", "item": "ip-10-0-1-11.eu-central-1.compute.internal", "skip_reason": "Conditional result was False"}
+2025-05-08 17:24:58,450 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal -> localhost] => (item=ec2-3-121-115-227.eu-central-1.compute.amazonaws.com) => {"ansible_facts": {"ec2_public_ip": "3.121.115.227"}, "ansible_loop_var": "item", "changed": false, "item": "ec2-3-121-115-227.eu-central-1.compute.amazonaws.com"}
+2025-05-08 17:24:58,454 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-11.eu-central-1.compute.internal] => (item=ip-10-0-1-10.eu-central-1.compute.internal)  => {"ansible_loop_var": "item", "changed": false, "false_condition": "hostvars[item]['public_ip_address'] != ''", "item": "ip-10-0-1-10.eu-central-1.compute.internal", "skip_reason": "Conditional result was False"}
+2025-05-08 17:24:58,456 p=276204 u=reseke n=ansible | TASK [Set_SSH_Vars : Set bastion_host variable on localhost] ***************************************************************************************************
+2025-05-08 17:24:58,473 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-11.eu-central-1.compute.internal] => (item=ip-10-0-1-11.eu-central-1.compute.internal)  => {"ansible_loop_var": "item", "changed": false, "false_condition": "item is match('^ec2.*')", "item": "ip-10-0-1-11.eu-central-1.compute.internal", "skip_reason": "Conditional result was False"}
+2025-05-08 17:24:58,477 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal -> localhost] => (item=ec2-3-121-115-227.eu-central-1.compute.amazonaws.com) => {"ansible_facts": {"bastion_host": "ec2-3-121-115-227.eu-central-1.compute.amazonaws.com"}, "ansible_loop_var": "item", "changed": false, "item": "ec2-3-121-115-227.eu-central-1.compute.amazonaws.com"}
+2025-05-08 17:24:58,480 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-11.eu-central-1.compute.internal] => (item=ip-10-0-1-10.eu-central-1.compute.internal)  => {"ansible_loop_var": "item", "changed": false, "false_condition": "item is match('^ec2.*')", "item": "ip-10-0-1-10.eu-central-1.compute.internal", "skip_reason": "Conditional result was False"}
+2025-05-08 17:24:58,485 p=276204 u=reseke n=ansible | TASK [Set_SSH_Vars : Mark ec2 public IP] ***********************************************************************************************************************
+2025-05-08 17:24:58,504 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {
+    "msg": [
+        "ip-10-0-1-11.eu-central-1.compute.internal The public IP is 3.121.115.227",
+        "10.0.1.11 IP to connect with",
+        "ec2-3-121-115-227.eu-central-1.compute.amazonaws.com is here."
+    ]
+}
+2025-05-08 17:24:58,509 p=276204 u=reseke n=ansible | ok: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {
+    "msg": [
+        "ec2-3-121-115-227.eu-central-1.compute.amazonaws.com The public IP is 3.121.115.227",
+        "10.0.1.12 IP to connect with",
+        "ec2-3-121-115-227.eu-central-1.compute.amazonaws.com is here."
+    ]
+}
+2025-05-08 17:24:58,516 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-10.eu-central-1.compute.internal] => {
+    "msg": [
+        "ip-10-0-1-10.eu-central-1.compute.internal The public IP is 3.121.115.227",
+        "10.0.1.10 IP to connect with",
+        "ec2-3-121-115-227.eu-central-1.compute.amazonaws.com is here."
+    ]
+}
+2025-05-08 17:24:58,519 p=276204 u=reseke n=ansible | TASK [Set_SSH_Vars : Make sure bastion uses public IP] *********************************************************************************************************
+2025-05-08 17:24:58,537 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:24:58,543 p=276204 u=reseke n=ansible | ok: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com -> localhost] => {"ansible_facts": {"ansible_host": "3.121.115.227"}, "changed": false}
+2025-05-08 17:24:58,545 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:24:58,546 p=276204 u=reseke n=ansible | TASK [Set_SSH_Vars : Set SSH ProxyCommand for Specific Hosts] **************************************************************************************************
+2025-05-08 17:24:58,567 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {"ansible_facts": {"ansible_ssh_common_args": "-o ProxyCommand=\"ssh -W %h:%p -i /home/reseke/.ssh/lustretest ec2-user@3.121.115.227\""}, "changed": false}
+2025-05-08 17:24:58,569 p=276204 u=reseke n=ansible | skipping: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": false, "false_condition": "inventory_hostname != bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:24:58,577 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-10.eu-central-1.compute.internal] => {"ansible_facts": {"ansible_ssh_common_args": "-o ProxyCommand=\"ssh -W %h:%p -i /home/reseke/.ssh/lustretest ec2-user@3.121.115.227\""}, "changed": false}
+2025-05-08 17:24:58,582 p=276204 u=reseke n=ansible | TASK [Copy ssh-key to non-bastion hosts] ***********************************************************************************************************************
+2025-05-08 17:24:58,605 p=276204 u=reseke n=ansible | skipping: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": false, "false_condition": "inventory_hostname != bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:06,926 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": false, "checksum": "8abcd3148ebb4b3ed65cbcd14a69414d567df1f5", "dest": "/home/ec2-user/.ssh/lustretest", "gid": 1000, "group": "ec2-user", "mode": "0600", "owner": "ec2-user", "path": "/home/ec2-user/.ssh/lustretest", "secontext": "unconfined_u:object_r:ssh_home_t:s0", "size": 3381, "state": "file", "uid": 1000}
+2025-05-08 17:25:06,927 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "checksum": "8abcd3148ebb4b3ed65cbcd14a69414d567df1f5", "dest": "/home/ec2-user/.ssh/lustretest", "gid": 1000, "group": "ec2-user", "mode": "0600", "owner": "ec2-user", "path": "/home/ec2-user/.ssh/lustretest", "secontext": "unconfined_u:object_r:ssh_home_t:s0", "size": 3381, "state": "file", "uid": 1000}
+2025-05-08 17:25:06,928 p=276204 u=reseke n=ansible | TASK [Print Public IP Address] *********************************************************************************************************************************
+2025-05-08 17:25:06,951 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {
+    "msg": [
+        "Public IP of ip-10-0-1-11.eu-central-1.compute.internal is ",
+        "Ansible Play hosts ['ip-10-0-1-11.eu-central-1.compute.internal', 'ec2-3-121-115-227.eu-central-1.compute.amazonaws.com', 'ip-10-0-1-10.eu-central-1.compute.internal']",
+        "Ansible Private_ip_address 10.0.1.11"
+    ]
+}
+2025-05-08 17:25:06,960 p=276204 u=reseke n=ansible | ok: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {
+    "msg": [
+        "Public IP of ec2-3-121-115-227.eu-central-1.compute.amazonaws.com is 3.121.115.227",
+        "Ansible Play hosts ['ip-10-0-1-11.eu-central-1.compute.internal', 'ec2-3-121-115-227.eu-central-1.compute.amazonaws.com', 'ip-10-0-1-10.eu-central-1.compute.internal']",
+        "Ansible Private_ip_address 10.0.1.12"
+    ]
+}
+2025-05-08 17:25:06,973 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-10.eu-central-1.compute.internal] => {
+    "msg": [
+        "Public IP of ip-10-0-1-10.eu-central-1.compute.internal is ",
+        "Ansible Play hosts ['ip-10-0-1-11.eu-central-1.compute.internal', 'ec2-3-121-115-227.eu-central-1.compute.amazonaws.com', 'ip-10-0-1-10.eu-central-1.compute.internal']",
+        "Ansible Private_ip_address 10.0.1.10"
+    ]
+}
+2025-05-08 17:25:06,978 p=276204 u=reseke n=ansible | TASK [Print SSH connection] ************************************************************************************************************************************
+2025-05-08 17:25:07,008 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {
+    "msg": "Connecting to ip-10-0-1-11.eu-central-1.compute.internal via 10.0.1.11 using -o ProxyCommand=\"ssh -W %h:%p -i /home/reseke/.ssh/lustretest ec2-user@3.121.115.227\""
+}
+2025-05-08 17:25:07,021 p=276204 u=reseke n=ansible | ok: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {
+    "msg": "Connecting to ec2-3-121-115-227.eu-central-1.compute.amazonaws.com via 3.121.115.227 using No SSH args set"
+}
+2025-05-08 17:25:07,033 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-10.eu-central-1.compute.internal] => {
+    "msg": "Connecting to ip-10-0-1-10.eu-central-1.compute.internal via 10.0.1.10 using -o ProxyCommand=\"ssh -W %h:%p -i /home/reseke/.ssh/lustretest ec2-user@3.121.115.227\""
+}
+2025-05-08 17:25:07,036 p=276204 u=reseke n=ansible | TASK [Add in the DNF update and install role] ******************************************************************************************************************
+2025-05-08 17:25:07,084 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : show python and dnf.conf version] ***************************************************************************************************
+2025-05-08 17:25:07,102 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {
+    "msg": [
+        "Ansible Host from DNF role: 10.0.1.11"
+    ]
+}
+2025-05-08 17:25:07,104 p=276204 u=reseke n=ansible | ok: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {
+    "msg": [
+        "Ansible Host from DNF role: 3.121.115.227"
+    ]
+}
+2025-05-08 17:25:07,111 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-10.eu-central-1.compute.internal] => {
+    "msg": [
+        "Ansible Host from DNF role: 10.0.1.10"
+    ]
+}
+2025-05-08 17:25:07,116 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : Install squid proxy on bastion] *****************************************************************************************************
+2025-05-08 17:25:07,132 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:07,141 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:18,770 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"ansible_facts": {"pkg_mgr": "dnf"}, "changed": true, "msg": "", "rc": 0, "results": ["Installed: perl-DBI-1.641-4.module_el8.6.0+2823+173faa7e.x86_64", "Installed: libecap-1.0.1-2.module_el8.6.0+2741+01592ae8.x86_64", "Installed: libtool-ltdl-2.4.6-25.el8.x86_64", "Installed: squid-7:4.15-10.module_el8.10.0+3953+e1d43bfb.5.x86_64"]}
+2025-05-08 17:25:18,773 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : define squi.conf] *******************************************************************************************************************
+2025-05-08 17:25:18,787 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:18,803 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:20,833 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": true, "checksum": "f673c76b3dbcf83cb7aed48af68c42377a95ae0c", "dest": "/etc/squid/squid.conf", "gid": 23, "group": "squid", "md5sum": "c9e7e6ade5c70753847d1f2b4fa092d1", "mode": "0640", "owner": "root", "secontext": "system_u:object_r:squid_conf_t:s0", "size": 224, "src": "/home/ec2-user/.ansible/tmp/ansible-tmp-1746717918.8745277-277333-24982046660085/source", "state": "file", "uid": 0}
+2025-05-08 17:25:20,836 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : Run command to enable squid] ********************************************************************************************************
+2025-05-08 17:25:20,848 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:20,855 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:22,469 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": true, "cmd": ["sudo", "systemctl", "enable", "--now", "squid"], "delta": "0:00:00.495042", "end": "2025-05-08 15:25:22.335916", "msg": "", "rc": 0, "start": "2025-05-08 15:25:21.840874", "stderr": "Created symlink /etc/systemd/system/multi-user.target.wants/squid.service → /usr/lib/systemd/system/squid.service.", "stderr_lines": ["Created symlink /etc/systemd/system/multi-user.target.wants/squid.service → /usr/lib/systemd/system/squid.service."], "stdout": "", "stdout_lines": []}
+2025-05-08 17:25:22,475 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : set bastion ip address for the other servers] ***************************************************************************************
+2025-05-08 17:25:22,513 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:22,520 p=276204 u=reseke n=ansible | ok: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"ansible_facts": {"bastion_ip": "3.121.115.227"}, "changed": false}
+2025-05-08 17:25:22,523 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "false_condition": "inventory_hostname == bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:22,524 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : Add proxy data to dnf.config to other servers] **************************************************************************************
+2025-05-08 17:25:22,546 p=276204 u=reseke n=ansible | skipping: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": false, "false_condition": "inventory_hostname != bastion_host", "skip_reason": "Conditional result was False"}
+2025-05-08 17:25:23,937 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"backup": "", "changed": true, "msg": "line added"}
+2025-05-08 17:25:23,982 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-10.eu-central-1.compute.internal] => {"backup": "", "changed": true, "msg": "line added"}
+2025-05-08 17:25:23,990 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : Get Python version] *****************************************************************************************************************
+2025-05-08 17:25:25,120 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": true, "cmd": "echo $(python3 --version)", "delta": "0:00:00.010050", "end": "2025-05-08 15:25:24.927836", "msg": "", "rc": 0, "start": "2025-05-08 15:25:24.917786", "stderr": "", "stderr_lines": [], "stdout": "Python 3.11.11", "stdout_lines": ["Python 3.11.11"]}
+2025-05-08 17:25:25,165 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": true, "cmd": "echo $(python3 --version)", "delta": "0:00:00.012375", "end": "2025-05-08 15:25:25.032004", "msg": "", "rc": 0, "start": "2025-05-08 15:25:25.019629", "stderr": "", "stderr_lines": [], "stdout": "Python 3.11.11", "stdout_lines": ["Python 3.11.11"]}
+2025-05-08 17:25:25,398 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": true, "cmd": "echo $(python3 --version)", "delta": "0:00:00.012256", "end": "2025-05-08 15:25:25.232505", "msg": "", "rc": 0, "start": "2025-05-08 15:25:25.220249", "stderr": "", "stderr_lines": [], "stdout": "Python 3.11.11", "stdout_lines": ["Python 3.11.11"]}
+2025-05-08 17:25:25,403 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : cat dnf.conf] ***********************************************************************************************************************
+2025-05-08 17:25:26,572 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": true, "cmd": "echo $(cat /etc/dnf/dnf.conf)", "delta": "0:00:00.011400", "end": "2025-05-08 15:25:26.411196", "msg": "", "rc": 0, "start": "2025-05-08 15:25:26.399796", "stderr": "", "stderr_lines": [], "stdout": "[main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True best=True skip_if_unavailable=False", "stdout_lines": ["[main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True best=True skip_if_unavailable=False"]}
+2025-05-08 17:25:26,613 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": true, "cmd": "echo $(cat /etc/dnf/dnf.conf)", "delta": "0:00:00.007559", "end": "2025-05-08 15:25:26.403285", "msg": "", "rc": 0, "start": "2025-05-08 15:25:26.395726", "stderr": "", "stderr_lines": [], "stdout": "[main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True best=True skip_if_unavailable=False proxy=http://10.0.1.12:3128", "stdout_lines": ["[main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True best=True skip_if_unavailable=False proxy=http://10.0.1.12:3128"]}
+2025-05-08 17:25:26,615 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": true, "cmd": "echo $(cat /etc/dnf/dnf.conf)", "delta": "0:00:00.006858", "end": "2025-05-08 15:25:26.448193", "msg": "", "rc": 0, "start": "2025-05-08 15:25:26.441335", "stderr": "", "stderr_lines": [], "stdout": "[main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True best=True skip_if_unavailable=False proxy=http://10.0.1.12:3128", "stdout_lines": ["[main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True best=True skip_if_unavailable=False proxy=http://10.0.1.12:3128"]}
+2025-05-08 17:25:26,622 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : show python and dnf.conf version] ***************************************************************************************************
+2025-05-08 17:25:26,653 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {
+    "msg": [
+        "Python version: Python 3.11.11",
+        "dnf config file: [main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True best=True skip_if_unavailable=False proxy=http://10.0.1.12:3128"
+    ]
+}
+2025-05-08 17:25:26,660 p=276204 u=reseke n=ansible | ok: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {
+    "msg": [
+        "Python version: Python 3.11.11",
+        "dnf config file: [main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True best=True skip_if_unavailable=False"
+    ]
+}
+2025-05-08 17:25:26,665 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-10.eu-central-1.compute.internal] => {
+    "msg": [
+        "Python version: Python 3.11.11",
+        "dnf config file: [main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True best=True skip_if_unavailable=False proxy=http://10.0.1.12:3128"
+    ]
+}
+2025-05-08 17:25:26,667 p=276204 u=reseke n=ansible | TASK [Dnf_access_install : Install common packages] ************************************************************************************************************
+2025-05-08 17:25:40,082 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"ansible_job_id": "j845461566622.4181", "changed": true, "finished": 1, "msg": "", "rc": 0, "results": ["Installed: pciutils-3.7.0-3.el8.x86_64"], "results_file": "/root/.ansible_async/j845461566622.4181", "started": 1, "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+2025-05-08 17:28:47,680 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-10.eu-central-1.compute.internal] => {"ansible_job_id": "j682402611536.1691", "changed": true, "finished": 1, "msg": "", "rc": 0, "results": ["Installed: pciutils-3.7.0-3.el8.x86_64"], "results_file": "/root/.ansible_async/j682402611536.1691", "started": 1, "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+2025-05-08 17:28:48,551 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"ansible_job_id": "j436925002135.1722", "changed": true, "finished": 1, "msg": "", "rc": 0, "results": ["Installed: pciutils-3.7.0-3.el8.x86_64"], "results_file": "/root/.ansible_async/j436925002135.1722", "started": 1, "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+2025-05-08 17:28:48,568 p=276204 u=reseke n=ansible | TASK [Print ZFS Status] ****************************************************************************************************************************************
+2025-05-08 17:28:49,768 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": true, "cmd": "lsblk | grep [35]0.", "delta": "0:00:00.011948", "end": "2025-05-08 15:28:49.601450", "msg": "", "rc": 0, "start": "2025-05-08 15:28:49.589502", "stderr": "", "stderr_lines": [], "stdout": "nvme1n1     259:1    0   30G  0 disk ", "stdout_lines": ["nvme1n1     259:1    0   30G  0 disk "]}
+2025-05-08 17:28:49,772 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": true, "cmd": "lsblk | grep [35]0.", "delta": "0:00:00.018117", "end": "2025-05-08 15:28:49.620496", "msg": "", "rc": 0, "start": "2025-05-08 15:28:49.602379", "stderr": "", "stderr_lines": [], "stdout": "nvme1n1     259:1    0   30G  0 disk \nnvme2n1     259:6    0  500G  0 disk ", "stdout_lines": ["nvme1n1     259:1    0   30G  0 disk ", "nvme2n1     259:6    0  500G  0 disk "]}
+2025-05-08 17:28:49,934 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": true, "cmd": "lsblk | grep [35]0.", "delta": "0:00:00.012894", "end": "2025-05-08 15:28:49.788516", "msg": "", "rc": 0, "start": "2025-05-08 15:28:49.775622", "stderr": "", "stderr_lines": [], "stdout": "nvme1n1     259:0    0   30G  0 disk ", "stdout_lines": ["nvme1n1     259:0    0   30G  0 disk "]}
+2025-05-08 17:28:49,940 p=276204 u=reseke n=ansible | TASK [Is zfs on the systems? No, but here is the lsblk info] ***************************************************************************************************
+2025-05-08 17:28:49,978 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {
+    "msg": "What is there: {'changed': True, 'stdout': 'nvme1n1     259:1    0   30G  0 disk \\nnvme2n1     259:6    0  500G  0 disk ', 'stderr': '', 'rc': 0, 'cmd': 'lsblk | grep [35]0.', 'start': '2025-05-08 15:28:49.602379', 'end': '2025-05-08 15:28:49.620496', 'delta': '0:00:00.018117', 'msg': '', 'stdout_lines': ['nvme1n1     259:1    0   30G  0 disk ', 'nvme2n1     259:6    0  500G  0 disk '], 'stderr_lines': [], 'failed': False}"
+}
+2025-05-08 17:28:49,983 p=276204 u=reseke n=ansible | ok: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {
+    "msg": "What is there: {'changed': True, 'stdout': 'nvme1n1     259:0    0   30G  0 disk ', 'stderr': '', 'rc': 0, 'cmd': 'lsblk | grep [35]0.', 'start': '2025-05-08 15:28:49.775622', 'end': '2025-05-08 15:28:49.788516', 'delta': '0:00:00.012894', 'msg': '', 'stdout_lines': ['nvme1n1     259:0    0   30G  0 disk '], 'stderr_lines': [], 'failed': False}"
+}
+2025-05-08 17:28:49,993 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-10.eu-central-1.compute.internal] => {
+    "msg": "What is there: {'changed': True, 'stdout': 'nvme1n1     259:1    0   30G  0 disk ', 'stderr': '', 'rc': 0, 'cmd': 'lsblk | grep [35]0.', 'start': '2025-05-08 15:28:49.589502', 'end': '2025-05-08 15:28:49.601450', 'delta': '0:00:00.011948', 'msg': '', 'stdout_lines': ['nvme1n1     259:1    0   30G  0 disk '], 'stderr_lines': [], 'failed': False}"
+}
+2025-05-08 17:28:49,996 p=276204 u=reseke n=ansible | TASK [Create mound point for data scratch drive] ***************************************************************************************************************
+2025-05-08 17:28:50,955 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": true, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "/mnt/data", "secontext": "unconfined_u:object_r:mnt_t:s0", "size": 6, "state": "directory", "uid": 0}
+2025-05-08 17:28:51,160 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": true, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "/mnt/data", "secontext": "unconfined_u:object_r:mnt_t:s0", "size": 6, "state": "directory", "uid": 0}
+2025-05-08 17:28:51,275 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": true, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "/mnt/data", "secontext": "unconfined_u:object_r:mnt_t:s0", "size": 6, "state": "directory", "uid": 0}
+2025-05-08 17:28:51,281 p=276204 u=reseke n=ansible | TASK [Create File System] **************************************************************************************************************************************
+2025-05-08 17:28:51,316 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-05-08 17:28:51,320 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-05-08 17:28:51,329 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-05-08 17:28:51,474 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-05-08 17:28:51,532 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-05-08 17:28:51,566 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.filesystem to community.general.filesystem
+2025-05-08 17:28:52,729 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": true}
+2025-05-08 17:28:52,856 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": true}
+2025-05-08 17:28:52,976 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": true}
+2025-05-08 17:28:52,983 p=276204 u=reseke n=ansible | TASK [Mount File System] ***************************************************************************************************************************************
+2025-05-08 17:28:53,014 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-05-08 17:28:53,021 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-05-08 17:28:53,029 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-05-08 17:28:53,199 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-05-08 17:28:53,230 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-05-08 17:28:53,236 p=276204 u=reseke n=ansible | redirecting (type: modules) ansible.builtin.mount to ansible.posix.mount
+2025-05-08 17:28:54,213 p=276204 u=reseke n=ansible | changed: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"backup_file": "", "boot": "yes", "changed": true, "dump": "0", "fstab": "/etc/fstab", "fstype": "ext4", "name": "/mnt/data", "opts": "defaults", "passno": "0", "src": "/dev/nvme1n1"}
+2025-05-08 17:28:54,359 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"backup_file": "", "boot": "yes", "changed": true, "dump": "0", "fstab": "/etc/fstab", "fstype": "ext4", "name": "/mnt/data", "opts": "defaults", "passno": "0", "src": "/dev/nvme1n1"}
+2025-05-08 17:28:54,381 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-10.eu-central-1.compute.internal] => {"backup_file": "", "boot": "yes", "changed": true, "dump": "0", "fstab": "/etc/fstab", "fstype": "ext4", "name": "/mnt/data", "opts": "defaults", "passno": "0", "src": "/dev/nvme1n1"}
+2025-05-08 17:28:54,388 p=276204 u=reseke n=ansible | TASK [Create mound point for OSS server] ***********************************************************************************************************************
+2025-05-08 17:28:54,428 p=276204 u=reseke n=ansible | skipping: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": false, "false_condition": "ansible_host == '10.0.1.11'", "skip_reason": "Conditional result was False"}
+2025-05-08 17:28:54,436 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "false_condition": "ansible_host == '10.0.1.11'", "skip_reason": "Conditional result was False"}
+2025-05-08 17:28:55,608 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": true, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "/mnt/lustre", "secontext": "unconfined_u:object_r:mnt_t:s0", "size": 6, "state": "directory", "uid": 0}
+2025-05-08 17:28:55,613 p=276204 u=reseke n=ansible | TASK [start ZFS] ***********************************************************************************************************************************************
+2025-05-08 17:28:55,647 p=276204 u=reseke n=ansible | skipping: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": false, "false_condition": "ansible_host == '10.0.1.11'", "skip_reason": "Conditional result was False"}
+2025-05-08 17:28:55,653 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "false_condition": "ansible_host == '10.0.1.11'", "skip_reason": "Conditional result was False"}
+2025-05-08 17:28:57,236 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": true, "cmd": ["/sbin/modprobe", "zfs"], "delta": "0:00:00.493475", "end": "2025-05-08 15:28:57.007687", "msg": "", "rc": 0, "start": "2025-05-08 15:28:56.514212", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+2025-05-08 17:28:57,242 p=276204 u=reseke n=ansible | TASK [Is zfs on the systems? No, but here is the lsblk info] ***************************************************************************************************
+2025-05-08 17:28:57,280 p=276204 u=reseke n=ansible | skipping: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"false_condition": "ansible_host == '10.0.1.11'"}
+2025-05-08 17:28:57,281 p=276204 u=reseke n=ansible | ok: [ip-10-0-1-11.eu-central-1.compute.internal] => {
+    "msg": "What is there: {'changed': True, 'stdout': '', 'stderr': '', 'rc': 0, 'cmd': ['/sbin/modprobe', 'zfs'], 'start': '2025-05-08 15:28:56.514212', 'end': '2025-05-08 15:28:57.007687', 'delta': '0:00:00.493475', 'msg': '', 'stdout_lines': [], 'stderr_lines': [], 'failed': False}"
+}
+2025-05-08 17:28:57,286 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"false_condition": "ansible_host == '10.0.1.11'"}
+2025-05-08 17:28:57,289 p=276204 u=reseke n=ansible | TASK [Create OSS zpool] ****************************************************************************************************************************************
+2025-05-08 17:28:57,316 p=276204 u=reseke n=ansible | skipping: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": false, "false_condition": "ansible_host == '10.0.1.11'", "skip_reason": "Conditional result was False"}
+2025-05-08 17:28:57,322 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "false_condition": "ansible_host == '10.0.1.11'", "skip_reason": "Conditional result was False"}
+2025-05-08 17:28:58,988 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": true, "cmd": ["zpool", "create", "Lust_pool", "/dev/nvme2n1"], "delta": "0:00:00.409280", "end": "2025-05-08 15:28:58.711749", "msg": "", "rc": 0, "start": "2025-05-08 15:28:58.302469", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+2025-05-08 17:28:58,993 p=276204 u=reseke n=ansible | TASK [Create a new file system called myfs in pool rpool with the setuid property turned off] ******************************************************************
+2025-05-08 17:28:59,030 p=276204 u=reseke n=ansible | skipping: [ec2-3-121-115-227.eu-central-1.compute.amazonaws.com] => {"changed": false, "false_condition": "ansible_host == '10.0.1.11'", "skip_reason": "Conditional result was False"}
+2025-05-08 17:28:59,039 p=276204 u=reseke n=ansible | skipping: [ip-10-0-1-10.eu-central-1.compute.internal] => {"changed": false, "false_condition": "ansible_host == '10.0.1.11'", "skip_reason": "Conditional result was False"}
+2025-05-08 17:29:00,560 p=276204 u=reseke n=ansible | changed: [ip-10-0-1-11.eu-central-1.compute.internal] => {"changed": true, "name": "Lust_pool", "setuid": "off", "state": "present"}
+2025-05-08 17:29:00,564 p=276204 u=reseke n=ansible | PLAY RECAP *****************************************************************************************************************************************************
+2025-05-08 17:29:00,564 p=276204 u=reseke n=ansible | ec2-3-121-115-227.eu-central-1.compute.amazonaws.com : ok=19   changed=10   unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+2025-05-08 17:29:00,564 p=276204 u=reseke n=ansible | ip-10-0-1-10.eu-central-1.compute.internal : ok=17   changed=8    unreachable=0    failed=0    skipped=10   rescued=0    ignored=0   
+2025-05-08 17:29:00,565 p=276204 u=reseke n=ansible | ip-10-0-1-11.eu-central-1.compute.internal : ok=24   changed=12   unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
