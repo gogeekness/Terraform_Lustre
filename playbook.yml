@@ -20,7 +20,7 @@
 
   vars:
     data_device_name: "/dev/nvme1n1"  # Lust
-    lustre_device_name: "dev/nvme2n1" # ZFS drive for Lustre device_name = "/dev/sdz"
+    lustre_device_name: "/dev/nvme2n1" # ZFS drive for Lustre device_name = "/dev/sdz"
     lustre_pool_name: "Lust_pool"
     mount_point: "/mnt/data"
     lustre_point: "/mnt/lustre"
@@ -110,7 +110,7 @@
       block:
         - name: Create mound point for OSS server
           ansible.builtin.file:
-            path: "{{ luster_point }}"
+            path: "{{ lustre_point }}"
             state: directory
             mode: '0755'
           
@@ -122,20 +122,23 @@
           ansible.builtin.debug:
             msg: "What is there: {{ modprobe_zfs }}"
 
+          ### create the ZFS pool on the data drive #2 500
+        - name: Create OSS zpool
+          command: "zpool create {{ lustre_pool_name }} {{ lustre_device_name }}"
 
         - name: Create a new file system called myfs in pool rpool with the setuid property turned off
           community.general.zfs:
-            name: rpool/myfs
+            name: "{{ lustre_pool_name }}"
             state: present
             extra_zfs_properties:
               setuid: 'off'
 
-        - name: Mount Lustre EBS volume
-          mount:
-            path: "{{ mount_point }}"
-            src: "{{ device_name }}"
-            fstype: ext4
-            state: mounted
+        # - name: Cant use as this is for zfs
+        #   mount:
+        #     path: "{{ mount_point }}"
+        #     src: "{{ device_name }}"
+        #     fstype: ext4
+        #     state: mounted
       become: yes
       become_user: root
     ### ende
