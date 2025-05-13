@@ -22,8 +22,9 @@
     data_device_name: "/dev/nvme1n1"  # Lust
     lustre_device_name: "/dev/nvme2n1" # ZFS drive for Lustre device_name = "/dev/sdz"
     lustre_pool_name: "Lust_pool"
-    mount_point: "/mnt/data"
     lustre_point: "/mnt/lustre"
+    lustre_scratch: "/mnt/lustre_scratch"
+    lustre_scratch_name: "Lust_scratch"
     ansible_command_timeout: 60  # timeout if ansible gets stuck
     mounted_devices: "{{ ansible_mounts | map(attribute='device') }}"
 
@@ -65,7 +66,7 @@
       ansible.builtin.include_role:
         name: Dnf_access_install
 
-    ### find teh data drives nvme1n1, and for teh OSS nvme1n2
+    ### find the data drives nvme1n1, and for the OSS nvme1n2
     - name: Print ZFS Status
       ansible.builtin.shell:
         cmd: "lsblk | grep [35]0."
@@ -78,53 +79,56 @@
       ansible.builtin.debug:
         msg: "What is there: {{ Data_disks }}"
 
-    ### A place to store temporary and extra data for Lustre on alll servers
+    ### A place to Lustre scrath area on alll servers
     - name: Create mound point for data scratch drive
       ansible.builtin.file:
-        path: "{{ mount_point }}"
+        path: "{{ lustre_scratch }}"
         state: directory
         mode: '0755'
       become: yes
       become_user: root
 
-    ### for data drives create ex4 file system
-    - name: Create File System
-      filesystem:
-        fstype: ext4
-        dev: "{{ data_device_name }}"
-      become: yes
-      become_user: root
+    # ### for data drives create ex4 file system
+    # - name: Create File System
+    #   filesystem:
+    #     fstype: ext4
+    #     dev: "{{ data_device_name }}"
+    #   become: yes
+    #   become_user: root
 
-    - name: Mount File System
-      mount:
-        path: "{{ mount_point }}"
-        src: "{{ data_device_name }}"
-        fstype: ext4
-        state: mounted
-      become: yes
-      become_user: root
-
-    ### set the three servers with data drives
+    ### set the OSS driver with the 500 GB
     - name: Create mount points for data drives
       when: "ansible_host == '10.0.1.11'" 
       block:
+          ### the data pool for Lustre, for test a single drive
+          ### A more reaistic environmient is a few servers (OSS) with RAID/JBOD of Data_disks.
         - name: Create mound point for OSS server
           ansible.builtin.file:
             path: "{{ lustre_point }}"
             state: directory
             mode: '0755'
           
-        - name: start ZFS
+          ### As this is a command it will try to overwrite on a 2nd run.
+        - name: start ZFS - OSS
           ansible.builtin.command: "/sbin/modprobe zfs"
-          register: modprobe_zfs
+          register: modprobe_oss_zfs
         
-        - name: Is zfs on the systems? No, but here is the lsblk info
+        - name: start Lustre - OSS
+          ansible.builtin.command: "/sbin/modprobe lustre"
+          register: modprobe_oss_lustre
+        
+          ### check for active zfs (the base for Lustre)
+        - name: Is modprobe_oss_zfs
           ansible.builtin.debug:
-            msg: "What is there: {{ modprobe_zfs }}"
+            msg: 
+              - "What is there zfs  {{ modprobe_oss_zfs }}"
+              - "What is there lustre: {{ modprobe_oss_lustre }}"
 
           ### create the ZFS pool on the data drive #2 500
+          ##  If the zpool is already set, it will error.  This command only needs to be run once per deploy
         - name: Create OSS zpool
           command: "zpool create {{ lustre_pool_name }} {{ lustre_device_name }}"
+          ignore_errors: true  
 
         - name: Create a new file system called myfs in pool rpool with the setuid property turned off
           community.general.zfs:
@@ -133,14 +137,64 @@
             extra_zfs_properties:
               setuid: 'off'
 
-        # - name: Cant use as this is for zfs
-        #   mount:
-        #     path: "{{ mount_point }}"
-        #     src: "{{ device_name }}"
-        #     fstype: ext4
-        #     state: mounted
       become: yes
       become_user: root
+      ### Ende block
+      
+
+    ### MGT/MDS server with the 30 GB scratch drive
+    - name: Create mount points for data drives
+      when: "ansible_host == '10.0.1.10'" 
+      block:
+          ### As this is a command it will try to overwrite on a 2nd run.
+        - name: start ZFS - MGT
+          ansible.builtin.command: "/sbin/modprobe zfs"
+          register: modprobe_mgt_zfs
+        
+          ### As this is a command it will try to overwrite on a 2nd run.
+        - name: start Lustre  - MGT
+          ansible.builtin.command: "/sbin/modprobe lustre"
+          register: modprobe_mgt_lustre
+
+        - name: Is modprobe_oss_zfs
+          ansible.builtin.debug:
+            msg: 
+              - "What is there zfs  {{ modprobe_mgt_zfs }}"
+              - "What is there lustre: {{ modprobe_mgt_lustre }}"
+
+          ### create the ZFS pool on the data scratch drives
+          ### this will teh lustre scratch for MNG
+          ##  If the zpool is already set, it will error.  This command only needs to be run once per deploy
+        - name: Create OSS zpool
+          command: "zpool create {{ lustre_scratch_name }} {{ data_device_name }}"
+          ignore_errors: true
+          
+          ### Set the scratch drive for zfs
+        - name: Create a new file system called myfs in pool rpool with the setuid property turned off
+          community.general.zfs:
+            name: "{{ lustre_scratch_name }}"
+            state: present
+            extra_zfs_properties:
+              setuid: 'off'
+
+          ### For only OSS, the others are later
+        - name: Is Lustre installed and ready?
+          ansible.builtin.command: "/sbin/modprobe -v lustre"
+          register: modprobe_lustre
+      become: yes
+      become_user: root
+      ### Ende block
+
+
+
+
+    # - name: Set up Lustre on the systems
+    #   Create luster on OSS and MNGS
+
+    # - name: Setup client 
+    #   Create Lustre client 
+
+
     ### ende
 
 
