@@ -69,17 +69,16 @@ Then the script will run the contrainer creating the Lustre cluster by Tofu.
   *  I have used parts of it when I started to create my inital vm, then created a snapshot of the OS disk.
   *  However, the commands as a sequence works.  This is who I solved the installation of ZFS on Alma 8 (manualy).    
 
-### Cluster layout
-There are 3 servers 
-* Client
-* Managment / MD
-* OSS
+### Cluster layout, lustre file system name is: Lust 
+* lustre_mgt    (IB: 10.0.1.10) for the MGT, MDS and MDT.
+* lustre_oss    (IB: 10.0.1.11) for the OSS and OST.
+* lustre_client (IB: 10.0.1.12) for the client.
 
 All of the servers have 30 GB data drives (scratch pad) for extra working data.
 The OSS drive has a extra drive 500 GB drive for ZFS.
 
-The Client also is a jumpbox or portal to the other two servers.  I only public IP is to the Client.
-From it, Ansible can tunnel to the other two machines.
+The Client also is a jumpbox or bastion to the other two servers.  I only public IP is to the Client.
+From it, Ansible can tunnel to the other two machines.  That IP is created by AWS, then the Ansible Invtory plugin reads it.
  
 ## The goal
 To have a working Lustre test Cluster with a couple of commands.
@@ -91,6 +90,7 @@ While so far I have not reached my goal the path has been rewarding.
 * Learn Terraform.  I can depoy various infrasture layout by TF
 * More time with Ansible.  Learn better ways of implementing Ansible in AWS and understand some of Anislble's limitations.
 * Learn to use and install ZFS (far harder then I was expecting)
+  
 
 # Runing commands on Tofu and Ansible
 ### To run commands in Tofu (in the container)
@@ -104,14 +104,3 @@ While so far I have not reached my goal the path has been rewarding.
 - - - This is a special Invnetory plugin for Ansible that pulls AWS data of your infrastructure. 
 - - - https://docs.ansible.com/ansible/latest/collections/amazon/aws/aws_ec2_inventory.html
 - - A password for a local ansible vault (optional)
-
-
-- name: Lets look at some disks
-  hosts: localhost
-  become: false
-  gather_facts: false
-  tasks:
-  - name: Collect only facts about hardware
-    setup:
-      gather_subset:
-      - hardware
