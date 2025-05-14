@@ -1,0 +1,99 @@
+---
+  ### create zfs pools and setup drives
+
+### A place to Lustre scrath area on alll servers
+- name: Create mound point for data scratch drive
+  ansible.builtin.file:
+    path: "{{ lustre_scratch }}"
+    state: directory
+    mode: '0755'
+  become: yes
+  become_user: root
+
+  ### set the OSS driver with the 500 GB
+- name: Create mount points for OSS data drive
+  when: "ansible_host == '10.0.1.11'" 
+  block:
+      ### the data pool for Lustre, for test a single drive
+      ### A more reaistic environmient is a few servers (OSS) with RAID/JBOD of Data_disks.
+    - name: Create mound point for OSS server
+      ansible.builtin.file:
+        path: "{{ lustre_point }}"
+        state: directory
+        mode: '0755'
+      
+      ### As this is a command it will try to overwrite on a 2nd run.
+    - name: start ZFS - OSS
+      ansible.builtin.command: "/sbin/modprobe zfs"
+      register: modprobe_oss_zfs
+    
+    - name: start Lustre - OSS
+      ansible.builtin.command: "/sbin/modprobe lustre"
+      register: modprobe_oss_lustre
+    
+      ### check for active zfs (the base for Lustre)
+    - name: Is modprobe_oss_zfs
+      ansible.builtin.debug:
+        msg: 
+          - "What is there zfs  {{ modprobe_oss_zfs }}"
+          - "What is there lustre: {{ modprobe_oss_lustre }}"
+
+      ### create the ZFS pool on the data drive #2 500
+      ##  If the zpool is already set, it will error.  This command only needs to be run once per deploy
+    - name: Create OSS zpool
+      command: "zpool create {{ lustre_pool_name }} {{ lustre_device_name }}"
+      ignore_errors: true  
+
+    - name: Create a new file system called myfs in pool rpool with the setuid property turned off
+      community.general.zfs:
+        name: "{{ lustre_pool_name }}"
+        state: present
+        extra_zfs_properties:
+          setuid: 'off'
+
+  become: yes
+  become_user: root
+  ### Ende block
+
+  ### MGT/MDS server with the 30 GB scratch drive
+- name: Create mount points for MGT data drives
+  when: "ansible_host == '10.0.1.10'" 
+  block:
+      ### As this is a command it will try to overwrite on a 2nd run.
+    - name: start ZFS - MGT
+      ansible.builtin.command: "/sbin/modprobe zfs"
+      register: modprobe_mgt_zfs
+    
+      ### As this is a command it will try to overwrite on a 2nd run.
+    - name: start Lustre  - MGT
+      ansible.builtin.command: "/sbin/modprobe lustre"
+      register: modprobe_mgt_lustre
+
+    - name: Is modprobe_oss_zfs
+      ansible.builtin.debug:
+        msg: 
+          - "What is there zfs  {{ modprobe_mgt_zfs }}"
+          - "What is there lustre: {{ modprobe_mgt_lustre }}"
+
+      ### create the ZFS pool on the data scratch drives
+      ### this will teh lustre scratch for MNG
+      ##  If the zpool is already set, it will error.  This command only needs to be run once per deploy
+    - name: Create OSS zpool
+      command: "zpool create {{ lustre_scratch_name }} {{ data_device_name }}"
+      ignore_errors: true
+      
+      ### Set the scratch drive for zfs
+    - name: Create a new file system called myfs in pool rpool with the setuid property turned off
+      community.general.zfs:
+        name: "{{ lustre_scratch_name }}"
+        state: present
+        extra_zfs_properties:
+          setuid: 'off'
+
+      ### For only OSS, the others are later
+    - name: Is Lustre installed and ready?
+      ansible.builtin.command: "/sbin/modprobe -v lustre"
+      register: modprobe_lustre
+  become: yes
+  become_user: root
+  ### Ende block

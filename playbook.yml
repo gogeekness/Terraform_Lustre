@@ -97,7 +97,7 @@
     #   become_user: root
 
     ### set the OSS driver with the 500 GB
-    - name: Create mount points for data drives
+    - name: Create mount points for OSS data drive
       when: "ansible_host == '10.0.1.11'" 
       block:
           ### the data pool for Lustre, for test a single drive
@@ -143,7 +143,7 @@
       
 
     ### MGT/MDS server with the 30 GB scratch drive
-    - name: Create mount points for data drives
+    - name: Create mount points for MGT data drives
       when: "ansible_host == '10.0.1.10'" 
       block:
           ### As this is a command it will try to overwrite on a 2nd run.
