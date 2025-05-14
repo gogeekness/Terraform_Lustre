@@ -44,12 +44,17 @@
       command: "zpool create {{ lustre_pool_name }} {{ lustre_device_name }}"
       ignore_errors: true  
 
-    - name: Create a new file system called myfs in pool rpool with the setuid property turned off
-      community.general.zfs:
-        name: "{{ lustre_pool_name }}"
-        state: present
-        extra_zfs_properties:
-          setuid: 'off'
+      # Create the OSS file system:
+    - name: Create Luster data store for OSS
+      command: "mkfs.lustre --fsname={{ lustre_pool_name }} --mgs --mdt {{ lustre_pool_name }}"
+      # mkfs.lustre --mdt --fsname=testfs --backfstype=zfs --mgsnode=... mdt_pool
+
+    # - name: Create a new file system called myfs in pool rpool with the setuid property turned off
+    #   community.general.zfs:
+    #     name: "{{ lustre_pool_name }}"
+    #     state: present
+    #     extra_zfs_properties:
+    #       setuid: 'off'
 
   become: yes
   become_user: root
@@ -69,7 +74,7 @@
       ansible.builtin.command: "/sbin/modprobe lustre"
       register: modprobe_mgt_lustre
 
-    - name: Is modprobe_oss_zfs
+    - name: Is modprobe_mng_zfs
       ansible.builtin.debug:
         msg: 
           - "What is there zfs  {{ modprobe_mgt_zfs }}"
@@ -78,12 +83,17 @@
       ### create the ZFS pool on the data scratch drives
       ### this will teh lustre scratch for MNG
       ##  If the zpool is already set, it will error.  This command only needs to be run once per deploy
-    - name: Create OSS zpool
+    - name: Create MGT zpool
       command: "zpool create {{ lustre_scratch_name }} {{ data_device_name }}"
       ignore_errors: true
-      
+
+      # Create the MGS/MDT file system:
+    - name: Create Luster data store for MGS/MDT
+      command: "mkfs.lustre --fsname={{ lustre_scratch_name }} --mgs --mdt {{ lustre_pool_name }}"
+      # mkfs.lustre --mdt --fsname=testfs --backfstype=zfs --mgsnode=... mdt_pool
+
       ### Set the scratch drive for zfs
-    - name: Create a new file system called myfs in pool rpool with the setuid property turned off
+    - name: Create a new file MGT in pool rpool with the setuid property turned off
       community.general.zfs:
         name: "{{ lustre_scratch_name }}"
         state: present
