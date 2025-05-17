@@ -10,51 +10,50 @@
   become: yes
   become_user: root
 
+  ### Start both the zfs and lustre
+- name: start ZFS modprobe
+  ansible.builtin.command: "/sbin/modprobe zfs"
+  register: modprobe_zfs 
+  become: yes
+  become_user: root
+
+- name: start lustre modprobe
+  ansible.builtin.command: "/sbin/modprobe lustre"
+  register: modprobe_lustre
+  become: yes
+  become_user: root
+
   ### set the OSS driver with the 500 GB
-- name: Create mount points for OSS data drive
+- name: Create mount points for OST data drive
   when: "ansible_host == '10.0.1.11'" 
   block:
       ### the data pool for Lustre, for test a single drive
       ### A more reaistic environmient is a few servers (OSS) with RAID/JBOD of Data_disks.
-    - name: Create mound point for OSS server
+    - name: Create mound point for OST server
       ansible.builtin.file:
         path: "{{ lustre_point }}"
         state: directory
         mode: '0755'
-      
-      ### As this is a command it will try to overwrite on a 2nd run.
-    - name: start ZFS - OSS
-      ansible.builtin.command: "/sbin/modprobe zfs"
-      register: modprobe_oss_zfs
-    
-    - name: start Lustre - OSS
-      ansible.builtin.command: "/sbin/modprobe lustre"
-      register: modprobe_oss_lustre
     
       ### check for active zfs (the base for Lustre)
-    - name: Is modprobe_oss_zfs
+    - name: Is modprobe
       ansible.builtin.debug:
         msg: 
-          - "What is there zfs  {{ modprobe_oss_zfs }}"
-          - "What is there lustre: {{ modprobe_oss_lustre }}"
+          - "What is there zfs  {{ modprobe_zfs }}"
+          - "What is there lustre: {{ modprobe_lustre }}"
 
       ### create the ZFS pool on the data drive #2 500
       ##  If the zpool is already set, it will error.  This command only needs to be run once per deploy
-    - name: Create OSS zpool
+    - name: Create OST zpool
       command: "zpool create {{ lustre_pool_name }} {{ lustre_device_name }}"
-      ignore_errors: true  
 
       # Create the OSS file system:
-    - name: Create Luster data store for OSS
-      command: "mkfs.lustre --fsname={{ lustre_pool_name }} --mgs --mdt {{ lustre_pool_name }}"
+    - name: Create Lustre data store for OST
+      command: "mkfs.lustre --fsname={{ lustre_pool_name }} --ost  {{ lustre_pool_name }}"
       # mkfs.lustre --mdt --fsname=testfs --backfstype=zfs --mgsnode=... mdt_pool
 
-    # - name: Create a new file system called myfs in pool rpool with the setuid property turned off
-    #   community.general.zfs:
-    #     name: "{{ lustre_pool_name }}"
-    #     state: present
-    #     extra_zfs_properties:
-    #       setuid: 'off'
+    - name: Mount Lustre data store for OST
+      command: "mount -t lustre {{ lustre_device_name }} {{ lustre_point }}" 
 
   become: yes
   become_user: root
@@ -64,33 +63,30 @@
 - name: Create mount points for MGT data drives
   when: "ansible_host == '10.0.1.10'" 
   block:
-      ### As this is a command it will try to overwrite on a 2nd run.
-    - name: start ZFS - MGT
-      ansible.builtin.command: "/sbin/modprobe zfs"
-      register: modprobe_mgt_zfs
-    
-      ### As this is a command it will try to overwrite on a 2nd run.
-    - name: start Lustre  - MGT
-      ansible.builtin.command: "/sbin/modprobe lustre"
-      register: modprobe_mgt_lustre
 
     - name: Is modprobe_mng_zfs
       ansible.builtin.debug:
         msg: 
-          - "What is there zfs  {{ modprobe_mgt_zfs }}"
-          - "What is there lustre: {{ modprobe_mgt_lustre }}"
+          - "What is there zfs  {{ modprobe_zfs }}"
+          - "What is there lustre: {{ modprobe_lustre }}"
 
       ### create the ZFS pool on the data scratch drives
       ### this will teh lustre scratch for MNG
       ##  If the zpool is already set, it will error.  This command only needs to be run once per deploy
     - name: Create MGT zpool
       command: "zpool create {{ lustre_scratch_name }} {{ data_device_name }}"
-      ignore_errors: true
+      register: command_output
+      failed_when: "command_output.rc != 0 and ('is already mounted' not in command_output.stderr)"
+      changed_when: "command_output.rc == 0"
 
       # Create the MGS/MDT file system:
     - name: Create Luster data store for MGS/MDT
       command: "mkfs.lustre --fsname={{ lustre_scratch_name }} --mgs --mdt {{ lustre_pool_name }}"
       # mkfs.lustre --mdt --fsname=testfs --backfstype=zfs --mgsnode=... mdt_pool
+      register: command_output
+      failed_when: "command_output.rc != 0 and ('was previously formatted for lustre' not in command_output.stderr) \
+        and command_output.rc != 17"
+      changed_when: "command_output.rc == 0"
 
       ### Set the scratch drive for zfs
     - name: Create a new file MGT in pool rpool with the setuid property turned off
@@ -100,10 +96,19 @@
         extra_zfs_properties:
           setuid: 'off'
 
-      ### For only OSS, the others are later
-    - name: Is Lustre installed and ready?
-      ansible.builtin.command: "/sbin/modprobe -v lustre"
-      register: modprobe_lustre
+    - name: Mount Lustre data store for OST
+      command: "mount -t lustre {{ lustre_scratch }} {{ lustre_scratch_name }}" 
+
+    #   ### For only OSS, the others are later
+    # - name: Is Lustre installed and ready?
+    #   ansible.builtin.command: "/sbin/modprobe -v lustre"
+    #   register: modprobe_lustre
   become: yes
   become_user: root
   ### Ende block
+
+### With teh zf drives set now run Lustre, even the client 
+### Start the luster utility on all systems, 
+- name: start Lustre - all servers
+  ansible.builtin.command: "/sbin/modprobe lustre"
+  register: modprobe_ost_lustre
