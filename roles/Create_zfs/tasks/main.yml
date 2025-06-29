@@ -44,13 +44,17 @@
 
       ### create the ZFS pool on the data drive #2 500
       ##  If the zpool is already set, it will error.  This command only needs to be run once per deploy
-    - name: Create OST zpool
-      command: "zpool create {{ lustre_pool_name }} {{ lustre_device_name }}"
+    # - name: Create OST zpool
+    #   command: "zpool create {{ lustre_pool_name }} {{ lustre_device_name }}"
 
       # Create the OSS file system:
     - name: Create Lustre data store for OST
-      command: "mkfs.lustre --fsname={{ lustre_pool_name }} --ost  {{ lustre_pool_name }}"
+      command: "mkfs.lustre --backfstype=zfs --fsname={{ lustre_pool_name }} --ost --mgsnode= '10.0.1.10'@ec2-user  {{ lustre_pool_name }}"
       # mkfs.lustre --mdt --fsname=testfs --backfstype=zfs --mgsnode=... mdt_pool
+      register: command_output
+      failed_when: "command_output.rc != 0 and ('was previously formatted for lustre' not in command_output.stderr) \
+        and command_output.rc != 17"
+      changed_when: "command_output.rc == 0"
 
     - name: Mount Lustre data store for OST
       command: "mount -t lustre {{ lustre_device_name }} {{ lustre_point }}" 
@@ -73,28 +77,28 @@
       ### create the ZFS pool on the data scratch drives
       ### this will teh lustre scratch for MNG
       ##  If the zpool is already set, it will error.  This command only needs to be run once per deploy
-    - name: Create MGT zpool
-      command: "zpool create {{ lustre_scratch_name }} {{ data_device_name }}"
-      register: command_output
-      failed_when: "command_output.rc != 0 and ('is already mounted' not in command_output.stderr)"
-      changed_when: "command_output.rc == 0"
+    # - name: Create MGT zpool
+    #   command: "zpool create {{ lustre_scratch_name }} {{ data_device_name }}"
+    #   register: command_output
+    #   failed_when: "command_output.rc != 0 and ('is already mounted' not in command_output.stderr)"
+    #   changed_when: "command_output.rc == 0"
 
       # Create the MGS/MDT file system:
     - name: Create Luster data store for MGS/MDT
-      command: "mkfs.lustre --fsname={{ lustre_scratch_name }} --mgs --mdt {{ lustre_pool_name }}"
+      command: "mkfs.lustre --backfstype=zfs --fsname={{ lustre_scratch_name }} --mgs --mdt {{ lustre_pool_name }}"
       # mkfs.lustre --mdt --fsname=testfs --backfstype=zfs --mgsnode=... mdt_pool
       register: command_output
       failed_when: "command_output.rc != 0 and ('was previously formatted for lustre' not in command_output.stderr) \
         and command_output.rc != 17"
       changed_when: "command_output.rc == 0"
 
-      ### Set the scratch drive for zfs
-    - name: Create a new file MGT in pool rpool with the setuid property turned off
-      community.general.zfs:
-        name: "{{ lustre_scratch_name }}"
-        state: present
-        extra_zfs_properties:
-          setuid: 'off'
+    #   ### Set the scratch drive for zfs
+    # - name: Create a new file MGT in pool rpool with the setuid property turned off
+    #   community.general.zfs:
+    #     name: "{{ lustre_scratch_name }}"
+    #     state: present
+    #     extra_zfs_properties:
+    #       setuid: 'off'
 
     - name: Mount Lustre data store for OST
       command: "mount -t lustre {{ lustre_scratch }} {{ lustre_scratch_name }}" 
